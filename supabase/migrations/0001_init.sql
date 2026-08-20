@@ -242,9 +242,11 @@ create table public.notifications (
 );
 create index notifications_pending_idx on public.notifications (status, scheduled_for);
 -- Un même modèle n'est envoyé qu'une fois par réservation (rappels inclus).
+-- Index total et non partiel : PostgREST peut ainsi l'utiliser comme cible
+-- de `on_conflict`. Les lignes sans réservation (cartes cadeaux) portent un
+-- `booking_id` nul, que Postgres ne considère jamais comme dupliqué.
 create unique index notifications_unique_per_booking
-  on public.notifications (booking_id, channel, template)
-  where booking_id is not null;
+  on public.notifications (booking_id, channel, template);
 
 -- ------------------------------------------------------------ RGPD
 create table public.consents (
