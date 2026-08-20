@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+/**
+ * Design tokens ALMA STUDIO.
+ * Source de vérité côté CSS ; l'équivalent JS vit dans `config/brand.ts`.
+ */
+@theme {
+  --color-sand: #e8ded0;
+  --color-ivory: #f7f3ec;
+  --color-terracotta: #b96f55;
+  --color-terracotta-dark: #9d5a44;
+  --color-olive: #59604a;
+  --color-espresso: #302a25;
+  --color-champagne: #b9a383;
+
+  /* Nuances dérivées, pour les fonds et les bordures discrètes. */
+  --color-sand-50: #f5efe7;
+  --color-espresso-70: rgba(48, 42, 37, 0.7);
+  --color-espresso-55: rgba(48, 42, 37, 0.55);
+  --color-line: rgba(48, 42, 37, 0.12);
+  --color-line-strong: rgba(48, 42, 37, 0.22);
+
+  /* Les variables `--font-*` sont fournies par next/font (app/layout.tsx) ;
+     les polices système suivantes prennent le relais en cas d'échec. */
+  --font-heading: var(--font-cormorant), 'Iowan Old Style', Georgia, serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 28px;
+
+  --shadow-soft: 0 18px 50px -30px rgba(48, 42, 37, 0.45);
+  --shadow-lifted: 0 28px 70px -40px rgba(48, 42, 37, 0.55);
+
+  --ease-alma: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-espresso);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  /* Focus visible et cohérent partout — exigence d'accessibilité. */
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection {
+    background: var(--color-sand);
+    color: var(--color-espresso);
+  }
+
+  /* Respect strict de la préférence système de réduction du mouvement. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /** Filet décoratif court utilisé sous les sur-titres de section. */
+  .alma-rule {
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-champagne);
+  }
+
+  /**
+   * Placeholder photo premium : dégradé sable + grain léger.
+   * Utilisé tant que les visuels définitifs ne sont pas livrés — l'objectif
+   * est que l'emplacement paraisse voulu, jamais cassé.
+   */
+  .alma-placeholder {
+    background:
+      radial-gradient(120% 90% at 20% 15%, rgba(247, 243, 236, 0.95) 0%, transparent 55%),
+      radial-gradient(90% 80% at 85% 80%, rgba(185, 111, 85, 0.18) 0%, transparent 60%),
+      linear-gradient(160deg, var(--color-sand) 0%, #dfd2c0 55%, #d3c4b0 100%);
+  }
+
+  .alma-placeholder-dark {
+    background:
+      radial-gradient(110% 90% at 25% 20%, rgba(185, 163, 131, 0.32) 0%, transparent 55%),
+      linear-gradient(155deg, #443b33 0%, var(--color-espresso) 60%, #241f1b 100%);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
