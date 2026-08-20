@@ -12,7 +12,7 @@ interface PlaceholderImageProps {
   tone?: 'sand' | 'espresso';
   sizes?: string;
   priority?: boolean;
-  /** `fill` impose un parent positionné avec une hauteur définie. */
+  /** `fill` étire l'image sur toute la surface du bloc. */
   fill?: boolean;
   width?: number;
   height?: number;
@@ -20,8 +20,14 @@ interface PlaceholderImageProps {
 
 /**
  * Emplacement photo unifié. Tant que les visuels définitifs ne sont pas
- * livrés, l'emplacement affiche un dégradé sable et le jeton de contenu
- * attendu — l'aspect reste soigné et l'information manquante est traçable.
+ * livrés, l'emplacement affiche un dégradé sable grainé et le jeton de
+ * contenu attendu — l'aspect reste soigné et l'information manquante
+ * traçable.
+ *
+ * Le positionnement est entièrement laissé à l'appelant : le composant
+ * n'impose aucune classe `relative` ou `absolute` sur sa racine, sinon
+ * elle entrerait en conflit avec un `absolute inset-0` passé de
+ * l'extérieur (l'ordre des règles Tailwind décidant alors du gagnant).
  */
 export function PlaceholderImage({
   src,
@@ -38,14 +44,18 @@ export function PlaceholderImage({
 }: PlaceholderImageProps) {
   if (src) {
     return (
-      <div className={cn('relative overflow-hidden', className)}>
-        <Image
-          src={src}
-          alt={alt}
-          {...(fill ? { fill: true, sizes } : { width: width ?? 1200, height: height ?? 800 })}
-          priority={priority}
-          className={cn('h-full w-full object-cover', imageClassName)}
-        />
+      <div className={cn('overflow-hidden', className)}>
+        {/* Enveloppe positionnée : `fill` de next/image exige un ancêtre
+            positionné, sans contraindre la racine du composant. */}
+        <div className="relative h-full w-full">
+          <Image
+            src={src}
+            alt={alt}
+            {...(fill ? { fill: true, sizes } : { width: width ?? 1200, height: height ?? 800 })}
+            priority={priority}
+            className={cn('h-full w-full object-cover', imageClassName)}
+          />
+        </div>
       </div>
     );
   }
@@ -55,26 +65,16 @@ export function PlaceholderImage({
       role="img"
       aria-label={alt}
       className={cn(
-        'relative flex items-end overflow-hidden',
+        'flex items-end overflow-hidden',
         tone === 'espresso' ? 'alma-placeholder-dark' : 'alma-placeholder',
         className,
       )}
     >
-      <span
-        aria-hidden
-        className={cn(
-          'pointer-events-none absolute inset-0 opacity-[0.35]',
-          'bg-[radial-gradient(circle_at_1px_1px,rgba(48,42,37,0.16)_1px,transparent_0)]',
-          '[background-size:4px_4px]',
-        )}
-      />
       {token && (
         <span
           className={cn(
-            'relative m-4 rounded-full px-3 py-1 font-body text-[0.65rem] uppercase tracking-[0.18em]',
-            tone === 'espresso'
-              ? 'bg-ivory/12 text-sand/80'
-              : 'bg-espresso/8 text-espresso-55',
+            'm-4 rounded-full px-3 py-1 font-body text-[0.65rem] uppercase tracking-[0.18em]',
+            tone === 'espresso' ? 'bg-ivory/12 text-sand/80' : 'bg-espresso/8 text-espresso-55',
           )}
         >
           {token}
