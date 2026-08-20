@@ -25,10 +25,13 @@ export function pageMetadata({
   noIndex = false,
 }: PageMetaInput): Metadata {
   const url = new URL(path, site.url).toString();
-  const fullTitle = path === '/' ? title : `${title} — ${brand.name}`;
+  // L'accueil porte déjà le nom de la marque : `absolute` court-circuite le
+  // gabarit `%s — ALMA STUDIO` du layout, qui le répéterait sinon.
+  const isHome = path === '/';
+  const fullTitle = isHome ? title : `${title} — ${brand.name}`;
 
   return {
-    title: fullTitle,
+    title: isHome ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     ...(noIndex ? { robots: { index: false, follow: false } } : {}),
