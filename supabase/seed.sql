@@ -36,38 +36,44 @@ insert into public.locations (name, postal_codes, travel_fee_cents, travel_minut
 with inserted as (
   insert into public.services
     (slug, name, short_description, description, intensity, recommended_for,
-     image_alt, home_service_available, is_signature, sort_order)
+     image_url, image_alt, home_service_available, is_signature, sort_order)
   values
     ('signature-mediterranee', 'Signature Méditerranée',
      'Le massage emblématique du studio, fluide et enveloppant.',
      'Une expérience fluide et enveloppante inspirée de l’univers méditerranéen. Le rythme et la pression évoluent progressivement pour créer une sensation de relâchement général.',
      'moderee', 'Première visite au studio, besoin de relâchement global.',
-     'Ambiance du soin Signature Méditerranée au studio ALMA', true, true, 1),
+     '/images/services/signature-mediterranee.jpg',
+     'Massage du dos à l’huile, mains à plat le long de la colonne, dans une lumière de bougies.', true, true, 1),
     ('espagnol-evasion', 'Espagnol Évasion',
      'Une évasion inspirée de l’univers du bien-être espagnol.',
      'Une expérience de relaxation inspirée de l’univers du bien-être espagnol et méditerranéen, avec une gestuelle fluide et enveloppante.',
      'moderee', 'Envie de dépaysement et de lâcher-prise.',
-     'Ambiance du soin Espagnol Évasion au studio ALMA', true, true, 2),
+     '/images/services/espagnol-evasion.jpg',
+     'Séance de massage du dos dans une alcôve de pierre éclairée à la bougie, ouverte sur un patio.', true, true, 2),
     ('deep-relax', 'Deep Relax',
      'Une séance lente, pensée pour ralentir profondément.',
      'Une séance lente et apaisante pensée pour ralentir et favoriser une profonde sensation de détente.',
      'douce', 'Fatigue mentale, sommeil difficile, besoin de calme.',
-     'Ambiance du soin Deep Relax au studio ALMA', true, true, 3),
+     '/images/services/deep-relax.jpg',
+     'Massage lent des épaules et du haut du dos, la personne allongée, visage détendu sur l’appui-tête.', true, true, 3),
     ('dos-nuque', 'Dos & Nuque',
      'Une séance ciblée, courte et efficace.',
      'Une séance ciblée autour du dos, des épaules et de la nuque.',
      'moderee', 'Journées assises, tensions d’épaules, pause en semaine.',
-     'Ambiance du soin Dos & Nuque au studio ALMA', false, false, 4),
+     '/images/services/dos-nuque.jpg',
+     'Pression appuyée à la base de la nuque et sur le trapèze, serviettes roulées en arrière-plan.', false, false, 4),
     ('sport-recovery', 'Sport & Recovery',
      'Une séance plus dynamique, orientée récupération.',
      'Une séance plus dynamique destinée aux personnes qui souhaitent consacrer leur moment de bien-être à la récupération et au relâchement musculaire.',
      'dynamique', 'Après l’entraînement, jambes lourdes, reprise du sport.',
-     'Ambiance du soin Sport & Recovery au studio ALMA', true, false, 5),
+     '/images/services/sport-recovery.jpg',
+     'Massage de récupération du mollet, gestuelle appuyée, après l’effort.', true, false, 5),
     ('rituel-mediterraneen', 'Rituel Méditerranéen',
      'L’expérience premium du studio, du début à la fin.',
      'L’expérience premium ALMA : préparation sensorielle, serviettes chaudes, massage complet et relaxation finale.',
      'douce', 'Occasion particulière, cadeau, moment long pour soi.',
-     'Ambiance du Rituel Méditerranéen au studio ALMA', false, false, 6)
+     '/images/services/rituel-mediterraneen.jpg',
+     'Fin de séance du rituel : mains posées sur les tempes, bougies et lanterne en arrière-plan.', false, false, 6)
   on conflict (slug) do nothing
   returning id, slug
 )

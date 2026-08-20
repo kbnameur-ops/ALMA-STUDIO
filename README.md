@@ -184,10 +184,12 @@ modifient depuis `/admin/prestations`.
 Les informations non communiquées sont des placeholders explicites, jamais
 inventées. Rechercher `[` dans `config/site.ts` et les composants :
 
-- **Photos** — `[PHOTO_HERO]`, `[PHOTO_STUDIO]`, `[PHOTO_PRATICIEN]`,
-  `[PHOTO_DETAIL_*]`, une par prestation. En leur absence, un placeholder sable
-  s'affiche : soigné, jamais une image cassée. Renseigner `image_url` sur la
-  prestation ou passer `src` à `PlaceholderImage`.
+- **Photos** — les six visuels de prestation sont livrés
+  (`public/images/services/<slug>.jpg`, référencés par `image_url`). Restent à
+  fournir : `[PHOTO_HERO]`, `[PHOTO_STUDIO_PRINCIPALE]`, `[PHOTO_STUDIO]`,
+  `[PHOTO_DETAIL_1..3]` et `[PHOTO_PRATICIEN]`. En leur absence, un placeholder
+  sable s'affiche : soigné, jamais une image cassée. Renseigner `image_url` sur
+  la prestation ou passer `src` à `PlaceholderImage`.
 - **Praticien** — `[PRENOM_PRATICIEN]`, `[BIOGRAPHIE_PRATICIEN]`,
   `[FORMATION_PRATICIEN]`. **Aucun diplôme, aucune certification et aucune durée
   d'expérience n'ont été inventés.**
