@@ -118,35 +118,49 @@ export function Select({ label, error, hint, className, id, children, ...props }
 }
 
 type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & {
-  label: ReactNode;
+  /** Texte de la case. Volontairement `string` : voir `hint`. */
+  label: string;
+  /**
+   * Complément affiché sous la case — c'est là que doivent vivre les liens.
+   * Un lien placé *dans* un `<label>` déclenche à la fois la navigation et
+   * la bascule de la case : le visiteur coche sans le vouloir, ou l'inverse.
+   */
+  hint?: ReactNode;
   error?: string | undefined;
 };
 
-export function Checkbox({ label, error, className, id, ...props }: CheckboxProps) {
+export function Checkbox({ label, hint, error, className, id, ...props }: CheckboxProps) {
   const generatedId = useId();
   const fieldId = id ?? generatedId;
 
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor={fieldId} className="flex cursor-pointer items-start gap-3">
-        <input
-          id={fieldId}
-          type="checkbox"
-          aria-invalid={error ? true : undefined}
-          className={cn(
-            'mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded-xs border border-[color:var(--color-line-strong)]',
-            'accent-[color:var(--color-terracotta)]',
-            className,
-          )}
-          {...props}
-        />
-        <span className="font-body text-sm leading-relaxed text-espresso-70">{label}</span>
-      </label>
-      {error && (
-        <p role="alert" className="pl-7 font-body text-xs text-terracotta">
-          {error}
-        </p>
-      )}
+    <div className="flex items-start gap-3">
+      <input
+        id={fieldId}
+        type="checkbox"
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${fieldId}-error` : undefined}
+        className={cn(
+          'mt-1 h-4 w-4 shrink-0 cursor-pointer rounded-xs border border-[color:var(--color-line-strong)]',
+          'accent-[color:var(--color-terracotta)]',
+          className,
+        )}
+        {...props}
+      />
+      <div className="flex flex-col gap-1">
+        <label
+          htmlFor={fieldId}
+          className="cursor-pointer font-body text-sm leading-relaxed text-espresso-70"
+        >
+          {label}
+        </label>
+        {hint && <div className="font-body text-xs text-espresso-55">{hint}</div>}
+        {error && (
+          <p id={`${fieldId}-error`} role="alert" className="font-body text-xs text-terracotta">
+            {error}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

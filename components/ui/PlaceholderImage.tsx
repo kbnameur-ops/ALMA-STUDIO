@@ -60,10 +60,13 @@ export function PlaceholderImage({
     );
   }
 
+  // `alt` vide = visuel purement décoratif : on le retire de l'arbre
+  // d'accessibilité plutôt que d'exposer une image sans nom.
+  const decorative = alt.trim().length === 0;
+
   return (
     <div
-      role="img"
-      aria-label={alt}
+      {...(decorative ? { 'aria-hidden': true } : { role: 'img', 'aria-label': alt })}
       className={cn(
         'flex items-end overflow-hidden',
         tone === 'espresso' ? 'alma-placeholder-dark' : 'alma-placeholder',

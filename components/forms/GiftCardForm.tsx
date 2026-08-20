@@ -269,7 +269,8 @@ export function GiftCardForm({
               checked={acceptsTerms}
               onChange={(event) => setAcceptsTerms(event.target.checked)}
               error={errors.acceptsTerms}
-              label="J’accepte les conditions générales de vente. La carte est valable 12 mois, non remboursable."
+              label="J’accepte les conditions générales de vente."
+              hint="La carte est valable 12 mois. Elle n’est ni remboursable, ni échangeable contre des espèces."
             />
 
             {formError && (

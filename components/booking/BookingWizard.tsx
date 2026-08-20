@@ -21,7 +21,6 @@ import {
   bookingReducer,
   canLeaveStep,
   initialBookingState,
-  previewTotalCents,
   type StepId,
 } from './state';
 import type { Service } from '@/types';
@@ -362,10 +361,9 @@ export function BookingWizard({
           )}
 
           {state.duration && (
-            <p className="mt-4 px-1 font-body text-xs text-espresso-55">
-              Total indicatif :{' '}
-              <span className="tabular-nums">{previewTotalCents(state) / 100} €</span>. Le montant
-              définitif est calculé au moment du paiement.
+            <p className="mt-4 px-1 font-body text-xs leading-relaxed text-espresso-55">
+              Montant indicatif. Le total facturé est recalculé par nos serveurs au moment du
+              paiement, à partir des tarifs en vigueur.
             </p>
           )}
         </div>

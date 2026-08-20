@@ -44,6 +44,10 @@ export default async function MassagesPage() {
       </Section>
 
       <Section tone="ivory" spacing="lg" containerWidth="wide">
+        {/* Titre de niveau 2 masqué : la grille de cartes utilise des `h3`,
+            la hiérarchie du document resterait sinon discontinue. */}
+        <h2 className="sr-only">Toutes les prestations</h2>
+
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <Reveal key={service.id} delay={(index % 3) * 0.08} className="h-full">

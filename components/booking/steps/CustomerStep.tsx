@@ -72,14 +72,16 @@ export function CustomerStep({ customer, errors, onChange }: CustomerStepProps) 
           onChange={(event) => onChange({ acceptsTerms: event.target.checked })}
           error={errors['customer.acceptsTerms']}
           required
-          label={
-            <>
-              J’accepte les{' '}
-              <Link href="/cgv" target="_blank" className="underline underline-offset-2 hover:text-espresso">
-                conditions de réservation
-              </Link>
-              .
-            </>
+          label="J’accepte les conditions de réservation."
+          hint={
+            <Link
+              href="/cgv"
+              target="_blank"
+              rel="noreferrer"
+              className="underline underline-offset-2 hover:text-espresso"
+            >
+              Lire les conditions générales de vente
+            </Link>
           }
         />
         <Checkbox
