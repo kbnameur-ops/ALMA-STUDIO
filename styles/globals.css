@@ -181,7 +181,7 @@
       radial-gradient(circle at 1px 1px, rgba(48, 42, 37, 0.035) 1px, transparent 0),
       radial-gradient(120% 90% at 20% 15%, rgba(247, 243, 236, 0.95) 0%, transparent 55%),
       radial-gradient(90% 80% at 85% 80%, rgba(185, 111, 85, 0.18) 0%, transparent 60%),
-      linear-gradient(160deg, var(--color-sand) 0%, #dfd2c0 55%, #d3c4b0 100%);
+      linear-gradient(160deg, #ded1c0 0%, #d2c2ad 55%, #c4b19a 100%);
     background-size: 6px 6px, cover, cover, cover;
   }
 
