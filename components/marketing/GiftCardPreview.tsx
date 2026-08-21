@@ -1,4 +1,5 @@
 import { brand } from '@/config/brand';
+import { ArchMark } from '@/components/brand/ArchMark';
 import { formatPrice } from '@/lib/utils/format';
 
 interface GiftCardPreviewProps {
@@ -22,7 +23,7 @@ export function GiftCardPreview({
   message,
 }: GiftCardPreviewProps) {
   return (
-    <figure className="overflow-hidden rounded-lg bg-espresso p-8 text-sand shadow-lifted sm:p-10">
+    <figure className="alma-arch-flat overflow-hidden bg-espresso p-8 pt-12 text-sand shadow-lifted sm:p-10 sm:pt-14">
       <div className="flex items-start justify-between gap-6">
         <div>
           <p className="font-heading text-xl font-light tracking-[0.24em] text-ivory">
@@ -32,20 +33,7 @@ export function GiftCardPreview({
             {brand.nameParts.secondary}
           </p>
         </div>
-        <svg
-          viewBox="0 0 64 64"
-          className="h-10 w-10 shrink-0"
-          aria-hidden
-          fill="none"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        >
-          <path d="M12 34a20 20 0 0 1 40 0" stroke="var(--color-champagne)" />
-          <path
-            d="M8 44c5.5 0 5.5 5 11 5s5.5-5 11-5 5.5 5 11 5 5.5-5 11-5"
-            stroke="var(--color-terracotta)"
-          />
-        </svg>
+        <ArchMark size={34} tone="light" />
       </div>
 
       <p className="mt-10 font-body text-[0.65rem] uppercase tracking-[0.24em] text-champagne">

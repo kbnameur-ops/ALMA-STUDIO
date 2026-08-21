@@ -55,7 +55,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang={site.lang} className={`${heading.variable} ${body.variable}`}>
-      <body className="min-h-screen antialiased">
+      <body className="alma-grain min-h-screen antialiased">
         <a
           href="#contenu"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-espresso focus:px-5 focus:py-3 focus:font-body focus:text-sm focus:text-ivory"

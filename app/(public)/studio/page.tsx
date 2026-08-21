@@ -5,6 +5,7 @@ import { Eyebrow, Heading, Lead } from '@/components/ui/Heading';
 import { LinkButton } from '@/components/ui/Button';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { Reveal } from '@/components/ui/Reveal';
+import { Arch } from '@/components/ui/Arch';
 import { site } from '@/config/site';
 import { pageMetadata } from '@/lib/seo';
 
@@ -76,15 +77,15 @@ export default function StudioPage() {
 
         <div className="mt-16 grid gap-4 sm:grid-cols-3">
           {['[PHOTO_DETAIL_1]', '[PHOTO_DETAIL_2]', '[PHOTO_DETAIL_3]'].map((token, index) => (
-            <Reveal key={token} delay={index * 0.08}>
+            <Arch key={token} delay={index * 0.12} className="relative aspect-3/4 w-full">
               <PlaceholderImage
                 src={null}
                 alt="Détail du studio ALMA"
                 token={token}
                 sizes="(max-width: 640px) 100vw, 33vw"
-                className="aspect-3/4 w-full rounded-lg"
+                className="h-full w-full"
               />
-            </Reveal>
+            </Arch>
           ))}
         </div>
       </Section>

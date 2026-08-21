@@ -7,6 +7,7 @@ import { Eyebrow, Heading, Lead } from '@/components/ui/Heading';
 import { LinkButton } from '@/components/ui/Button';
 import { Price } from '@/components/ui/Price';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
+import { Arch } from '@/components/ui/Arch';
 import { Reveal } from '@/components/ui/Reveal';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ServiceBadge } from '@/components/services/ServiceBadge';
@@ -97,13 +98,15 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
             </div>
 
-            <PlaceholderImage
-              src={service.imageUrl}
-              alt={service.imageAlt}
-              token={`[PHOTO_${service.slug.toUpperCase().replace(/-/g, '_')}]`}
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="aspect-4/3 w-full rounded-lg"
-            />
+            <Arch className="relative aspect-4/5 w-full lg:aspect-3/4">
+              <PlaceholderImage
+                src={service.imageUrl}
+                alt={service.imageAlt}
+                token={`[PHOTO_${service.slug.toUpperCase().replace(/-/g, '_')}]`}
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="h-full w-full"
+              />
+            </Arch>
           </div>
         </Container>
       </section>

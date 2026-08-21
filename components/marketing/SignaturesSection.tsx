@@ -1,7 +1,7 @@
 import { Section } from '@/components/ui/Section';
-import { Eyebrow, Heading } from '@/components/ui/Heading';
+import { Eyebrow } from '@/components/ui/Heading';
 import { LinkButton } from '@/components/ui/Button';
-import { Reveal } from '@/components/ui/Reveal';
+import { RevealLines } from '@/components/ui/Reveal';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import type { Service } from '@/types';
 
@@ -11,23 +11,23 @@ export function SignaturesSection({ services }: { services: Service[] }) {
 
   return (
     <Section tone="ivory" spacing="lg" containerWidth="wide" aria-labelledby="signatures-titre">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <Eyebrow>Le studio</Eyebrow>
-          <Heading id="signatures-titre" size="lg" className="mt-4">
-            Nos signatures
-          </Heading>
+          <RevealLines
+            as="h2"
+            className="mt-5 font-heading text-[2.5rem] font-light leading-[1.04] sm:text-[3.25rem]"
+            lines={['Nos signatures']}
+          />
         </div>
         <LinkButton href="/massages" variant="secondary" className="self-start sm:self-auto">
           Voir tous les massages
         </LinkButton>
       </div>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-10 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
         {services.map((service, index) => (
-          <Reveal key={service.id} delay={index * 0.08} className="h-full">
-            <ServiceCard service={service} />
-          </Reveal>
+          <ServiceCard key={service.id} service={service} index={index} />
         ))}
       </div>
     </Section>

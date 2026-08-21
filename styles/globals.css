@@ -15,6 +15,10 @@
 
   /* Nuances dérivées, pour les fonds et les bordures discrètes. */
   --color-sand-50: #f5efe7;
+  /* Lumière de fin de journée : réservée aux dégradés, jamais aux aplats. */
+  --color-sun: #d9a066;
+  --color-clay: #a85f47;
+  --color-shade: #241f1b;
   --color-espresso-70: rgba(48, 42, 37, 0.7);
   --color-espresso-55: rgba(48, 42, 37, 0.55);
   --color-line: rgba(48, 42, 37, 0.12);
@@ -35,6 +39,12 @@
   --shadow-lifted: 0 28px 70px -40px rgba(48, 42, 37, 0.55);
 
   --ease-alma: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Arche : rayon horizontal plein, rayon vertical partiel — une coupole,
+     pas un rectangle arrondi. Exprimé en pourcentages pour rester juste
+     quelles que soient les proportions du bloc. */
+  --arch-radius: 50% 50% var(--radius-md) var(--radius-md) / 46% 46% 2% 2%;
 }
 
 @layer base {
@@ -65,8 +75,13 @@
   h4 {
     font-family: var(--font-heading);
     font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.06;
+    letter-spacing: -0.012em;
+  }
+
+  /* Les prix et les horaires se lisent mieux en chiffres alignés. */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
 
   /* Focus visible et cohérent partout — exigence d'accessibilité. */
@@ -97,6 +112,54 @@
 }
 
 @layer components {
+  /**
+   * Grain de plâtre appliqué à toute la page.
+   * Une surface parfaitement lisse trahit l'écran ; ce bruit très faible
+   * donne la matière d'un mur chaulé. Posé en `fixed` et non répété par
+   * section, il ne coûte qu'un seul calque de composition.
+   */
+  .alma-grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  }
+
+  /** Cadre en arche — le motif structurant du site. */
+  .alma-arch {
+    border-radius: var(--arch-radius);
+  }
+
+  /** Demi-arche, pour les blocs posés contre un bord. */
+  .alma-arch-flat {
+    border-radius: 50% 50% 0 0 / 46% 46% 0 0;
+  }
+
+  /**
+   * Halo de lumière chaude, comme le soleil entrant par une ouverture.
+   * Purement décoratif : toujours posé en `aria-hidden`.
+   */
+  .alma-sun {
+    background: radial-gradient(
+      60% 55% at 50% 8%,
+      rgba(217, 160, 102, 0.32) 0%,
+      rgba(217, 160, 102, 0.1) 42%,
+      transparent 72%
+    );
+  }
+
+  /** Filet vertical fin, pour rythmer une colonne éditoriale. */
+  .alma-stem {
+    background: linear-gradient(
+      to bottom,
+      var(--color-champagne) 0%,
+      rgba(185, 163, 131, 0) 100%
+    );
+  }
   /** Filet décoratif court utilisé sous les sur-titres de section. */
   .alma-rule {
     display: block;
@@ -137,4 +200,38 @@
 
 @utility text-pretty {
   text-wrap: pretty;
+}
+
+/**
+ * Animations d'ambiance.
+ * Longues et de faible amplitude : elles doivent se sentir, pas se voir.
+ * Toutes sont déclenchées par `motion-safe:`, donc absentes dès que
+ * l'utilisateur demande moins de mouvement.
+ */
+@keyframes alma-breathe {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes alma-scroll-hint {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
 }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { bookingHref, darkHeroRoutes, mainNav } from '@/config/navigation';
 import { cn } from '@/lib/utils/cn';
@@ -19,6 +19,10 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  // Jauge de lecture : indique la profondeur de page sans occuper d'espace.
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -51,6 +55,15 @@ export function Header() {
           : 'border-b border-transparent bg-transparent',
       )}
     >
+      {/* Voile de lisibilité : uniquement au-dessus d'un hero sombre, et
+          seulement tant qu'on n'a pas défilé. */}
+      {overDarkHero && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-shade/70 to-transparent"
+        />
+      )}
+
       <div className="mx-auto flex w-full max-w-[88rem] items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
         <Logo tone={overDarkHero ? 'light' : 'dark'} />
 
@@ -123,6 +136,12 @@ export function Header() {
           </button>
         </div>
       </div>
+
+      <motion.span
+        aria-hidden
+        style={{ scaleX: progress }}
+        className="absolute inset-x-0 bottom-0 h-px origin-left bg-champagne/70"
+      />
 
       <AnimatePresence>
         {menuOpen && (

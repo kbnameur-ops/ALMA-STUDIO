@@ -20,14 +20,14 @@ function Stars({ rating }: { rating: number }) {
 
 export function ReviewCard({ review }: { review: Review }) {
   return (
-    <figure className="flex h-full flex-col justify-between rounded-lg border border-[color:var(--color-line)] bg-ivory p-7">
+    <figure className="flex h-full flex-col justify-between border-t border-[color:var(--color-line)] pt-7">
       <div>
         <Stars rating={review.rating} />
-        <blockquote className="mt-5 font-heading text-xl font-light leading-snug text-espresso text-pretty">
+        <blockquote className="mt-6 font-heading text-[1.6rem] font-light italic leading-snug text-espresso text-pretty">
           « {review.quote} »
         </blockquote>
       </div>
-      <figcaption className="mt-6 font-body text-xs uppercase tracking-[0.16em] text-espresso-55">
+      <figcaption className="mt-7 font-body text-xs uppercase tracking-[0.16em] text-espresso-55">
         {review.authorName}
         {review.serviceLabel && <span className="text-champagne"> · {review.serviceLabel}</span>}
       </figcaption>

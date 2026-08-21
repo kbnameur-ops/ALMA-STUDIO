@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
-import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
+import Image from 'next/image';
+import { Arch } from '@/components/ui/Arch';
 import { Price } from '@/components/ui/Price';
 import { ServiceBadge } from './ServiceBadge';
 import { formatDuration } from '@/lib/utils/format';
@@ -8,68 +11,79 @@ import type { Service } from '@/types';
 
 interface ServiceCardProps {
   service: Service;
-  /** `detailed` ajoute intensité, profil recommandé et bouton de réservation. */
+  /** `detailed` ajoute intensité, profil recommandé et grille tarifaire. */
   variant?: 'compact' | 'detailed';
+  index?: number;
   className?: string;
 }
 
 /**
  * Carte prestation.
- * Tous les tarifs et durées proviennent de `service.durations`, donc de la
- * base de données : rien n'est écrit en dur ici.
+ *
+ * Le visuel est une ouverture en arche, pas une vignette : la carte se lit
+ * comme une niche dans un mur. Au survol, l'image respire et le nom glisse
+ * vers l'accent — deux gestes, pas cinq.
+ *
+ * Tarifs et durées viennent de `service.durations`, donc de la base.
  */
-export function ServiceCard({ service, variant = 'compact', className }: ServiceCardProps) {
+export function ServiceCard({ service, variant = 'compact', index = 0, className }: ServiceCardProps) {
   const prices = service.durations.map((duration) => duration.priceCents);
   const lowest = prices.length > 0 ? Math.min(...prices) : 0;
-  const durations = service.durations.map((duration) => formatDuration(duration.minutes)).join(' / ');
+  const durations = service.durations.map((duration) => formatDuration(duration.minutes)).join(' · ');
 
   return (
-    <article
-      className={cn(
-        'group flex h-full flex-col overflow-hidden rounded-lg border border-[color:var(--color-line)] bg-ivory transition-all duration-500 ease-[var(--ease-alma)] hover:border-espresso/25 hover:shadow-soft',
-        className,
-      )}
-    >
-      <Link href={`/massages/${service.slug}`} className="block" tabIndex={-1} aria-hidden>
-        <PlaceholderImage
-          src={service.imageUrl}
-          alt={service.imageAlt}
-          token={`[PHOTO_${service.slug.toUpperCase().replace(/-/g, '_')}]`}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="aspect-4/3 w-full"
-          imageClassName="transition-transform duration-700 ease-[var(--ease-alma)] group-hover:scale-[1.03]"
-        />
+    <article className={cn('group/card flex h-full flex-col', className)}>
+      <Link href={`/massages/${service.slug}`} className="block focus-visible:outline-offset-8">
+        <Arch
+          shape="full"
+          delay={index * 0.08}
+          className="relative aspect-4/5 w-full bg-sand"
+        >
+          {service.imageUrl ? (
+            <Image
+              src={service.imageUrl}
+              alt={service.imageAlt}
+              fill
+              sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-alma)] group-hover/card:scale-[1.06]"
+            />
+          ) : (
+            <span
+              role="img"
+              aria-label={service.imageAlt}
+              className="alma-placeholder absolute inset-0"
+            />
+          )}
+
+        </Arch>
       </Link>
 
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="font-heading text-2xl font-light leading-tight">
-            <Link
-              href={`/massages/${service.slug}`}
-              className="transition-colors duration-300 hover:text-terracotta"
-            >
-              {service.name}
-            </Link>
-          </h3>
-          {service.durations.length > 0 && (
-            <Price cents={lowest} from={service.durations.length > 1} className="shrink-0 text-sm" />
-          )}
-        </div>
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="font-heading text-[1.75rem] font-light leading-tight">
+          <Link
+            href={`/massages/${service.slug}`}
+            className="transition-colors duration-500 ease-[var(--ease-alma)] group-hover/card:text-terracotta"
+          >
+            {service.name}
+          </Link>
+        </h3>
 
-        <p className="mt-1 font-body text-xs uppercase tracking-[0.18em] text-espresso-55">
-          {durations}
-        </p>
+        {/* Durée et tarif : une ligne de service, entre deux filets. */}
+        <div className="mt-4 flex items-baseline justify-between gap-4 border-y border-[color:var(--color-line)] py-2.5">
+          <span className="font-body text-[0.65rem] uppercase tracking-[0.2em] text-espresso-55">
+            {durations}
+          </span>
+          <Price cents={lowest} from={service.durations.length > 1} className="text-sm" />
+        </div>
 
         <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
           {variant === 'detailed' ? service.description : service.shortDescription}
         </p>
 
         {variant === 'detailed' && (
-          <div className="mt-6 space-y-4">
-            <div className="flex flex-wrap gap-2">
-              <ServiceBadge intensity={service.intensity} />
-              {service.homeServiceAvailable && <span className="sr-only">Disponible à domicile</span>}
-            </div>
+          <div className="mt-6 space-y-5">
+            <ServiceBadge intensity={service.intensity} />
+
             {service.recommendedFor && (
               <p className="font-body text-xs leading-relaxed text-espresso-55">
                 <span className="uppercase tracking-[0.16em] text-champagne">Recommandé</span>
@@ -77,6 +91,7 @@ export function ServiceCard({ service, variant = 'compact', className }: Service
                 {service.recommendedFor}
               </p>
             )}
+
             <dl className="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
               {service.durations.map((duration) => (
                 <div key={duration.id} className="flex items-center justify-between py-2.5">
@@ -99,14 +114,24 @@ export function ServiceCard({ service, variant = 'compact', className }: Service
                 ? `/reservation?service=${service.slug}`
                 : `/massages/${service.slug}`
             }
-            className="inline-flex items-center gap-2 font-body text-sm text-terracotta transition-colors duration-300 hover:text-terracotta-dark"
+            className="group/link inline-flex items-center gap-2 font-body text-sm text-terracotta"
           >
             {variant === 'detailed' ? 'Réserver' : 'Découvrir'}
-            <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.4">
-              <path d="M2 8h12M9 3l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            {/* La flèche avance quand la carte entière est survolée. */}
+            <span
+              aria-hidden
+              className="inline-block transition-transform duration-500 ease-[var(--ease-alma)] group-hover/card:translate-x-1"
+            >
+              <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.4">
+                <path d="M2 8h12M9 3l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             <span className="sr-only"> — {service.name}</span>
           </Link>
+          <span
+            aria-hidden
+            className="mt-2 block h-px w-0 bg-terracotta/50 transition-[width] duration-500 ease-[var(--ease-alma)] group-hover/card:w-14"
+          />
         </div>
       </div>
     </article>
