@@ -194,6 +194,10 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   couper un visage.
   Le portrait fourni est en 333 × 500 px : suffisant pour l'affichage actuel,
   un peu juste sur écran dense — une version plus grande serait préférable.
+- **Remplacer une photo** — ne jamais réécrire un fichier à son chemin actuel :
+  l'optimiseur d'images met en cache sur la clé de l'URL, et l'ancienne version
+  continue d'être servie (localement comme sur le CDN). Publier sous un nom
+  versionné (`espagnol-evasion-2.jpg`) et mettre à jour `image_url`.
 - **Praticien** — `[PRENOM_PRATICIEN]`, `[BIOGRAPHIE_PRATICIEN]`,
   `[FORMATION_PRATICIEN]`. **Aucun diplôme, aucune certification et aucune durée
   d'expérience n'ont été inventés.**
