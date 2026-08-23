@@ -43,7 +43,7 @@ export const site = {
   /** Durée de blocage d'un créneau pendant le paiement. */
   holdMinutes: 15,
 
-  contactEmail: '[EMAIL_CONTACT]',
+  contactEmail: 'contact.almastudioparis@gmail.com',
   /** Forme lisible, affichée telle quelle. */
   contactPhone: '+33 6 60 40 28 64',
   /** Même numéro au format E.164, pour les liens `tel:` et le JSON-LD. */
@@ -57,12 +57,9 @@ export const site = {
     url: 'https://wa.me/33660402864',
   },
   businessAddress: {
-    /**
-     * Le numéro de voie n'a pas été communiqué : l'adresse précise et le
-     * code d'accès sont de toute façon transmis dans l'email de
-     * confirmation. À compléter pour la fiche établissement.
-     */
-    street: 'China Town, rue du Buisson Saint-Louis',
+    street: '27 rue du Buisson Saint-Louis',
+    /** Nom du lieu, affiché au-dessus de la voie. */
+    venue: 'China Town',
     postalCode: '75010',
     city: 'Paris',
     country: 'FR',
@@ -70,6 +67,9 @@ export const site = {
     latitude: null as number | null,
     longitude: null as number | null,
   },
+
+  /** Accès en transports, affiché sous l'adresse. */
+  transit: 'Métro 2 et 11 · station Belleville',
 
   legal: {
     companyName: '[RAISON_SOCIALE]',
@@ -132,12 +132,18 @@ export const site = {
     ],
   },
 
-  social: {
-    instagram: '[URL_INSTAGRAM]',
-  },
-
   /** Horaires affichés (l'ouverture réelle vient de `business_hours`). */
   openingHoursLabel: 'Du lundi au samedi, sur rendez-vous',
 } as const;
 
 export type Site = typeof site;
+
+/**
+ * L'adresse du studio sur une ligne, nom du lieu compris — c'est ainsi
+ * qu'elle doit apparaître dans un email de confirmation ou sur un écran
+ * de récapitulatif, là où le client la lit pour se rendre au rendez-vous.
+ */
+export function studioAddressLine(): string {
+  const { venue, street, postalCode, city } = site.businessAddress;
+  return `${venue}, ${street}, ${postalCode} ${city}`;
+}

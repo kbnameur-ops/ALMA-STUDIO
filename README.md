@@ -211,13 +211,16 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   été inventés** — le titre de la rubrique est
   « Formation » et non « Formation & expérience », faute de durée
   d'exercice communiquée.
-- **Contact** — téléphone et WhatsApp renseignés (même ligne, `contactPhone`
-  / `contactPhoneE164` / `whatsapp.url`). L'adresse est renseignée sans
-  numéro de voie : suffisant pour l'affichage, à compléter pour la fiche
-  établissement Google. Reste `[EMAIL_CONTACT]`, encore affiché tel quel en
-  pied de page et dans les mentions légales.
-- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[EMAIL_CONTACT]`,
-  `[HEBERGEUR]`, `[MEDIATEUR_CONSOMMATION]`, etc.
+- **Contact** — email, téléphone et WhatsApp renseignés (téléphone et
+  WhatsApp sur la même ligne : `contactPhone` / `contactPhoneE164` /
+  `whatsapp.url`). Adresse complète, nom du lieu et accès en transports
+  compris ; `studioAddressLine()` la met en forme sur une ligne pour les
+  emails et les récapitulatifs.
+- **Réseaux sociaux** — aucun compte pour le moment : le bloc a été retiré
+  du pied de page plutôt que laissé en placeholder. Le rétablir demandera
+  de rouvrir un `social` dans `config/site.ts`.
+- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[HEBERGEUR]`,
+  `[MEDIATEUR_CONSOMMATION]`, etc.
 - **Avis** — les trois avis livrés sont marqués `is_sample` et la page le dit
   explicitement. À dépublier depuis `/admin/avis` dès les premiers vrais avis.
 

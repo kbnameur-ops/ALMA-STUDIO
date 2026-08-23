@@ -1,5 +1,5 @@
 import { brand } from '@/config/brand';
-import { site } from '@/config/site';
+import { site, studioAddressLine } from '@/config/site';
 import { formatDateTime, formatDuration, formatPrice } from '@/lib/utils/format';
 import type { BookingDetails, GiftCard } from '@/types';
 import { renderEmail, renderPlainText, type EmailLayoutInput } from './layout';
@@ -35,7 +35,7 @@ function manageUrl(booking: BookingDetails): string {
 
 function locationLabel(booking: BookingDetails): string {
   if (booking.locationKind === 'studio') {
-    return `Au studio — ${site.businessAddress.street}, ${site.businessAddress.postalCode} ${site.businessAddress.city}`;
+    return `Au studio — ${studioAddressLine()}`;
   }
   const address = booking.address;
   return address

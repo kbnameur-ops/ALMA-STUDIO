@@ -13,11 +13,6 @@ const exploreLinks = [
   { label: 'Réserver', href: '/reservation' },
 ];
 
-/** Le placeholder `[EMAIL_CONTACT]` n'est pas transformé en lien mailto. */
-function isPlaceholder(value: string): boolean {
-  return value.startsWith('[') && value.endsWith(']');
-}
-
 export function Footer() {
   return (
     <footer className="bg-espresso pb-20 text-sand sm:pb-0">
@@ -57,13 +52,12 @@ export function Footer() {
             </h2>
             <ul className="mt-5 space-y-3 font-body text-sm text-sand/75">
               <li>
-                {isPlaceholder(site.contactEmail) ? (
-                  <span>{site.contactEmail}</span>
-                ) : (
-                  <a href={`mailto:${site.contactEmail}`} className="transition-colors hover:text-sand">
-                    {site.contactEmail}
-                  </a>
-                )}
+                <a
+                  href={`mailto:${site.contactEmail}`}
+                  className="break-all transition-colors hover:text-sand"
+                >
+                  {site.contactEmail}
+                </a>
               </li>
               <li>
                 <a
@@ -85,26 +79,15 @@ export function Footer() {
                   </a>
                 </li>
               )}
-              <li>
-                {isPlaceholder(site.social.instagram) ? (
-                  <span>Instagram · {site.social.instagram}</span>
-                ) : (
-                  <a
-                    href={site.social.instagram}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="transition-colors hover:text-sand"
-                  >
-                    Instagram
-                  </a>
-                )}
-              </li>
               <li className="pt-2 text-sand/55">{site.openingHoursLabel}</li>
               <li className="text-sand/55">
+                {site.businessAddress.venue}
+                <br />
                 {site.businessAddress.street}
                 <br />
                 {site.businessAddress.postalCode} {site.businessAddress.city}
               </li>
+              <li className="text-sand/55">{site.transit}</li>
             </ul>
           </div>
         </div>
