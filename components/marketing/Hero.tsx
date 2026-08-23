@@ -51,12 +51,12 @@ export function Hero() {
       >
         <div className="alma-arch-flat relative mx-auto h-full w-[132%] overflow-hidden sm:w-[112%] lg:w-full lg:rounded-none">
           <Image
-            src="/images/services/espagnol-evasion.jpg"
-            alt="Séance de massage au studio, sous une alcôve de pierre éclairée à la bougie."
+            src="/images/studio/hero.jpg"
+            alt="Séance de massage au studio ALMA : la table installée devant la baie, lampe allumée, bougie et huiles à portée de main."
             fill
             priority
             sizes="100vw"
-            className="scale-105 object-cover object-center motion-safe:animate-[alma-breathe_26s_ease-in-out_infinite_alternate]"
+            className="scale-105 object-cover object-[center_38%] motion-safe:animate-[alma-breathe_26s_ease-in-out_infinite_alternate]"
           />
         </div>
       </motion.div>
@@ -66,6 +66,12 @@ export function Hero() {
         aria-hidden
         style={reduceMotion ? undefined : { opacity: veilOpacity }}
         className="absolute inset-0 bg-gradient-to-t from-shade via-shade/70 to-shade/25"
+      />
+      {/* Voile latéral : garantit la lisibilité de la colonne de texte,
+          indépendamment de la photo placée en hero. */}
+      <div
+        aria-hidden
+        className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-shade/80 via-shade/35 to-transparent lg:w-3/5"
       />
       {/* Lumière chaude, très lente, au-dessus de l'ouverture. */}
       <div aria-hidden className="alma-sun pointer-events-none absolute inset-x-0 top-0 h-[70%]" />

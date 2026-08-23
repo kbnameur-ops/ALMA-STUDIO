@@ -36,12 +36,11 @@ export default function StudioPage() {
     <>
       <section className="relative flex min-h-[62svh] items-end overflow-hidden bg-espresso pt-28">
         <PlaceholderImage
-          src={null}
-          alt="Le studio ALMA à Paris"
-          token="[PHOTO_STUDIO_PRINCIPALE]"
-          tone="espresso"
+          src="/images/studio/salle.jpg"
+          alt="La salle du studio ALMA : table de massage dressée devant la baie, parquet et lumière basse."
           priority
           sizes="100vw"
+          objectPosition="center 38%"
           className="absolute inset-0 h-full w-full"
         />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-espresso/90 to-espresso/25" />
@@ -75,18 +74,24 @@ export default function StudioPage() {
           </dl>
         </div>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-3">
-          {['[PHOTO_DETAIL_1]', '[PHOTO_DETAIL_2]', '[PHOTO_DETAIL_3]'].map((token, index) => (
-            <Arch key={token} delay={index * 0.12} className="relative aspect-3/4 w-full">
-              <PlaceholderImage
-                src={null}
-                alt="Détail du studio ALMA"
-                token={token}
-                sizes="(max-width: 640px) 100vw, 33vw"
-                className="h-full w-full"
-              />
-            </Arch>
-          ))}
+        <div className="mt-16 grid gap-6 sm:grid-cols-2">
+          <Arch className="relative aspect-4/3 w-full">
+            <PlaceholderImage
+              src="/images/studio/seance.jpg"
+              alt="Une séance en cours au studio ALMA."
+              sizes="(max-width: 640px) 100vw, 50vw"
+              className="h-full w-full"
+            />
+          </Arch>
+          <Arch delay={0.12} className="relative aspect-4/3 w-full">
+            <PlaceholderImage
+              src={null}
+              alt="Détail du studio ALMA"
+              token="[PHOTO_DETAIL]"
+              sizes="(max-width: 640px) 100vw, 50vw"
+              className="h-full w-full"
+            />
+          </Arch>
         </div>
       </Section>
 

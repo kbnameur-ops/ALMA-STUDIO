@@ -14,6 +14,13 @@ interface PlaceholderImageProps {
   priority?: boolean;
   /** `fill` étire l'image sur toute la surface du bloc. */
   fill?: boolean;
+  /**
+   * Point d'intérêt du recadrage, en syntaxe `object-position`.
+   * Indispensable dès que le cadre et la photo n'ont pas le même format :
+   * par défaut le centre géométrique est retenu, ce qui coupe volontiers
+   * un visage ou l'essentiel d'une pièce.
+   */
+  objectPosition?: string;
   width?: number;
   height?: number;
 }
@@ -39,6 +46,7 @@ export function PlaceholderImage({
   sizes = '100vw',
   priority = false,
   fill = true,
+  objectPosition,
   width,
   height,
 }: PlaceholderImageProps) {
@@ -53,6 +61,7 @@ export function PlaceholderImage({
             alt={alt}
             {...(fill ? { fill: true, sizes } : { width: width ?? 1200, height: height ?? 800 })}
             priority={priority}
+            style={objectPosition ? { objectPosition } : undefined}
             className={cn('h-full w-full object-cover', imageClassName)}
           />
         </div>

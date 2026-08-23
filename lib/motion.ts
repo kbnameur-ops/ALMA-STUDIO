@@ -72,4 +72,4 @@ export const drawLine: Variants = {
 };
 
 /** Zone d'entrée commune : l'animation se joue une fois, un peu avant l'entrée. */
-export const inView = { once: true, margin: '-12% 0px -8% 0px' } as const;
+export const inView = { once: true, margin: '-4% 0px -4% 0px' } as const;

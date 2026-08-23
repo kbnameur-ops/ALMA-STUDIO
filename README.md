@@ -184,12 +184,16 @@ modifient depuis `/admin/prestations`.
 Les informations non communiquées sont des placeholders explicites, jamais
 inventées. Rechercher `[` dans `config/site.ts` et les composants :
 
-- **Photos** — les six visuels de prestation sont livrés
-  (`public/images/services/<slug>.jpg`, référencés par `image_url`). Restent à
-  fournir : `[PHOTO_HERO]`, `[PHOTO_STUDIO_PRINCIPALE]`, `[PHOTO_STUDIO]`,
-  `[PHOTO_DETAIL_1..3]` et `[PHOTO_PRATICIEN]`. En leur absence, un placeholder
-  sable s'affiche : soigné, jamais une image cassée. Renseigner `image_url` sur
-  la prestation ou passer `src` à `PlaceholderImage`.
+- **Photos** — livrées : les six visuels de prestation
+  (`public/images/services/<slug>.jpg`, référencés par `image_url`), le hero et
+  la salle (`public/images/studio/`), le portrait du praticien
+  (`public/images/equipe/`). Reste `[PHOTO_DETAIL]` sur la page Studio. En
+  l'absence d'un visuel, un placeholder sable s'affiche : soigné, jamais une
+  image cassée. Quand le cadre et la photo n'ont pas le même format, piloter le
+  recadrage avec `objectPosition` plutôt que de laisser le centre géométrique
+  couper un visage.
+  Le portrait fourni est en 333 × 500 px : suffisant pour l'affichage actuel,
+  un peu juste sur écran dense — une version plus grande serait préférable.
 - **Praticien** — `[PRENOM_PRATICIEN]`, `[BIOGRAPHIE_PRATICIEN]`,
   `[FORMATION_PRATICIEN]`. **Aucun diplôme, aucune certification et aucune durée
   d'expérience n'ont été inventés.**

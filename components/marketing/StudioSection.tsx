@@ -10,11 +10,10 @@ export function StudioSection() {
     <Section tone="sand" spacing="lg" containerWidth="wide" aria-labelledby="studio-titre">
       <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1fr)] lg:gap-24">
         {/* Le visuel du studio est une ouverture : on regarde à l'intérieur. */}
-        <Arch className="relative aspect-3/4 w-full">
+        <Arch className="relative aspect-4/3 w-full">
           <PlaceholderImage
-            src={null}
-            alt="Intérieur du studio ALMA : pierre, bois et lin"
-            token="[PHOTO_STUDIO]"
+            src="/images/studio/salle.jpg"
+            alt="La salle du studio ALMA avant une séance : table dressée, lumière basse, bambou près de la baie."
             sizes="(max-width: 1024px) 100vw, 45vw"
             className="h-full w-full"
           />
