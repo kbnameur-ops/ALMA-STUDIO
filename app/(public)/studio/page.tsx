@@ -112,6 +112,34 @@ export default function StudioPage() {
             <p className="mt-2 font-body text-xs text-espresso-55">
               L’adresse exacte et le code d’accès sont communiqués dans l’email de confirmation.
             </p>
+
+            <div className="mt-8 border-t border-espresso/10 pt-6">
+              <h2 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">
+                Une question avant de réserver
+              </h2>
+              <p className="mt-3 font-body text-sm text-espresso-70">
+                <a
+                  href={`tel:${site.contactPhoneE164}`}
+                  className="underline decoration-champagne underline-offset-4 transition-colors hover:text-espresso"
+                >
+                  {site.contactPhone}
+                </a>
+                {site.whatsapp.enabled && (
+                  <>
+                    {' · '}
+                    <a
+                      href={site.whatsapp.url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="underline decoration-champagne underline-offset-4 transition-colors hover:text-espresso"
+                    >
+                      WhatsApp
+                    </a>
+                  </>
+                )}
+              </p>
+            </div>
+
             <LinkButton href="/reservation" className="mt-8">
               Réserver une séance
             </LinkButton>

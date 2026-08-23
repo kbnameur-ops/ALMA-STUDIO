@@ -66,6 +66,26 @@ export function Footer() {
                 )}
               </li>
               <li>
+                <a
+                  href={`tel:${site.contactPhoneE164}`}
+                  className="transition-colors hover:text-sand"
+                >
+                  {site.contactPhone}
+                </a>
+              </li>
+              {site.whatsapp.enabled && (
+                <li>
+                  <a
+                    href={site.whatsapp.url}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="transition-colors hover:text-sand"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+              )}
+              <li>
                 {isPlaceholder(site.social.instagram) ? (
                   <span>Instagram · {site.social.instagram}</span>
                 ) : (
@@ -81,7 +101,9 @@ export function Footer() {
               </li>
               <li className="pt-2 text-sand/55">{site.openingHoursLabel}</li>
               <li className="text-sand/55">
-                {site.businessAddress.street}, {site.businessAddress.city}
+                {site.businessAddress.street}
+                <br />
+                {site.businessAddress.postalCode} {site.businessAddress.city}
               </li>
             </ul>
           </div>

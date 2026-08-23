@@ -49,7 +49,14 @@ export default async function ManageBookingPage({
           </Heading>
           <p className="mt-5 font-body text-sm leading-relaxed text-espresso-70">
             Ce lien est incomplet ou a expiré. Utilisez celui figurant dans votre email de
-            confirmation, ou écrivez-nous à {site.contactEmail}.
+            confirmation, ou appelez-nous au{' '}
+            <a
+              href={`tel:${site.contactPhoneE164}`}
+              className="underline decoration-champagne underline-offset-4"
+            >
+              {site.contactPhone}
+            </a>
+            .
           </p>
           <LinkButton href="/reservation" className="mt-8">
             Réserver une séance

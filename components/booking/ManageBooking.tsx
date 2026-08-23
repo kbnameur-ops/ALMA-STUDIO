@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Button, LinkButton } from '@/components/ui/Button';
 import { Modal } from '@/components/ui/Modal';
 import { useToast } from '@/components/ui/Toast';
+import { site } from '@/config/site';
 
 interface ManageBookingProps {
   reference: string;
@@ -83,7 +84,14 @@ export function ManageBooking({
       {!canCancel && (
         <p className="mt-3 font-body text-xs text-espresso-55">
           L’annulation en ligne n’est plus possible à moins de {cancellationHours} heures du
-          rendez-vous. Contactez-nous directement, nous ferons au mieux.
+          rendez-vous. Appelez-nous au{' '}
+          <a
+            href={`tel:${site.contactPhoneE164}`}
+            className="underline decoration-champagne underline-offset-4"
+          >
+            {site.contactPhone}
+          </a>
+          , nous ferons au mieux.
         </p>
       )}
 

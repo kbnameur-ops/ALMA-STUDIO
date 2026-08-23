@@ -44,10 +44,26 @@ export const site = {
   holdMinutes: 15,
 
   contactEmail: '[EMAIL_CONTACT]',
-  contactPhone: '[TELEPHONE]',
+  /** Forme lisible, affichée telle quelle. */
+  contactPhone: '+33 6 60 40 28 64',
+  /** Même numéro au format E.164, pour les liens `tel:` et le JSON-LD. */
+  contactPhoneE164: '+33660402864',
+  /**
+   * WhatsApp sur la même ligne. `wa.me` attend le numéro international
+   * sans `+` ni séparateurs.
+   */
+  whatsapp: {
+    enabled: true,
+    url: 'https://wa.me/33660402864',
+  },
   businessAddress: {
-    street: '[ADRESSE_STUDIO]',
-    postalCode: '[CODE_POSTAL]',
+    /**
+     * Le numéro de voie n'a pas été communiqué : l'adresse précise et le
+     * code d'accès sont de toute façon transmis dans l'email de
+     * confirmation. À compléter pour la fiche établissement.
+     */
+    street: 'China Town, rue du Buisson Saint-Louis',
+    postalCode: '75010',
     city: 'Paris',
     country: 'FR',
     /** Coordonnées du studio — à renseigner pour le JSON-LD LocalBusiness. */

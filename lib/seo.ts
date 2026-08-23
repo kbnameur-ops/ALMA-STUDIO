@@ -64,6 +64,7 @@ export function localBusinessJsonLd(): Record<string, unknown> {
     description: `${brand.signature}. ${brand.tagline}`,
     url: site.url,
     image: `${site.url}/opengraph-image`,
+    telephone: site.contactPhoneE164,
     priceRange: '€€',
     currenciesAccepted: site.currency,
     address: {

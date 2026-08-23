@@ -207,8 +207,13 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   `[BIOGRAPHIE_PRATICIEN]` et `[FORMATION_PRATICIEN]`, dans
   `config/site.ts`. **Aucun diplôme, aucune certification et aucune durée
   d'expérience n'ont été inventés.**
-- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[ADRESSE_STUDIO]`,
-  `[EMAIL_CONTACT]`, `[HEBERGEUR]`, `[MEDIATEUR_CONSOMMATION]`, etc.
+- **Contact** — téléphone et WhatsApp renseignés (même ligne, `contactPhone`
+  / `contactPhoneE164` / `whatsapp.url`). L'adresse est renseignée sans
+  numéro de voie : suffisant pour l'affichage, à compléter pour la fiche
+  établissement Google. Reste `[EMAIL_CONTACT]`, encore affiché tel quel en
+  pied de page et dans les mentions légales.
+- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[EMAIL_CONTACT]`,
+  `[HEBERGEUR]`, `[MEDIATEUR_CONSOMMATION]`, etc.
 - **Avis** — les trois avis livrés sont marqués `is_sample` et la page le dit
   explicitement. À dépublier depuis `/admin/avis` dès les premiers vrais avis.
 
