@@ -123,8 +123,10 @@ rejetée par la base, pas par du code applicatif. `blocks_*` inclut préparation
 battement et, à domicile, le trajet aller-retour.
 
 **Retenue de créneau.** Une réservation naît `pending` avec un
-`hold_expires_at`. Si le paiement n'aboutit pas, la retenue est purgée
-(à la réservation suivante, et par la tâche `/api/cron/cleanup`).
+`hold_expires_at`. Si le paiement n'aboutit pas — ou si le studio ne répond
+pas à une demande — la retenue est purgée (à la réservation suivante, et par
+la tâche `/api/cron/cleanup`). Confirmer efface `hold_expires_at` : sans
+quoi la purge, qui ne regarde que ce champ, libérerait un créneau confirmé.
 
 **Prix recalculés en base.** `create_booking_atomic` relit
 `service_durations.price_cents` et `locations.travel_fee_cents` : le montant
@@ -133,6 +135,39 @@ envoyé par le navigateur n'est jamais repris.
 ---
 
 ## Parcours de réservation
+
+Deux parcours coexistent, réglés par `site.onlinePaymentEnabled`. **Le mode
+actif est la demande** : rien n'est encaissé en ligne.
+
+### Demande de réservation (`onlinePaymentEnabled: false`)
+
+```
+1 prestation → 2 durée → 3 lieu → 4 créneau → 5 informations
+           → 6 demande → 7 accusé de réception
+```
+
+1. Étapes 1 à 5 identiques : mêmes disponibilités serveur, mêmes prix
+   recalculés en base. Le client sait ce qu'il devra régler.
+2. À l'étape 6, aucun `PaymentIntent`. La réservation est créée `pending`
+   avec une retenue de `site.requestHoldHours` heures — les quinze minutes du
+   parcours payant laisseraient le créneau repartir avant que le studio ait
+   ouvert sa boîte mail.
+3. Deux emails partent : la demande au studio (`contactEmail`) **d'abord**,
+   puis l'accusé de réception au client. Cet ordre est délibéré : un échec
+   d'envoi au client ne doit pas faire disparaître la demande.
+4. Le studio confirme depuis `/admin/reservations`. La confirmation seule
+   passe la réservation en `confirmed`, annule la retenue, consomme les
+   codes et déclenche l'email de confirmation.
+5. Passé le délai sans réponse, la retenue est purgée et le créneau libéré.
+   Une demande sans réponse ne bloque pas l'agenda indéfiniment.
+6. Le règlement se fait sur place.
+
+**Rien dans ce parcours n'appelle une demande une réservation.** L'écran, les
+emails, le statut affiché et les CGV disent tous la même chose : le créneau
+est retenu, la réservation n'est acquise qu'après réponse du studio. Les
+cartes cadeaux, elles, restent payées en ligne par Stripe.
+
+### Réservation payée en ligne (`onlinePaymentEnabled: true`)
 
 ```
 1 prestation → 2 durée → 3 lieu → 4 créneau → 5 informations

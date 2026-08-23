@@ -10,6 +10,8 @@ import {
   bookingConfirmationEmail,
   bookingRefundedEmail,
   bookingReminderEmail,
+  bookingRequestEmail,
+  bookingRequestStudioEmail,
   bookingUpdatedEmail,
   giftCardEmail,
   reviewRequestEmail,
@@ -115,6 +117,54 @@ async function deliverBookingSms(
     status: result.ok ? 'sent' : result.reason === 'not_configured' ? 'skipped' : 'failed',
     error: result.ok ? null : (result.error ?? result.reason),
   });
+}
+
+/**
+ * Envoi adressé au studio, non au client.
+ *
+ * Le studio est destinataire, mais la trace reste attachée à la
+ * réservation : l'index unique (réservation, canal, modèle) garantit qu'un
+ * rejeu n'enverra pas la demande deux fois. Le modèle porte donc un nom
+ * distinct de celui du client.
+ */
+async function deliverStudioEmail(
+  booking: BookingDetails,
+  template: BookingTemplate,
+  email: RenderedEmail,
+): Promise<void> {
+  if (await alreadySent(booking.id, 'email', template)) return;
+
+  const result = await sendEmail({ to: site.contactEmail, ...email });
+  await trace({
+    bookingId: booking.id,
+    channel: 'email',
+    template,
+    recipient: site.contactEmail,
+    status: result.ok ? 'sent' : result.reason === 'not_configured' ? 'skipped' : 'failed',
+    error: result.ok ? null : (result.error ?? result.reason),
+  });
+}
+
+/**
+ * Demande de réservation : accusé de réception au client, et la demande
+ * elle-même au studio.
+ *
+ * L'ordre compte. Le studio est prévenu en premier : si l'envoi au client
+ * échoue, la demande n'est pas perdue pour autant, alors que l'inverse
+ * laisserait un client rassuré sans que personne ne soit au courant.
+ */
+export async function notifyBookingRequested(booking: BookingDetails): Promise<void> {
+  await deliverStudioEmail(booking, 'booking_request_studio', bookingRequestStudioEmail(booking));
+  await deliverBookingEmail(
+    booking,
+    'booking_request',
+    bookingRequestEmail(booking, site.requestHoldHours),
+  );
+  await deliverBookingSms(
+    booking,
+    'booking_request',
+    `${site.brandName} — demande reçue pour ${booking.service.name} le ${formatDateTime(booking.startsAt)}. Nous confirmons rapidement. Réf. ${booking.reference}`,
+  );
 }
 
 export async function notifyBookingConfirmed(booking: BookingDetails): Promise<void> {

@@ -6,6 +6,7 @@ import { LinkButton } from '@/components/ui/Button';
 import { Price } from '@/components/ui/Price';
 import { AddToCalendar } from '@/components/booking/AddToCalendar';
 import { PendingPaymentNotice } from '@/components/booking/PendingPaymentNotice';
+import { RequestSentNotice } from '@/components/booking/RequestSentNotice';
 import { getBookingByReference } from '@/lib/repositories/bookings';
 import { getBookingRules } from '@/lib/repositories/settings';
 import { formatDate, formatDuration, formatTime } from '@/lib/utils/format';
@@ -94,13 +95,30 @@ export default async function ConfirmationPage({
               Un email récapitulatif vient de vous être envoyé à {booking.customer.email}.
             </p>
           </>
-        ) : (
+        ) : site.onlinePaymentEnabled ? (
           <>
             <Heading level={1} size="lg">
               Votre réservation est en cours de validation.
             </Heading>
             <div className="mt-6">
               <PendingPaymentNotice />
+            </div>
+          </>
+        ) : (
+          <>
+            <Heading level={1} size="lg">
+              Votre demande est bien arrivée.
+            </Heading>
+            <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+              Elle n’est pas encore confirmée : nous revenons vers vous très vite.
+            </p>
+            <div className="mt-8">
+              <RequestSentNotice
+                reference={booking.reference}
+                serviceName={booking.service.name}
+                startsAt={booking.startsAt}
+                customerEmail={booking.customer.email}
+              />
             </div>
           </>
         )}
@@ -132,14 +150,16 @@ export default async function ConfirmationPage({
 
         {!cancelled && (
           <div className="mt-10 flex flex-wrap gap-3">
-            <AddToCalendar
+            {/* Un rendez-vous non confirmé n'a rien à faire dans l'agenda du
+                client : il y resterait après un refus du studio. */}
+            {confirmed && <AddToCalendar
               title={`${site.brandName} — ${booking.service.name}`}
               startsAt={booking.startsAt}
               endsAt={booking.endsAt}
               location={locationLabel}
               description={`Réservation ${booking.reference}`}
               reference={booking.reference}
-            />
+            />}
             <LinkButton
               href={`/reservation/gerer?ref=${booking.reference}&token=${booking.manageToken}`}
               variant="secondary"
@@ -152,7 +172,7 @@ export default async function ConfirmationPage({
           </div>
         )}
 
-        {!cancelled && (
+        {confirmed && (
           <p className="mt-10 font-body text-xs leading-relaxed text-espresso-55">
             Modification ou annulation sans frais jusqu’à {rules.cancellationHours} heures avant le
             rendez-vous. Présentez-vous quelques minutes avant l’heure : le temps de poser vos

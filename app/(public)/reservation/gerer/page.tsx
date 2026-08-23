@@ -23,7 +23,7 @@ export const metadata: Metadata = pageMetadata({
 export const dynamic = 'force-dynamic';
 
 const statusLabels: Record<BookingStatus, string> = {
-  pending: 'En attente de paiement',
+  pending: site.onlinePaymentEnabled ? 'En attente de paiement' : 'Demande en attente de confirmation',
   confirmed: 'Confirmée',
   completed: 'Séance passée',
   cancelled: 'Annulée',

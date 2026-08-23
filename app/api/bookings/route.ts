@@ -15,7 +15,7 @@ import {
   createBooking,
   getBookingDetails,
 } from '@/lib/repositories/bookings';
-import { notifyBookingConfirmed } from '@/lib/notifications';
+import { notifyBookingConfirmed, notifyBookingRequested } from '@/lib/notifications';
 import { getStripe, isStripeConfigured } from '@/lib/stripe/server';
 import { createBookingSchema } from '@/lib/validation/booking';
 import { clientKey, rateLimit } from '@/lib/utils/rate-limit';
@@ -31,10 +31,15 @@ import { toStudioDateKey } from '@/lib/utils/format';
  *  3. vérification que le créneau est encore proposable ;
  *  4. calcul du prix — le montant envoyé par le navigateur est ignoré ;
  *  5. création transactionnelle avec retenue du créneau ;
- *  6. préparation du paiement Stripe.
+ *  6. selon `site.onlinePaymentEnabled`, préparation du paiement Stripe ou
+ *     envoi de la demande au studio.
  *
- * La réservation reste `pending` jusqu'à réception du webhook Stripe : le
- * frontend ne peut pas décréter qu'un paiement a eu lieu.
+ * Dans les deux cas la réservation reste `pending` à l'issue de cet appel.
+ * Avec paiement, elle passe `confirmed` à réception du webhook Stripe : le
+ * frontend ne peut pas décréter qu'un paiement a eu lieu. Sans paiement,
+ * elle attend la confirmation du studio depuis le back-office — une
+ * demande envoyée n'est pas une réservation acquise, et rien dans le
+ * parcours ne laisse croire le contraire.
  */
 export const dynamic = 'force-dynamic';
 
@@ -164,7 +169,11 @@ export async function POST(request: NextRequest) {
       promotionCode: price.promotionCode,
       giftCardCode: price.giftCardCode,
       customerNote: input.customer.note ?? null,
-      holdMinutes: rules.holdMinutes,
+      // Sans paiement, la retenue doit survivre au temps de réponse du
+      // studio ; avec paiement, elle borne le passage en caisse.
+      holdMinutes: site.onlinePaymentEnabled
+        ? rules.holdMinutes
+        : site.requestHoldHours * 60,
       customer: {
         firstName: input.customer.firstName,
         lastName: input.customer.lastName,
@@ -191,6 +200,22 @@ export async function POST(request: NextRequest) {
     source: 'reservation',
   });
 
+  // ------------------------------------------------------- sans paiement
+  // Le studio confirme lui-même : on n'encaisse rien et on ne confirme
+  // rien. La demande part au studio, l'accusé de réception au client.
+  if (!site.onlinePaymentEnabled) {
+    const details = await getBookingDetails(booking.id);
+    if (details) await notifyBookingRequested(details);
+    return jsonOk({
+      reference: booking.reference,
+      manageToken: booking.manageToken,
+      totalCents: booking.totalCents,
+      requiresPayment: false,
+      clientSecret: null,
+      mode: 'request' as const,
+    });
+  }
+
   // ------------------------------------------------------------ paiement
   // Réservation intégralement couverte par une carte cadeau : aucun
   // paiement n'est nécessaire, on confirme immédiatement.
@@ -204,6 +229,7 @@ export async function POST(request: NextRequest) {
       totalCents: 0,
       requiresPayment: false,
       clientSecret: null,
+      mode: 'payment' as const,
     });
   }
 
@@ -238,6 +264,7 @@ export async function POST(request: NextRequest) {
       totalCents: booking.totalCents,
       requiresPayment: true,
       clientSecret: intent.client_secret,
+      mode: 'payment' as const,
     });
   } catch (error) {
     console.error('[bookings] intention de paiement refusée', error);

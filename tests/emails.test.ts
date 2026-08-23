@@ -4,6 +4,8 @@ import {
   bookingCancelledEmail,
   bookingConfirmationEmail,
   bookingReminderEmail,
+  bookingRequestEmail,
+  bookingRequestStudioEmail,
   giftCardEmail,
 } from '@/lib/notifications/email/templates';
 import type { BookingDetails, GiftCard } from '@/types';
@@ -139,5 +141,47 @@ describe('modèle carte cadeau', () => {
     const email = giftCardEmail(giftCard, 'purchaser');
     expect(email.text).toContain('ALMA-4KQ7-J92X');
     expect(email.subject).toContain('carte cadeau');
+  });
+});
+
+
+describe('demande de réservation', () => {
+  const requested: BookingDetails = {
+    ...booking,
+    status: 'pending',
+    paymentStatus: 'unpaid',
+    customerNote: 'Plutôt une pression légère.',
+  };
+
+  it('annonce une demande reçue, jamais une réservation confirmée', () => {
+    const email = bookingRequestEmail(requested, 48);
+    expect(email.subject).toContain('demande');
+    // Le piège du parcours sans paiement : laisser croire que c'est acquis.
+    expect(email.text.toLowerCase()).not.toContain('est confirmée');
+    expect(email.text).toContain('48');
+  });
+
+  it('dit au client que rien n’est payé en ligne', () => {
+    const email = bookingRequestEmail(requested, 48);
+    expect(email.text).toContain('sur place');
+  });
+
+  it('donne au studio de quoi rappeler le client', () => {
+    const email = bookingRequestStudioEmail(requested);
+    expect(email.text).toContain(requested.customer.phone);
+    expect(email.text).toContain(requested.customer.email);
+    expect(email.text).toContain(requested.reference);
+  });
+
+  it('transmet au studio le message laissé par le client', () => {
+    const email = bookingRequestStudioEmail(requested);
+    expect(email.text).toContain('pression légère');
+  });
+
+  it('n’envoie pas au studio le lien de gestion du client', () => {
+    // Ce lien vaut authentification : il n'a rien à faire ailleurs que
+    // chez son destinataire.
+    const email = bookingRequestStudioEmail(requested);
+    expect(email.html).not.toContain(requested.manageToken);
   });
 });

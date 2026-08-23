@@ -4,7 +4,10 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { getAdminSession } from '@/lib/supabase/admin-auth';
 import { getAdminClient } from '@/lib/supabase/server';
-import { updateBookingStatus } from '@/lib/repositories/bookings';
+import { getBookingDetails, updateBookingStatus } from '@/lib/repositories/bookings';
+import { notifyBookingConfirmed } from '@/lib/notifications';
+import { redeemGiftCard } from '@/lib/repositories/giftcards';
+import { markPromotionRedeemed } from '@/lib/repositories/promotions';
 import type { BookingStatus } from '@/types';
 
 /**
@@ -304,9 +307,33 @@ export async function setBookingStatus(
   const done = await updateBookingStatus(bookingId, status);
   if (!done) return fail('Mise à jour impossible.');
 
+  // Confirmer une demande, c'est le moment où le client doit l'apprendre :
+  // sans cet envoi, la réservation serait acquise côté studio et le client
+  // resterait sur son accusé de réception.
+  if (status === 'confirmed') {
+    const details = await getBookingDetails(bookingId);
+    if (details) {
+      // Sans paiement en ligne, aucun webhook ne passe : les codes seraient
+      // affichés au client, déduits de son total, et jamais débités. La
+      // confirmation du studio tient donc le rôle de l'encaissement — mais
+      // seulement s'il n'y a pas eu de paiement, sous peine de consommer
+      // deux fois une carte cadeau déjà débitée par le webhook.
+      if (details.paymentStatus !== 'paid') {
+        if (details.giftCardCode && details.discountCents > 0) {
+          await redeemGiftCard(details.giftCardCode, details.discountCents, details.id);
+        }
+        if (details.promotionCode) await markPromotionRedeemed(details.promotionCode);
+      }
+      await notifyBookingConfirmed(details);
+    }
+  }
+
   revalidatePath('/admin/reservations');
   revalidatePath('/admin');
-  return { ok: true, message: 'Statut mis à jour.' };
+  return {
+    ok: true,
+    message: status === 'confirmed' ? 'Réservation confirmée, le client est prévenu.' : 'Statut mis à jour.',
+  };
 }
 
 // ------------------------------------------------------------ promotions

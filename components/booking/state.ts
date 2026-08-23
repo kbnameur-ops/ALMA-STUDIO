@@ -1,3 +1,4 @@
+import { site } from '@/config/site';
 import type { AddressInput } from '@/lib/validation/booking';
 import type { Cents, LocationKind, Service, ServiceDuration, TimeSlot } from '@/types';
 
@@ -15,7 +16,8 @@ export const BOOKING_STEPS = [
   { id: 3, label: 'Lieu' },
   { id: 4, label: 'Créneau' },
   { id: 5, label: 'Vos informations' },
-  { id: 6, label: 'Paiement' },
+  // La dernière étape ne s'appelle « Paiement » que si l'on y paie.
+  { id: 6, label: site.onlinePaymentEnabled ? 'Paiement' : 'Demande' },
 ] as const;
 
 export type StepId = (typeof BOOKING_STEPS)[number]['id'];

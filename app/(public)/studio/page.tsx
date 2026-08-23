@@ -156,7 +156,7 @@ export default function StudioPage() {
             </p>
             <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
               La zone est vérifiée automatiquement pendant la réservation, à partir de votre code
-              postal ; les frais de déplacement s’affichent avant paiement.
+              postal ; les frais de déplacement s’affichent avant validation.
             </p>
           </div>
         </div>

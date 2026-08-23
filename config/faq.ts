@@ -15,8 +15,9 @@ export const faqItems: FaqItem[] = [
   {
     category: 'Réservation',
     question: 'Comment réserver une séance ?',
-    answer:
-      'La réservation se fait en ligne, en quelques étapes : prestation, durée, lieu, créneau, puis paiement. La confirmation est immédiate et vous recevez un email récapitulatif.',
+    answer: site.onlinePaymentEnabled
+      ? 'La réservation se fait en ligne, en quelques étapes : prestation, durée, lieu, créneau, puis paiement. La confirmation est immédiate et vous recevez un email récapitulatif.'
+      : `Vous choisissez en ligne votre prestation, sa durée, le lieu et le créneau, puis vous envoyez votre demande. Le créneau vous est retenu ${site.requestHoldHours} heures et nous la confirmons par email ou WhatsApp. Aucun paiement n’est demandé en ligne.`,
   },
   {
     category: 'Réservation',
@@ -57,13 +58,14 @@ export const faqItems: FaqItem[] = [
     category: 'Praticien & studio',
     question: 'Proposez-vous des séances à domicile ?',
     answer:
-      'Certaines expériences peuvent être proposées à domicile, selon votre adresse et nos disponibilités. La zone est vérifiée pendant la réservation et les frais de déplacement s’affichent avant paiement.',
+      'Certaines expériences peuvent être proposées à domicile, selon votre adresse et nos disponibilités. La zone est vérifiée pendant la réservation et les frais de déplacement s’affichent avant validation.',
   },
   {
     category: 'Paiement',
     question: 'Quels moyens de paiement acceptez-vous ?',
-    answer:
-      'Le paiement s’effectue en ligne par carte bancaire, de façon sécurisée, au moment de la réservation. Les cartes cadeaux ALMA sont acceptées lors de la réservation.',
+    answer: site.onlinePaymentEnabled
+      ? 'Le paiement s’effectue en ligne par carte bancaire, de façon sécurisée, au moment de la réservation. Les cartes cadeaux ALMA sont acceptées lors de la réservation.'
+      : 'Le règlement se fait sur place, le jour de la séance. Aucun paiement n’est demandé en ligne au moment de la demande. Les cartes cadeaux ALMA sont acceptées.',
   },
   {
     category: 'Paiement',

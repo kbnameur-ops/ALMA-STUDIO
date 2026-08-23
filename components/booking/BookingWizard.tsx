@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useReducer, useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Heading } from '@/components/ui/Heading';
+import { site } from '@/config/site';
 import { useToast } from '@/components/ui/Toast';
 import { analyticsEvents, trackEvent } from '@/lib/analytics';
 import { BookingStepper } from './BookingStepper';
@@ -40,6 +41,7 @@ interface PaymentSession {
   manageToken: string;
   totalCents: number;
   requiresPayment: boolean;
+  mode: 'payment' | 'request';
 }
 
 const stepHeadings: Record<StepId, { title: string; hint: string }> = {
@@ -48,7 +50,12 @@ const stepHeadings: Record<StepId, { title: string; hint: string }> = {
   3: { title: 'Où souhaitez-vous être reçu ?', hint: 'Le studio reste la formule principale.' },
   4: { title: 'Choisissez votre créneau', hint: 'Seuls les créneaux réellement libres sont affichés.' },
   5: { title: 'Vos informations', hint: 'Pour la confirmation et l’accès au studio.' },
-  6: { title: 'Récapitulatif & paiement', hint: 'Dernière étape.' },
+  6: site.onlinePaymentEnabled
+    ? { title: 'Récapitulatif & paiement', hint: 'Dernière étape.' }
+    : {
+        title: 'Récapitulatif & demande',
+        hint: 'Aucun paiement en ligne : nous confirmons votre créneau.',
+      },
 };
 
 /**
@@ -123,7 +130,12 @@ export function BookingWizard({
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
   }, [reduceMotion]);
 
-  /** Crée la réservation côté serveur puis ouvre le paiement. */
+  /**
+   * Crée la réservation côté serveur.
+   *
+   * Avec paiement en ligne, ouvre ensuite Stripe. Sans, la demande est
+   * partie au studio et l'on rejoint directement la page de suivi.
+   */
   const startPayment = useCallback(async () => {
     if (!state.service || !state.duration || !state.slot) return;
 
@@ -173,9 +185,10 @@ export function BookingWizard({
 
       const result = payload as PaymentSession;
       setSession(result);
-      trackEvent({ name: analyticsEvents.bookingPaymentStarted });
+      if (result.requiresPayment) trackEvent({ name: analyticsEvents.bookingPaymentStarted });
 
-      // Séance intégralement couverte : la confirmation est immédiate.
+      // Rien à payer ici : demande envoyée au studio, ou séance
+      // intégralement couverte par une carte cadeau.
       if (!result.requiresPayment) {
         router.push(
           `/reservation/confirmation?ref=${result.reference}&token=${result.manageToken}`,
@@ -316,10 +329,16 @@ export function BookingWizard({
                       onClick={() => void startPayment()}
                       disabled={submitting}
                     >
-                      {submitting ? 'Préparation…' : 'Réserver et payer'}
+                      {submitting
+                        ? 'Envoi…'
+                        : site.onlinePaymentEnabled
+                          ? 'Réserver et payer'
+                          : 'Envoyer ma demande'}
                     </Button>
-                    <p className="text-center font-body text-xs text-espresso-55">
-                      Le créneau vous est retenu le temps de finaliser le paiement.
+                    <p className="text-center font-body text-xs leading-relaxed text-espresso-55">
+                      {site.onlinePaymentEnabled
+                        ? 'Le créneau vous est retenu le temps de finaliser le paiement.'
+                        : `Aucun paiement en ligne. Le créneau vous est retenu ${site.requestHoldHours} heures, le temps que nous confirmions par email ou WhatsApp. Le règlement se fait sur place.`}
                     </p>
                   </>
                 )}
@@ -362,8 +381,9 @@ export function BookingWizard({
 
           {state.duration && (
             <p className="mt-4 px-1 font-body text-xs leading-relaxed text-espresso-55">
-              Montant indicatif. Le total facturé est recalculé par nos serveurs au moment du
-              paiement, à partir des tarifs en vigueur.
+              {site.onlinePaymentEnabled
+                ? 'Montant indicatif. Le total facturé est recalculé par nos serveurs au moment du paiement, à partir des tarifs en vigueur.'
+                : 'Montant calculé par nos serveurs à partir des tarifs en vigueur, et confirmé avec votre créneau. Règlement sur place.'}
             </p>
           )}
         </div>

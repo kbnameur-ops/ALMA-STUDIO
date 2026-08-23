@@ -35,20 +35,40 @@ export default function TermsPage() {
 
       <section>
         <h2>3. Réservation</h2>
-        <p>
-          La réservation s’effectue en ligne. Elle n’est définitive qu’après confirmation du
-          paiement. Un email récapitulatif est envoyé à l’adresse indiquée lors de la réservation.
-        </p>
+        {site.onlinePaymentEnabled ? (
+          <p>
+            La réservation s’effectue en ligne. Elle n’est définitive qu’après confirmation du
+            paiement. Un email récapitulatif est envoyé à l’adresse indiquée lors de la réservation.
+          </p>
+        ) : (
+          <p>
+            La demande de réservation s’effectue en ligne. Elle ne vaut pas réservation : le
+            créneau est retenu {site.requestHoldHours} heures et la réservation n’est définitive
+            qu’après confirmation expresse du studio, adressée par email ou par messagerie. Passé
+            ce délai sans confirmation, le créneau est libéré. Un accusé de réception est envoyé à
+            l’adresse indiquée lors de la demande, puis un email récapitulatif à la confirmation.
+          </p>
+        )}
       </section>
 
       <section>
         <h2>4. Prix et paiement</h2>
-        <p>
-          Les prix sont indiqués en euros toutes taxes comprises. Le tarif applicable est celui
-          affiché au moment de la réservation. Le paiement s’effectue en ligne par carte bancaire
-          via Stripe. Des frais de déplacement s’ajoutent pour les prestations à domicile ; ils sont
-          affichés avant validation du paiement.
-        </p>
+        {site.onlinePaymentEnabled ? (
+          <p>
+            Les prix sont indiqués en euros toutes taxes comprises. Le tarif applicable est celui
+            affiché au moment de la réservation. Le paiement s’effectue en ligne par carte bancaire
+            via Stripe. Des frais de déplacement s’ajoutent pour les prestations à domicile ; ils
+            sont affichés avant validation du paiement.
+          </p>
+        ) : (
+          <p>
+            Les prix sont indiqués en euros toutes taxes comprises. Le tarif applicable est celui
+            affiché au moment de la demande et rappelé lors de la confirmation. Aucun paiement
+            n’est perçu en ligne : le règlement s’effectue sur place, le jour de la séance. Des
+            frais de déplacement s’ajoutent pour les prestations à domicile ; ils sont affichés
+            avant l’envoi de la demande.
+          </p>
+        )}
       </section>
 
       <section>
@@ -56,12 +76,14 @@ export default function TermsPage() {
         <p>
           La réservation peut être modifiée ou annulée sans frais jusqu’à {site.cancellationHours}{' '}
           heures avant l’heure du rendez-vous, depuis le lien « Gérer ma réservation » figurant dans
-          l’email de confirmation. Passé ce délai, la prestation est due. En cas d’annulation dans
-          les délais, le remboursement est effectué sur le moyen de paiement d’origine.
+          l’email de confirmation. Passé ce délai, la prestation est due.
+          {site.onlinePaymentEnabled
+            ? ' En cas d’annulation dans les délais, le remboursement est effectué sur le moyen de paiement d’origine.'
+            : ' La séance n’ayant pas été réglée à l’avance, aucune somme n’est à rembourser.'}
         </p>
         <p>
-          En cas d’empêchement du studio, la séance est reportée ou intégralement remboursée, au
-          choix du client.
+          En cas d’empêchement du studio, la séance est reportée ou, si elle a déjà été réglée,
+          intégralement remboursée, au choix du client.
         </p>
       </section>
 

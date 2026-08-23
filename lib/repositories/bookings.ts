@@ -196,6 +196,10 @@ export async function updateBookingStatus(
     .update({
       status,
       ...(status === 'cancelled' ? { cancelled_at: new Date().toISOString() } : {}),
+      // Une réservation confirmée ne doit plus expirer : la retenue posée
+      // à la demande serait sinon purgée par `purge_expired_holds`, qui
+      // ne regarde que `hold_expires_at`, et le créneau repartirait.
+      ...(status === 'confirmed' ? { hold_expires_at: null } : {}),
     })
     .eq('id', bookingId);
 

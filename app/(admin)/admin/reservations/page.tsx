@@ -76,6 +76,15 @@ const columns: Array<Column<BookingDetails>> = [
     align: 'right',
     cell: (row) => (
       <div className="flex flex-wrap justify-end gap-2">
+        {row.status === 'pending' && (
+          <ActionButton
+            action={async () => {
+              'use server';
+              return setBookingStatus(row.id, 'confirmed');
+            }}
+            label="Confirmer"
+          />
+        )}
         {row.status === 'confirmed' && (
           <>
             <ActionButton

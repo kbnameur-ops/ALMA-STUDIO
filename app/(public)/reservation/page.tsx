@@ -9,7 +9,9 @@ import { site } from '@/config/site';
 export const metadata: Metadata = pageMetadata({
   title: 'Réserver une séance',
   description:
-    'Réservez votre massage au studio ou à domicile à Paris : choix de la prestation, de la durée et du créneau, paiement sécurisé et confirmation immédiate.',
+    site.onlinePaymentEnabled
+      ? 'Réservez votre massage au studio ou à domicile à Paris : choix de la prestation, de la durée et du créneau, paiement sécurisé et confirmation immédiate.'
+      : 'Réservez votre massage au studio ou à domicile à Paris : choix de la prestation, de la durée et du créneau. Votre demande est confirmée par email ou WhatsApp, et le règlement se fait sur place.',
   path: '/reservation',
 });
 

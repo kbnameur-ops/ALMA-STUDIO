@@ -29,6 +29,29 @@ export const site = {
 
   /** Coupe-circuits produit. */
   bookingEnabled: true,
+  /**
+   * Paiement en ligne.
+   *
+   * À `false`, le tunnel ne débite rien : il envoie une **demande de
+   * réservation**. Le studio la confirme par email ou WhatsApp, et le
+   * règlement se fait sur place. Tout le reste du tunnel est inchangé —
+   * prestation, durée, lieu, créneau, coordonnées — et les tarifs restent
+   * calculés côté serveur pour que le client sache ce qu'il devra régler.
+   *
+   * Repasser à `true` rebranche Stripe sans autre modification : le code
+   * des deux parcours cohabite.
+   */
+  onlinePaymentEnabled: false,
+  /**
+   * Durée pendant laquelle une demande retient son créneau, en heures.
+   *
+   * Sans paiement, plus rien ne borne la demande : les quinze minutes de
+   * retenue du parcours payant laisseraient le créneau repartir avant même
+   * que le studio ait ouvert sa boîte mail. Passé ce délai en revanche, une
+   * demande restée sans réponse libère le créneau d'elle-même plutôt que de
+   * le bloquer indéfiniment.
+   */
+  requestHoldHours: 48,
   homeServiceEnabled: true,
   giftCardsEnabled: true,
   reviewsEnabled: true,

@@ -18,6 +18,8 @@ export interface RenderedEmail {
 }
 
 export type BookingTemplate =
+  | 'booking_request'
+  | 'booking_request_studio'
   | 'booking_confirmation'
   | 'booking_reminder'
   | 'booking_updated'
@@ -59,6 +61,57 @@ function bookingDetails(booking: BookingDetails): Array<{ label: string; value: 
   rows.push({ label: 'Total', value: formatPrice(booking.totalCents) });
   rows.push({ label: 'Référence', value: booking.reference });
   return rows;
+}
+
+/**
+ * Accusé de réception d'une demande, côté client.
+ *
+ * Ne jamais employer le mot « confirmée » ici : rien ne l'est tant que le
+ * studio n'a pas répondu. Le créneau est retenu, c'est tout, et l'email le
+ * dit avec la durée exacte de cette retenue.
+ */
+export function bookingRequestEmail(booking: BookingDetails, holdHours: number): RenderedEmail {
+  return render(`Nous avons bien reçu votre demande — ${brand.name}`, {
+    heading: 'Votre demande est bien arrivée.',
+    intro: [
+      `Bonjour ${booking.customer.firstName},`,
+      `Le créneau est retenu à votre nom. Nous revenons vers vous par email ou WhatsApp pour le confirmer, sous ${holdHours} heures au plus tard.`,
+    ],
+    details: bookingDetails(booking),
+    primaryButton: { label: 'Suivre ma demande', url: manageUrl(booking) },
+    outro: [
+      'Aucun paiement n’est demandé en ligne : le règlement se fait sur place, le jour de la séance.',
+      `Une question d’ici là : ${site.contactPhone} — également joignable sur WhatsApp.`,
+      'Prestation de bien-être et de relaxation, sans visée thérapeutique.',
+    ],
+  });
+}
+
+/** La même demande, adressée au studio : tout ce qu'il faut pour rappeler. */
+export function bookingRequestStudioEmail(booking: BookingDetails): RenderedEmail {
+  const rows = bookingDetails(booking);
+  rows.unshift(
+    { label: 'Client', value: `${booking.customer.firstName} ${booking.customer.lastName}` },
+    { label: 'Téléphone', value: booking.customer.phone },
+    { label: 'Email', value: booking.customer.email },
+  );
+  if (booking.customerNote) {
+    rows.push({ label: 'Message', value: booking.customerNote });
+  }
+  return render(
+    `Demande de réservation — ${booking.service.name}, ${formatDateTime(booking.startsAt)}`,
+    {
+      heading: 'Nouvelle demande de réservation.',
+      intro: [
+        'Une demande vient d’arriver depuis le site. Le créneau est retenu en attendant votre réponse.',
+      ],
+      details: rows,
+      primaryButton: { label: 'Ouvrir le back-office', url: `${site.url}/admin/reservations` },
+      outro: [
+        'Confirmez la réservation depuis le back-office : le client reçoit alors son email de confirmation.',
+      ],
+    },
+  );
 }
 
 export function bookingConfirmationEmail(
