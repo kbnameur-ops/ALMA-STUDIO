@@ -187,13 +187,18 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
 - **Photos** — livrées : les six visuels de prestation
   (`public/images/services/<slug>.jpg`, référencés par `image_url`), le hero et
   la salle (`public/images/studio/`), le portrait du praticien
-  (`public/images/equipe/`). Reste `[PHOTO_DETAIL]` sur la page Studio. En
-  l'absence d'un visuel, un placeholder sable s'affiche : soigné, jamais une
-  image cassée. Quand le cadre et la photo n'ont pas le même format, piloter le
+  (`public/images/equipe/`), les quatre gestes (`public/images/gestes/` :
+  section Expérience de l'accueil et détail de la page Studio). Il ne reste plus
+  d'emplacement photo vide. En l'absence d'un visuel, un placeholder sable
+  s'affiche : soigné, jamais une image cassée. Quand le cadre et la photo n'ont pas le même format, piloter le
   recadrage avec `objectPosition` plutôt que de laisser le centre géométrique
   couper un visage.
   Le portrait fourni est en 333 × 500 px : suffisant pour l'affichage actuel,
   un peu juste sur écran dense — une version plus grande serait préférable.
+- **Marques tierces** — `gestes/huile.jpg` est recadré en dur depuis la photo
+  source, dont le flacon portait la marque d'un autre spa. Ne jamais republier
+  la source non recadrée, et vérifier ce point sur tout nouveau visuel où une
+  étiquette, une enseigne ou un logo est lisible.
 - **Remplacer une photo** — ne jamais réécrire un fichier à son chemin actuel :
   l'optimiseur d'images met en cache sur la clé de l'URL, et l'ancienne version
   continue d'être servie (localement comme sur le CDN). Publier sous un nom

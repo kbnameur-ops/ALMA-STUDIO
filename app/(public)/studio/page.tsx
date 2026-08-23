@@ -85,9 +85,8 @@ export default function StudioPage() {
           </Arch>
           <Arch delay={0.12} className="relative aspect-4/3 w-full">
             <PlaceholderImage
-              src={null}
-              alt="Détail du studio ALMA"
-              token="[PHOTO_DETAIL]"
+              src="/images/gestes/huile.jpg"
+              alt="L’huile de massage versée dans le creux de la main, juste avant le premier geste."
               sizes="(max-width: 640px) 100vw, 50vw"
               className="h-full w-full"
             />
