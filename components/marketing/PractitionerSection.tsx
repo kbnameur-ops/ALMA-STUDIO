@@ -45,7 +45,9 @@ export function PractitionerSection() {
             </p>
 
             <div className="mt-7 space-y-6 font-body text-sm leading-relaxed text-espresso-70">
-              <p>{site.practitioner.bio}</p>
+              {site.practitioner.bio.map((paragraphe) => (
+                <p key={paragraphe.slice(0, 32)}>{paragraphe}</p>
+              ))}
 
               <div className="border-l border-champagne/50 pl-5">
                 <h3 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">

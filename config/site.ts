@@ -91,7 +91,16 @@ export const site = {
    */
   practitioner: {
     name: 'Adan AIT',
-    bio: '[BIOGRAPHIE_PRATICIEN]',
+    /**
+     * Rédigé à partir des éléments de carrière communiqués par le studio :
+     * comédien, mannequin, masseur, coach en communication et expression
+     * corporelle, entre la France, l'Espagne et le Brésil. Ni durée
+     * d'exercice, ni titre, ni référence client ne sont avancés.
+     */
+    bio: [
+      'Comédien et mannequin, Adan a fait du corps son outil de travail bien avant d’en faire sa pratique. Sa carrière se partage entre la France, l’Espagne et le Brésil.',
+      'Il est aussi coach en communication, expression corporelle et gestuelle : un travail sur la posture, le souffle et la façon dont on occupe l’espace. Le massage prolonge la même attention — reconnaître où un corps se tient, où il retient, et travailler à partir de là.',
+    ],
     /**
      * Transcrit tel que communiqué par le studio. Ne rien ajouter ici qui
      * n'ait été fourni : ni durée d'exercice, ni intitulé de diplôme, ni

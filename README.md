@@ -205,9 +205,10 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   versionné (`espagnol-evasion-3.jpg`) et mettre à jour `image_url`.
 - **Praticien** — nom et formation renseignés dans `config/site.ts`
   (`site.practitioner`). La formation est transcrite telle que communiquée
-  par le studio : deux écoles, leurs disciplines, rien d'autre. Reste
-  `[BIOGRAPHIE_PRATICIEN]`. **Aucun diplôme, aucune certification et aucune
-  durée d'expérience n'ont été inventés** — le titre de la rubrique est
+  par le studio : deux écoles, leurs disciplines, rien d'autre. La
+  biographie est rédigée à partir des éléments de carrière communiqués.
+  **Aucun diplôme, aucune certification et aucune durée d'expérience n'ont
+  été inventés** — le titre de la rubrique est
   « Formation » et non « Formation & expérience », faute de durée
   d'exercice communiquée.
 - **Contact** — téléphone et WhatsApp renseignés (même ligne, `contactPhone`
