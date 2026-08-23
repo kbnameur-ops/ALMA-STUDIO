@@ -203,10 +203,13 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   l'optimiseur d'images met en cache sur la clé de l'URL, et l'ancienne version
   continue d'être servie (localement comme sur le CDN). Publier sous un nom
   versionné (`espagnol-evasion-3.jpg`) et mettre à jour `image_url`.
-- **Praticien** — nom renseigné (`site.practitioner.name`). Restent
-  `[BIOGRAPHIE_PRATICIEN]` et `[FORMATION_PRATICIEN]`, dans
-  `config/site.ts`. **Aucun diplôme, aucune certification et aucune durée
-  d'expérience n'ont été inventés.**
+- **Praticien** — nom et formation renseignés dans `config/site.ts`
+  (`site.practitioner`). La formation est transcrite telle que communiquée
+  par le studio : deux écoles, leurs disciplines, rien d'autre. Reste
+  `[BIOGRAPHIE_PRATICIEN]`. **Aucun diplôme, aucune certification et aucune
+  durée d'expérience n'ont été inventés** — le titre de la rubrique est
+  « Formation » et non « Formation & expérience », faute de durée
+  d'exercice communiquée.
 - **Contact** — téléphone et WhatsApp renseignés (même ligne, `contactPhone`
   / `contactPhoneE164` / `whatsapp.url`). L'adresse est renseignée sans
   numéro de voie : suffisant pour l'affichage, à compléter pour la fiche

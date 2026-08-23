@@ -60,10 +60,24 @@ export function PractitionerSection() {
               </div>
 
               <div>
+                {/* « Formation » seule : aucune durée d'exercice n'a été
+                    communiquée, et il n'est pas question d'en inventer une. */}
                 <h3 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">
-                  Formation &amp; expérience
+                  Formation
                 </h3>
-                <p className="mt-2">{site.practitioner.training}</p>
+                <ul className="mt-4 space-y-5">
+                  {site.practitioner.training.map((school) => (
+                    <li key={school.school}>
+                      <p className="font-heading text-lg font-light leading-snug text-espresso">
+                        {school.school}
+                      </p>
+                      <p className="mt-1 font-body text-xs uppercase tracking-[0.16em] text-espresso-55">
+                        {school.city}
+                      </p>
+                      <p className="mt-2">{school.topics.join(' · ')}</p>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </Reveal>

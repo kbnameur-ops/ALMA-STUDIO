@@ -92,7 +92,35 @@ export const site = {
   practitioner: {
     name: 'Adan AIT',
     bio: '[BIOGRAPHIE_PRATICIEN]',
-    training: '[FORMATION_PRATICIEN]',
+    /**
+     * Transcrit tel que communiqué par le studio. Ne rien ajouter ici qui
+     * n'ait été fourni : ni durée d'exercice, ni intitulé de diplôme, ni
+     * mention « certifié ». Les écoles sont listées dans l'ordre reçu.
+     */
+    training: [
+      {
+        school: 'Instituto Superior de Estudios Holísticos',
+        city: 'Madrid',
+        topics: [
+          'Massothérapie',
+          'Massages énergétiques',
+          'Massage sportif',
+          'Drainage lymphatique',
+          'Réflexologie',
+        ],
+      },
+      {
+        school: 'Massage School — Higher Institute of Quiromasaje (ISQ)',
+        city: 'Madrid',
+        topics: [
+          'Chiromassage professionnel',
+          'Massage des tissus profonds',
+          'Massage sportif',
+          'Massage shirochampi',
+          'Massage avant et après l’effort',
+        ],
+      },
+    ],
   },
 
   social: {
