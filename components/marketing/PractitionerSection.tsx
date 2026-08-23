@@ -3,6 +3,7 @@ import { Eyebrow } from '@/components/ui/Heading';
 import { Arch } from '@/components/ui/Arch';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { Reveal, RevealLines } from '@/components/ui/Reveal';
+import { site } from '@/config/site';
 
 /**
  * Présentation du praticien.
@@ -18,7 +19,7 @@ export function PractitionerSection() {
         <Arch className="relative aspect-3/4 w-full">
           <PlaceholderImage
             src="/images/equipe/praticien.jpg"
-            alt="Portrait du praticien du studio ALMA."
+            alt={`Portrait de ${site.practitioner.name}, praticien du studio ALMA.`}
             sizes="(max-width: 1024px) 100vw, 38vw"
             objectPosition="center 22%"
             className="h-full w-full"
@@ -40,11 +41,11 @@ export function PractitionerSection() {
 
           <Reveal delay={0.12}>
             <p className="mt-8 font-heading text-2xl font-light text-espresso">
-              [PRENOM_PRATICIEN]
+              {site.practitioner.name}
             </p>
 
             <div className="mt-7 space-y-6 font-body text-sm leading-relaxed text-espresso-70">
-              <p>[BIOGRAPHIE_PRATICIEN]</p>
+              <p>{site.practitioner.bio}</p>
 
               <div className="border-l border-champagne/50 pl-5">
                 <h3 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">
@@ -62,7 +63,7 @@ export function PractitionerSection() {
                 <h3 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">
                   Formation &amp; expérience
                 </h3>
-                <p className="mt-2">[FORMATION_PRATICIEN]</p>
+                <p className="mt-2">{site.practitioner.training}</p>
               </div>
             </div>
           </Reveal>

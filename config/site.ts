@@ -67,6 +67,18 @@ export const site = {
     rcs: '[RCS]',
   },
 
+  /**
+   * Le praticien. Le nom est renseigné ; la biographie et le parcours
+   * restent des placeholders tant qu'ils ne sont pas fournis — aucun
+   * diplôme, aucune certification et aucune durée d'expérience ne sont
+   * inventés.
+   */
+  practitioner: {
+    name: 'Adan AIT',
+    bio: '[BIOGRAPHIE_PRATICIEN]',
+    training: '[FORMATION_PRATICIEN]',
+  },
+
   social: {
     instagram: '[URL_INSTAGRAM]',
   },

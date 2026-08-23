@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Arch } from '@/components/ui/Arch';
+import { imageFocus } from '@/config/imageFocus';
 import { Price } from '@/components/ui/Price';
 import { ServiceBadge } from './ServiceBadge';
 import { formatDuration } from '@/lib/utils/format';
@@ -45,6 +46,7 @@ export function ServiceCard({ service, variant = 'compact', index = 0, className
               alt={service.imageAlt}
               fill
               sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
+              style={{ objectPosition: imageFocus(service.imageUrl) }}
               className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-alma)] group-hover/card:scale-[1.06]"
             />
           ) : (

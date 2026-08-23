@@ -8,6 +8,7 @@ import { LinkButton } from '@/components/ui/Button';
 import { Price } from '@/components/ui/Price';
 import { PlaceholderImage } from '@/components/ui/PlaceholderImage';
 import { Arch } from '@/components/ui/Arch';
+import { imageFocus } from '@/config/imageFocus';
 import { Reveal } from '@/components/ui/Reveal';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ServiceBadge } from '@/components/services/ServiceBadge';
@@ -104,6 +105,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 alt={service.imageAlt}
                 token={`[PHOTO_${service.slug.toUpperCase().replace(/-/g, '_')}]`}
                 sizes="(max-width: 1024px) 100vw, 45vw"
+                objectPosition={imageFocus(service.imageUrl)}
                 className="h-full w-full"
               />
             </Arch>

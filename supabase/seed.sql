@@ -48,7 +48,7 @@ with inserted as (
      'Une évasion inspirée de l’univers du bien-être espagnol.',
      'Une expérience de relaxation inspirée de l’univers du bien-être espagnol et méditerranéen, avec une gestuelle fluide et enveloppante.',
      'moderee', 'Envie de dépaysement et de lâcher-prise.',
-     '/images/services/espagnol-evasion-2.jpg',
+     '/images/services/espagnol-evasion-3.jpg',
      'Massage du dos complet au studio, mains à plat le long de la colonne, bougies allumées autour de la table.', true, true, 2),
     ('deep-relax', 'Deep Relax',
      'Une séance lente, pensée pour ralentir profondément.',
