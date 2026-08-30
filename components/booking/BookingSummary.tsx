@@ -22,8 +22,8 @@ export function BookingSummary({ state, compact = false }: { state: BookingState
       aria-label="Récapitulatif de votre réservation"
       className={
         compact
-          ? 'rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-5'
-          : 'rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-6 sm:p-7'
+          ? 'rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-5'
+          : 'rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-6 sm:p-7'
       }
     >
       <h2 className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-champagne">
@@ -35,26 +35,26 @@ export function BookingSummary({ state, compact = false }: { state: BookingState
       <dl className="mt-5 space-y-2.5 font-body text-sm">
         {duration && (
           <div className="flex items-baseline justify-between gap-4">
-            <dt className="text-espresso-55">Durée</dt>
+            <dt className="text-ivory-55">Durée</dt>
             <dd>{formatDuration(duration.minutes)}</dd>
           </div>
         )}
         <div className="flex items-baseline justify-between gap-4">
-          <dt className="text-espresso-55">Lieu</dt>
+          <dt className="text-ivory-55">Lieu</dt>
           <dd className="text-right">
             {state.locationKind === 'studio' ? (
               `Au studio · ${site.businessAddress.city}`
             ) : (
               <>
                 À domicile
-                {state.zoneName && <span className="block text-xs text-espresso-55">{state.zoneName}</span>}
+                {state.zoneName && <span className="block text-xs text-ivory-55">{state.zoneName}</span>}
               </>
             )}
           </dd>
         </div>
         {slot && (
           <div className="flex items-baseline justify-between gap-4">
-            <dt className="text-espresso-55">Date</dt>
+            <dt className="text-ivory-55">Date</dt>
             <dd className="text-right">{formatDateTime(slot.startsAt)}</dd>
           </div>
         )}
@@ -63,13 +63,13 @@ export function BookingSummary({ state, compact = false }: { state: BookingState
       <div className="mt-5 space-y-2.5 border-t border-[color:var(--color-line)] pt-5 font-body text-sm">
         {duration && (
           <div className="flex items-baseline justify-between gap-4">
-            <span className="text-espresso-55">Prestation</span>
+            <span className="text-ivory-55">Prestation</span>
             <Price cents={duration.priceCents} />
           </div>
         )}
         {travel > 0 && (
           <div className="flex items-baseline justify-between gap-4">
-            <span className="text-espresso-55">Déplacement</span>
+            <span className="text-ivory-55">Déplacement</span>
             <Price cents={travel} />
           </div>
         )}
@@ -82,7 +82,7 @@ export function BookingSummary({ state, compact = false }: { state: BookingState
       </div>
 
       <div className="mt-5 flex items-baseline justify-between gap-4 border-t border-[color:var(--color-line)] pt-5">
-        <span className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-espresso-70">
+        <span className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-ivory-70">
           Total
         </span>
         <Price cents={total} className="font-heading text-2xl" />

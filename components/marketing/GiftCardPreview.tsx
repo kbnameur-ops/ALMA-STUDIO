@@ -23,7 +23,7 @@ export function GiftCardPreview({
   message,
 }: GiftCardPreviewProps) {
   return (
-    <figure className="alma-arch-flat overflow-hidden bg-espresso p-8 pt-12 text-sand shadow-lifted sm:p-10 sm:pt-14">
+    <figure className="alma-arch-flat overflow-hidden bg-ink-deep p-8 pt-12 text-ivory shadow-lifted sm:p-10 sm:pt-14">
       <div className="flex items-start justify-between gap-6">
         <div>
           <p className="font-heading text-xl font-light tracking-[0.24em] text-ivory">
@@ -42,11 +42,11 @@ export function GiftCardPreview({
       <p className="mt-2 font-heading text-4xl font-light text-ivory">
         {serviceLabel ?? (amountCents ? formatPrice(amountCents) : null)}
         {!serviceLabel && !amountCents && (
-          <span className="text-2xl text-sand/45">Montant à choisir</span>
+          <span className="text-2xl text-ivory/45">Montant à choisir</span>
         )}
       </p>
 
-      <figcaption className="mt-8 space-y-1 font-body text-sm text-sand/75">
+      <figcaption className="mt-8 space-y-1 font-body text-sm text-ivory/75">
         <p>
           Pour <span className="text-ivory">{recipientName || '[BÉNÉFICIAIRE]'}</span>
         </p>
@@ -56,12 +56,12 @@ export function GiftCardPreview({
       </figcaption>
 
       {message && (
-        <p className="mt-6 border-t border-sand/15 pt-6 font-heading text-lg font-light leading-snug text-ivory">
+        <p className="mt-6 border-t border-ivory/15 pt-6 font-heading text-lg font-light leading-snug text-ivory">
           « {message} »
         </p>
       )}
 
-      <p className="mt-8 font-body text-[0.65rem] tracking-[0.14em] text-sand/45">
+      <p className="mt-8 font-body text-[0.65rem] tracking-[0.14em] text-ivory-55">
         Valable 12 mois · {brand.signature}
       </p>
     </figure>

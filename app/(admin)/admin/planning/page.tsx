@@ -45,7 +45,7 @@ export default async function AdminPlanningPage() {
         <Heading level={1} size="md">
           Planning
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Horaires réguliers et fermetures ponctuelles. Les créneaux proposés en ligne en découlent
           directement. Fuseau : {site.timezone}.
         </p>
@@ -68,7 +68,7 @@ export default async function AdminPlanningPage() {
                   >
                     <span className="font-body text-sm">{name}</span>
 
-                    <label className="flex items-center gap-2 font-body text-xs text-espresso-55">
+                    <label className="flex items-center gap-2 font-body text-xs text-ivory-55">
                       <input
                         type="checkbox"
                         name={`isOpen-${weekday}`}
@@ -78,23 +78,23 @@ export default async function AdminPlanningPage() {
                       Ouvert
                     </label>
 
-                    <label className="flex items-center gap-2 font-body text-xs text-espresso-55">
+                    <label className="flex items-center gap-2 font-body text-xs text-ivory-55">
                       Ouverture
                       <input
                         type="time"
                         name={`opensAt-${weekday}`}
                         defaultValue={entry?.opensAt ?? '10:00'}
-                        className="rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-3 py-2 font-body text-sm"
+                        className="rounded-md border border-[color:var(--color-line-strong)] bg-ink px-3 py-2 font-body text-sm"
                       />
                     </label>
 
-                    <label className="flex items-center gap-2 font-body text-xs text-espresso-55">
+                    <label className="flex items-center gap-2 font-body text-xs text-ivory-55">
                       Fermeture
                       <input
                         type="time"
                         name={`closesAt-${weekday}`}
                         defaultValue={entry?.closesAt ?? '20:00'}
-                        className="rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-3 py-2 font-body text-sm"
+                        className="rounded-md border border-[color:var(--color-line-strong)] bg-ink px-3 py-2 font-body text-sm"
                       />
                     </label>
                   </div>
@@ -114,29 +114,29 @@ export default async function AdminPlanningPage() {
           <ActionForm action={addBlockedSlot} submitLabel="Bloquer cette période" resetOnSuccess>
             <div className="grid gap-4 sm:grid-cols-3">
               <label className="flex flex-col gap-1.5">
-                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70">
+                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70">
                   Début
                 </span>
                 <input
                   type="datetime-local"
                   name="startsAt"
                   required
-                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm"
+                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm"
                 />
               </label>
               <label className="flex flex-col gap-1.5">
-                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70">
+                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70">
                   Fin
                 </span>
                 <input
                   type="datetime-local"
                   name="endsAt"
                   required
-                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm"
+                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm"
                 />
               </label>
               <label className="flex flex-col gap-1.5">
-                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70">
+                <span className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70">
                   Motif (interne)
                 </span>
                 <input
@@ -144,7 +144,7 @@ export default async function AdminPlanningPage() {
                   name="reason"
                   maxLength={200}
                   placeholder="Congés, pause, rendez-vous"
-                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm"
+                  className="rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm"
                 />
               </label>
             </div>

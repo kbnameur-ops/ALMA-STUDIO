@@ -13,16 +13,16 @@ export const metadata: Metadata = pageMetadata({
 
 export default function GiftCardThanksPage() {
   return (
-    <section className="bg-ivory pb-24 pt-32 sm:pt-40">
+    <section className="bg-ink pb-24 pt-32 sm:pt-40">
       <Container width="narrow">
         <Heading level={1} size="lg">
           Merci — votre carte cadeau est en route.
         </Heading>
-        <p className="mt-5 font-body text-sm leading-relaxed text-espresso-70">
+        <p className="mt-5 font-body text-sm leading-relaxed text-ivory-70">
           Dès la validation définitive du paiement par notre prestataire, la carte est envoyée au
           bénéficiaire et une copie vous parvient. Cela prend généralement quelques secondes.
         </p>
-        <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+        <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
           Si vous n’avez rien reçu d’ici quelques minutes, pensez à vérifier vos indésirables avant
           de nous écrire — nous vérifierons de notre côté.
         </p>

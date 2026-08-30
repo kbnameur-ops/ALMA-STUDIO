@@ -50,7 +50,7 @@ export function ReviewForm({ reference }: { reference: string | null }) {
     return (
       <p
         role="status"
-        className="rounded-lg border border-olive/30 bg-olive/6 p-6 font-body text-sm leading-relaxed text-olive"
+        className="rounded-lg border border-sage/30 bg-sage/6 p-6 font-body text-sm leading-relaxed text-sage"
       >
         Merci — votre message nous est bien parvenu. Il sera relu avant d’être éventuellement publié
         sur le site.
@@ -61,7 +61,7 @@ export function ReviewForm({ reference }: { reference: string | null }) {
   return (
     <div className="space-y-6">
       <fieldset>
-        <legend className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70">
+        <legend className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70">
           Votre note
         </legend>
         <div className="mt-3 flex gap-2">
@@ -76,7 +76,7 @@ export function ReviewForm({ reference }: { reference: string | null }) {
                 'flex h-11 w-11 items-center justify-center rounded-full border text-lg transition-colors',
                 value <= rating
                   ? 'border-champagne bg-champagne/15 text-champagne'
-                  : 'border-[color:var(--color-line-strong)] text-espresso-55',
+                  : 'border-[color:var(--color-line-strong)] text-ivory-55',
               )}
             >
               ★

@@ -26,7 +26,7 @@ export function PendingPaymentNotice() {
   return (
     <p
       role="status"
-      className="rounded-lg border border-champagne/50 bg-champagne/10 p-5 font-body text-sm leading-relaxed text-espresso-70"
+      className="rounded-lg border border-champagne/50 bg-champagne/10 p-5 font-body text-sm leading-relaxed text-ivory-70"
     >
       Votre paiement a été transmis. Nous attendons sa validation définitive par notre
       prestataire — cette page se met à jour automatiquement, et votre email de confirmation part

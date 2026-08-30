@@ -5,29 +5,60 @@
  * Source de vérité côté CSS ; l'équivalent JS vit dans `config/brand.ts`.
  */
 @theme {
-  --color-sand: #e8ded0;
-  --color-ivory: #f7f3ec;
-  --color-terracotta: #b96f55;
-  --color-terracotta-dark: #9d5a44;
-  --color-olive: #59604a;
-  --color-espresso: #302a25;
-  --color-champagne: #b9a383;
+  /**
+   * Palette nocturne.
+   *
+   * Le site est sombre de bout en bout. Les photos du studio sont toutes
+   * en lumière basse : sur un fond clair elles formaient des taches
+   * brunes, ici elles émergent de l'ombre comme la pièce elle-même.
+   *
+   * L'encre n'est jamais un noir pur — un noir absolu à l'écran est un
+   * trou, pas une matière. Elle tire vers le brun chaud, du même côté du
+   * spectre que la lumière des séances.
+   */
+  --color-ink: #100e0c;
+  /** Surface légèrement soulevée : cartes, encarts, alternance de sections. */
+  --color-ink-raised: #17140f;
+  /** Le fond le plus profond : pied de page, fins de page. */
+  --color-ink-deep: #090807;
 
-  /* Nuances dérivées, pour les fonds et les bordures discrètes. */
-  --color-sand-50: #f5efe7;
-  /* Lumière de fin de journée : réservée aux dégradés, jamais aux aplats. */
+  /** Texte principal, jamais du blanc pur : il vibrerait sur l'encre. */
+  --color-ivory: #f2eee7;
+  --color-ivory-70: rgba(242, 238, 231, 0.66);
+  /**
+   * Texte discret. 0,55 et non 0,44 : à 0,44 le rapport de contraste
+   * tombait à 3,9 sur l'encre, sous le seuil AA du petit texte, et c'est
+   * précisément ce jeton qui porte tous les libellés de 10 à 12 px —
+   * durées, mentions, légendes. Mesuré, pas estimé.
+   */
+  --color-ivory-55: rgba(242, 238, 231, 0.55);
+  --color-ivory-25: rgba(242, 238, 231, 0.24);
+
+  /** Accent unique. Un or éteint, jamais saturé. */
+  --color-champagne: #c8a882;
+  --color-champagne-dim: rgba(200, 168, 130, 0.5);
+
+  /** Accent chaud des appels à l'action, éclairci pour tenir sur l'encre. */
+  --color-terracotta: #c87a5c;
+  --color-terracotta-dark: #b06747;
+
+  /** La rare plaque claire, pour rompre la nuit sur une page entière. */
+  --color-bone: #efe9e1;
+
+  /** Vert de validation. Assez clair pour se lire sur l'encre. */
+  --color-sage: #9aab88;
+
+  /* Filets : de l'ivoire très transparent, jamais du gris. */
+  --color-line: rgba(242, 238, 231, 0.11);
+  --color-line-strong: rgba(242, 238, 231, 0.2);
+
+  /* Lumière chaude des halos et dégradés — décoratif uniquement. */
   --color-sun: #d9a066;
-  --color-clay: #a85f47;
-  --color-shade: #241f1b;
-  --color-espresso-70: rgba(48, 42, 37, 0.7);
-  --color-espresso-55: rgba(48, 42, 37, 0.55);
-  --color-line: rgba(48, 42, 37, 0.12);
-  --color-line-strong: rgba(48, 42, 37, 0.22);
 
   /* Les variables `--font-*` sont fournies par next/font (app/layout.tsx) ;
      les polices système suivantes prennent le relais en cas d'échec. */
-  --font-heading: var(--font-cormorant), 'Iowan Old Style', Georgia, serif;
-  --font-body: var(--font-manrope), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-display), 'Iowan Old Style', Georgia, serif;
+  --font-body: var(--font-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --radius-xs: 2px;
   --radius-sm: 4px;
@@ -35,15 +66,14 @@
   --radius-lg: 16px;
   --radius-xl: 28px;
 
-  --shadow-soft: 0 18px 50px -30px rgba(48, 42, 37, 0.45);
-  --shadow-lifted: 0 28px 70px -40px rgba(48, 42, 37, 0.55);
+  /* Sur fond sombre une ombre portée ne se voit pas : la profondeur vient
+     d'un halo, pas d'une ombre. */
+  --shadow-soft: 0 24px 70px -40px rgba(0, 0, 0, 0.9);
+  --shadow-lifted: 0 36px 90px -50px rgba(0, 0, 0, 0.95);
 
   --ease-alma: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Arche : rayon horizontal plein, rayon vertical partiel — une coupole,
-     pas un rectangle arrondi. Exprimé en pourcentages pour rester juste
-     quelles que soient les proportions du bloc. */
   --arch-radius: 50% 50% var(--radius-md) var(--radius-md) / 46% 46% 2% 2%;
 }
 
@@ -60,8 +90,8 @@
   }
 
   body {
-    background-color: var(--color-ivory);
-    color: var(--color-espresso);
+    background-color: var(--color-ink);
+    color: var(--color-ivory);
     font-family: var(--font-body);
     font-size: 1rem;
     line-height: 1.65;
@@ -74,9 +104,11 @@
   h3,
   h4 {
     font-family: var(--font-heading);
-    font-weight: 300;
-    line-height: 1.06;
-    letter-spacing: -0.012em;
+    font-weight: 400;
+    line-height: 1.02;
+    /* Instrument Serif est dessiné large : un léger resserrement lui rend
+       la densité d'un titre composé, non d'un texte agrandi. */
+    letter-spacing: -0.018em;
   }
 
   /* Les prix et les horaires se lisent mieux en chiffres alignés. */
@@ -92,8 +124,8 @@
   }
 
   ::selection {
-    background: var(--color-sand);
-    color: var(--color-espresso);
+    background: var(--color-champagne);
+    color: var(--color-ink);
   }
 
   /* Respect strict de la préférence système de réduction du mouvement. */
@@ -124,8 +156,8 @@
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    opacity: 0.4;
-    mix-blend-mode: multiply;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
   }
 
@@ -146,8 +178,8 @@
   .alma-sun {
     background: radial-gradient(
       60% 55% at 50% 8%,
-      rgba(217, 160, 102, 0.32) 0%,
-      rgba(217, 160, 102, 0.1) 42%,
+      rgba(217, 160, 102, 0.22) 0%,
+      rgba(217, 160, 102, 0.07) 42%,
       transparent 72%
     );
   }
@@ -157,7 +189,7 @@
     background: linear-gradient(
       to bottom,
       var(--color-champagne) 0%,
-      rgba(185, 163, 131, 0) 100%
+      rgba(200, 168, 130, 0) 100%
     );
   }
   /** Filet décoratif court utilisé sous les sur-titres de section. */
@@ -178,18 +210,17 @@
    */
   .alma-placeholder {
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(48, 42, 37, 0.035) 1px, transparent 0),
-      radial-gradient(120% 90% at 20% 15%, rgba(247, 243, 236, 0.95) 0%, transparent 55%),
-      radial-gradient(90% 80% at 85% 80%, rgba(185, 111, 85, 0.18) 0%, transparent 60%),
-      linear-gradient(160deg, #ded1c0 0%, #d2c2ad 55%, #c4b19a 100%);
-    background-size: 6px 6px, cover, cover, cover;
+      radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.03) 1px, transparent 0),
+      radial-gradient(110% 90% at 25% 18%, rgba(200, 168, 130, 0.16) 0%, transparent 58%),
+      linear-gradient(158deg, #241f1a 0%, #191511 55%, #100e0c 100%);
+    background-size: 6px 6px, cover, cover;
   }
 
   .alma-placeholder-dark {
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(247, 243, 236, 0.03) 1px, transparent 0),
-      radial-gradient(110% 90% at 25% 20%, rgba(185, 163, 131, 0.3) 0%, transparent 55%),
-      linear-gradient(155deg, #443b33 0%, var(--color-espresso) 60%, #241f1b 100%);
+      radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.025) 1px, transparent 0),
+      radial-gradient(110% 90% at 25% 20%, rgba(200, 168, 130, 0.12) 0%, transparent 55%),
+      linear-gradient(155deg, #1b1713 0%, var(--color-ink) 60%, #090807 100%);
     background-size: 6px 6px, cover, cover;
   }
 }

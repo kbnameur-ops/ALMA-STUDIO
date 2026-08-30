@@ -27,14 +27,14 @@ export default async function BookingPage({
   const minutes = params.duree ? Number.parseInt(params.duree, 10) : undefined;
 
   return (
-    <section className="bg-ivory pb-24 pt-28 sm:pt-36">
+    <section className="bg-ink pb-24 pt-28 sm:pt-36">
       <Container width="wide">
         <div className="max-w-2xl">
           <Eyebrow>Réservation</Eyebrow>
           <Heading level={1} size="lg" className="mt-4">
             Réserver une séance
           </Heading>
-          <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+          <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
             Quelques étapes, deux minutes. Annulation et modification sans frais jusqu’à{' '}
             {site.cancellationHours} heures avant le rendez-vous.
           </p>

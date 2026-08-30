@@ -9,40 +9,51 @@ const needs = [
   'Quand vous avez simplement besoin de ralentir',
 ];
 
+/**
+ * Les moments où l'on vient.
+ *
+ * Quatre cases bordées faisaient une grille de plus, et donnaient à quatre
+ * phrases courtes le poids visuel de quatre rubriques. Elles se lisent
+ * maintenant comme une liste posée en regard du titre : le trait qui les
+ * sépare suffit à les distinguer, et le titre garde le premier rôle.
+ */
 export function NeedsSection() {
   return (
-    <Section tone="espresso" spacing="lg" aria-labelledby="besoins-titre">
-      <div className="max-w-2xl">
-        <Eyebrow className="text-champagne">Pour qui</Eyebrow>
-        <RevealLines
-          as="h2"
-          className="mt-5 font-heading text-[2.5rem] font-light leading-[1.04] text-ivory sm:text-[3.25rem]"
-          lines={[
-            'Pour ralentir.',
-            'Pour récupérer.',
-            <em key="l3" className="font-normal italic text-champagne">
-              Pour respirer.
-            </em>,
-          ]}
-        />
+    <Section tone="deep" spacing="lg" containerWidth="wide" aria-labelledby="besoins-titre">
+      <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-24">
+        <div>
+          <Eyebrow className="text-champagne">Pour qui</Eyebrow>
+          <RevealLines
+            as="h2"
+            className="mt-5 font-heading text-[2.75rem] leading-[1] text-ivory sm:text-[4rem]"
+            lines={[
+              'Pour ralentir.',
+              'Pour récupérer.',
+              <em key="l3" className="italic text-champagne">
+                Pour respirer.
+              </em>,
+            ]}
+          />
+        </div>
+
+        <ul className="lg:pt-4">
+          {needs.map((need, index) => (
+            <Reveal as="li" key={need} delay={index * 0.08}>
+              <div className="group/need flex items-baseline gap-6 border-t border-line py-6 last:border-b">
+                <span className="font-body text-[0.6rem] tracking-[0.24em] text-champagne">
+                  0{index + 1}
+                </span>
+                <p className="font-heading text-[1.5rem] leading-snug text-ivory transition-transform duration-700 ease-[var(--ease-alma)] group-hover/need:translate-x-1.5 sm:text-[1.75rem]">
+                  {need}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
+        <p className="mt-8 font-body text-sm text-ivory-55 lg:col-start-2">
+          Nous nous adaptons à votre moment.
+        </p>
       </div>
-
-      {/* Chaque besoin est une niche : arche basse, adossée au mur sombre. */}
-      <ul className="mt-16 grid gap-px overflow-hidden border border-sand/12 sm:grid-cols-2 lg:grid-cols-4">
-        {needs.map((need, index) => (
-          <Reveal as="li" key={need} delay={index * 0.08}>
-            <div className="group/need relative flex h-full min-h-52 flex-col justify-between bg-espresso p-7 outline outline-sand/12 transition-colors duration-700 ease-[var(--ease-alma)] hover:bg-shade">
-              <span
-                aria-hidden
-                className="alma-arch-flat h-8 w-8 border border-sand/25 border-b-0 transition-colors duration-700 group-hover/need:border-champagne/60"
-              />
-              <p className="font-heading text-[1.6rem] font-light leading-snug text-ivory">{need}</p>
-            </div>
-          </Reveal>
-        ))}
-      </ul>
-
-      <p className="mt-10 font-body text-sm text-sand/65">Nous nous adaptons à votre moment.</p>
     </Section>
   );
 }

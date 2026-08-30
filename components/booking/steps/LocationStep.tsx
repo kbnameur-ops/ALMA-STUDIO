@@ -104,7 +104,7 @@ export function LocationStep({
               'cursor-pointer rounded-lg border p-5 transition-all duration-300',
               locationKind === 'studio'
                 ? 'border-terracotta bg-terracotta/6'
-                : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                : 'border-[color:var(--color-line)] hover:border-ivory/30',
             )}
           >
             <input
@@ -116,8 +116,8 @@ export function LocationStep({
               className="sr-only"
             />
             <span className="font-heading text-xl font-light">Au studio</span>
-            <span className="mt-1 block font-body text-xs text-espresso-55">Option principale</span>
-            <span className="mt-3 block font-body text-sm leading-relaxed text-espresso-70">
+            <span className="mt-1 block font-body text-xs text-ivory-55">Option principale</span>
+            <span className="mt-3 block font-body text-sm leading-relaxed text-ivory-70">
               Un espace privé à {site.businessAddress.city}, préparé avant chaque arrivée. L’adresse
               exacte est communiquée dans l’email de confirmation.
             </span>
@@ -130,7 +130,7 @@ export function LocationStep({
               homeAvailable && 'cursor-pointer',
               locationKind === 'home'
                 ? 'border-terracotta bg-terracotta/6'
-                : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                : 'border-[color:var(--color-line)] hover:border-ivory/30',
             )}
           >
             <input
@@ -143,10 +143,10 @@ export function LocationStep({
               className="sr-only"
             />
             <span className="font-heading text-xl font-light">À domicile</span>
-            <span className="mt-1 block font-body text-xs text-espresso-55">
+            <span className="mt-1 block font-body text-xs text-ivory-55">
               {homeAvailable ? 'Selon zone et disponibilités' : 'Non proposé pour cette prestation'}
             </span>
-            <span className="mt-3 block font-body text-sm leading-relaxed text-espresso-70">
+            <span className="mt-3 block font-body text-sm leading-relaxed text-ivory-70">
               Certaines prestations sont disponibles à domicile selon votre adresse et nos créneaux.
               Des frais de déplacement s’appliquent.
             </span>
@@ -155,7 +155,7 @@ export function LocationStep({
       </fieldset>
 
       {locationKind === 'home' && homeAvailable && (
-        <div className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-5 sm:p-6">
+        <div className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-5 sm:p-6">
           <h3 className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-champagne">
             Votre adresse
           </h3>
@@ -203,7 +203,7 @@ export function LocationStep({
             </Button>
 
             {zoneName && !error && (
-              <p className="font-body text-sm text-olive">
+              <p className="font-body text-sm text-sage">
                 Zone {zoneName} · déplacement {formatPrice(travelFeeCents)}
               </p>
             )}

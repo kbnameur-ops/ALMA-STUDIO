@@ -26,20 +26,20 @@ export default async function GiftCardPage() {
 
   return (
     <>
-      <Section tone="sand" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
+      <Section tone="raised" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
         <div className="max-w-2xl">
           <Eyebrow>Carte cadeau</Eyebrow>
           <Heading level={1} size="xl" className="mt-4">
             Offrez une parenthèse.
           </Heading>
-          <Lead className="mt-6 text-espresso-70">
+          <Lead className="mt-6 text-ivory-70">
             Une carte cadeau ALMA, valable douze mois, utilisable sur toutes les prestations du
             studio. Envoyée par email au bénéficiaire, avec votre message.
           </Lead>
 
           <ol className="mt-10 space-y-3">
             {steps.map((step, index) => (
-              <li key={step} className="flex gap-4 font-body text-sm text-espresso-70">
+              <li key={step} className="flex gap-4 font-body text-sm text-ivory-70">
                 <span className="text-champagne">0{index + 1}</span>
                 {step}
               </li>
@@ -48,7 +48,7 @@ export default async function GiftCardPage() {
         </div>
       </Section>
 
-      <section className="bg-ivory py-20 sm:py-24">
+      <section className="bg-ink py-20 sm:py-24">
         <Container width="wide">
           <GiftCardForm services={services} />
         </Container>

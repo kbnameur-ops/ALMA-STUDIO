@@ -34,7 +34,7 @@ const details = [
 export default function StudioPage() {
   return (
     <>
-      <section className="relative flex min-h-[62svh] items-end overflow-hidden bg-espresso pt-28">
+      <section className="relative flex min-h-[62svh] items-end overflow-hidden bg-ink-deep pt-28">
         <PlaceholderImage
           src="/images/studio/salle.jpg"
           alt="La salle du studio ALMA : table de massage dressée devant la baie, parquet et lumière basse."
@@ -43,7 +43,7 @@ export default function StudioPage() {
           objectPosition="center 38%"
           className="absolute inset-0 h-full w-full"
         />
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-espresso/90 to-espresso/25" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/90 to-ink/25" />
         <Container width="wide" className="relative pb-16">
           <Eyebrow className="text-champagne">Le lieu</Eyebrow>
           <Heading level={1} size="xl" className="mt-4 max-w-2xl text-ivory">
@@ -52,10 +52,10 @@ export default function StudioPage() {
         </Container>
       </section>
 
-      <Section tone="ivory" spacing="lg" containerWidth="wide">
+      <Section tone="ink" spacing="lg" containerWidth="wide">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-20">
           <div>
-            <Lead className="text-espresso-70">
+            <Lead className="text-ivory-70">
               Lumière douce, matières naturelles, ambiance méditerranéenne et atmosphère
               confidentielle. Le studio a été conçu comme une parenthèse : on y entre pour ralentir,
               on en ressort sans se presser.
@@ -66,7 +66,7 @@ export default function StudioPage() {
             {details.map((detail, index) => (
               <Reveal key={detail.title} delay={index * 0.07}>
                 <dt className="font-heading text-2xl font-light">{detail.title}</dt>
-                <dd className="mt-3 font-body text-sm leading-relaxed text-espresso-70">
+                <dd className="mt-3 font-body text-sm leading-relaxed text-ivory-70">
                   {detail.text}
                 </dd>
               </Reveal>
@@ -94,35 +94,35 @@ export default function StudioPage() {
         </div>
       </Section>
 
-      <Section tone="sand" spacing="lg" containerWidth="wide">
+      <Section tone="raised" spacing="lg" containerWidth="wide">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <Eyebrow>Venir au studio</Eyebrow>
             <Heading size="lg" className="mt-4">
               Adresse &amp; accès
             </Heading>
-            <address className="mt-6 not-italic font-body text-sm leading-relaxed text-espresso-70">
+            <address className="mt-6 not-italic font-body text-sm leading-relaxed text-ivory-70">
               {site.businessAddress.venue}
               <br />
               {site.businessAddress.street}
               <br />
               {site.businessAddress.postalCode} {site.businessAddress.city}
               <br />
-              <span className="text-espresso-55">{site.transit}</span>
+              <span className="text-ivory-55">{site.transit}</span>
             </address>
-            <p className="mt-6 font-body text-sm text-espresso-70">{site.openingHoursLabel}</p>
-            <p className="mt-2 font-body text-xs text-espresso-55">
+            <p className="mt-6 font-body text-sm text-ivory-70">{site.openingHoursLabel}</p>
+            <p className="mt-2 font-body text-xs text-ivory-55">
               Le code d’accès est communiqué dans l’email de confirmation.
             </p>
 
-            <div className="mt-8 border-t border-espresso/10 pt-6">
+            <div className="mt-8 border-t border-ivory/10 pt-6">
               <h2 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">
                 Une question avant de réserver
               </h2>
-              <p className="mt-3 font-body text-sm text-espresso-70">
+              <p className="mt-3 font-body text-sm text-ivory-70">
                 <a
                   href={`tel:${site.contactPhoneE164}`}
-                  className="underline decoration-champagne underline-offset-4 transition-colors hover:text-espresso"
+                  className="underline decoration-champagne underline-offset-4 transition-colors hover:text-ivory"
                 >
                   {site.contactPhone}
                 </a>
@@ -133,7 +133,7 @@ export default function StudioPage() {
                       href={site.whatsapp.url}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className="underline decoration-champagne underline-offset-4 transition-colors hover:text-espresso"
+                      className="underline decoration-champagne underline-offset-4 transition-colors hover:text-ivory"
                     >
                       WhatsApp
                     </a>
@@ -147,14 +147,14 @@ export default function StudioPage() {
             </LinkButton>
           </div>
 
-          <div className="rounded-lg border border-espresso/10 bg-ivory/70 p-8">
+          <div className="rounded-lg border border-ivory/10 bg-ink/70 p-8">
             <Heading size="sm">Massage à domicile</Heading>
-            <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+            <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
               Certaines expériences ALMA peuvent être proposées à domicile, selon votre adresse et
               nos disponibilités. Le studio reste la formule principale : c’est là que l’expérience
               est la plus complète.
             </p>
-            <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+            <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
               La zone est vérifiée automatiquement pendant la réservation, à partir de votre code
               postal ; les frais de déplacement s’affichent avant validation.
             </p>

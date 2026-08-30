@@ -29,7 +29,7 @@ export function AdminTable<Row>({
 }: AdminTableProps<Row>) {
   if (rows.length === 0) {
     return (
-      <p className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-6 font-body text-sm text-espresso-55">
+      <p className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-6 font-body text-sm text-ivory-55">
         {emptyLabel}
       </p>
     );
@@ -40,13 +40,13 @@ export function AdminTable<Row>({
       <table className="w-full min-w-[40rem] border-collapse text-left">
         {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
-          <tr className="border-b border-[color:var(--color-line)] bg-sand-50">
+          <tr className="border-b border-[color:var(--color-line)] bg-ink-raised">
             {columns.map((column) => (
               <th
                 key={column.key}
                 scope="col"
                 className={cn(
-                  'px-4 py-3 font-body text-[0.65rem] uppercase tracking-[0.16em] text-espresso-55',
+                  'px-4 py-3 font-body text-[0.65rem] uppercase tracking-[0.16em] text-ivory-55',
                   column.align === 'right' && 'text-right',
                   column.hideOnMobile && 'hidden sm:table-cell',
                 )}
@@ -60,7 +60,7 @@ export function AdminTable<Row>({
           {rows.map((row) => (
             <tr
               key={rowKey(row)}
-              className="border-b border-[color:var(--color-line)] last:border-b-0 hover:bg-sand-50/60"
+              className="border-b border-[color:var(--color-line)] last:border-b-0 hover:bg-ink-raised/60"
             >
               {columns.map((column) => (
                 <td

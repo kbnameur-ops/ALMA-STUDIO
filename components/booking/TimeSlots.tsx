@@ -26,7 +26,7 @@ export function TimeSlots({ slots, selected, onSelect, loading }: TimeSlotsProps
 
   if (slots.length === 0) {
     return (
-      <p className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-5 font-body text-sm text-espresso-70">
+      <p className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-5 font-body text-sm text-ivory-70">
         Aucun créneau disponible ce jour-là. Essayez une autre date : le planning est mis à jour en
         temps réel.
       </p>
@@ -46,8 +46,8 @@ export function TimeSlots({ slots, selected, onSelect, loading }: TimeSlotsProps
             className={cn(
               'rounded-md border py-3 font-body text-sm tabular-nums transition-all duration-300',
               isSelected
-                ? 'border-terracotta bg-terracotta text-ivory'
-                : 'border-[color:var(--color-line)] hover:border-espresso/40',
+                ? 'border-terracotta bg-terracotta text-ink'
+                : 'border-[color:var(--color-line)] hover:border-ivory/40',
             )}
           >
             {slot.label}

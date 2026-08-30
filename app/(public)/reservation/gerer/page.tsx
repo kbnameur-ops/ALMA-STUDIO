@@ -42,12 +42,12 @@ export default async function ManageBookingPage({
 
   if (!booking) {
     return (
-      <section className="bg-ivory pb-24 pt-32 sm:pt-40">
+      <section className="bg-ink pb-24 pt-32 sm:pt-40">
         <Container width="narrow">
           <Heading level={1} size="lg">
             Réservation introuvable
           </Heading>
-          <p className="mt-5 font-body text-sm leading-relaxed text-espresso-70">
+          <p className="mt-5 font-body text-sm leading-relaxed text-ivory-70">
             Ce lien est incomplet ou a expiré. Utilisez celui figurant dans votre email de
             confirmation, ou appelez-nous au{' '}
             <a
@@ -71,13 +71,13 @@ export default async function ManageBookingPage({
   const canCancel = active && canCancelFreeOfCharge(booking.startsAt, rules.cancellationHours);
 
   return (
-    <section className="bg-ivory pb-24 pt-32 sm:pt-40">
+    <section className="bg-ink pb-24 pt-32 sm:pt-40">
       <Container width="narrow">
         <div className="flex flex-wrap items-center gap-4">
           <Heading level={1} size="lg">
             Votre réservation
           </Heading>
-          <Badge tone={booking.status === 'confirmed' ? 'olive' : 'outline'}>
+          <Badge tone={booking.status === 'confirmed' ? 'sage' : 'outline'}>
             {statusLabels[booking.status]}
           </Badge>
         </div>
@@ -99,14 +99,14 @@ export default async function ManageBookingPage({
             { label: 'Référence', value: booking.reference },
           ].map((row) => (
             <div key={row.label} className="flex flex-wrap items-baseline justify-between gap-4 py-4">
-              <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-espresso-55">
+              <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-ivory-55">
                 {row.label}
               </dt>
               <dd className="text-right font-body text-sm">{row.value}</dd>
             </div>
           ))}
           <div className="flex items-baseline justify-between gap-4 py-4">
-            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-espresso-55">
+            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-ivory-55">
               Total
             </dt>
             <dd>

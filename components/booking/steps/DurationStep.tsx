@@ -29,7 +29,7 @@ export function DurationStep({ service, selectedId, onSelect }: DurationStepProp
                 'flex cursor-pointer items-center justify-between gap-4 rounded-lg border p-5 transition-all duration-300',
                 selected
                   ? 'border-terracotta bg-terracotta/6'
-                  : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                  : 'border-[color:var(--color-line)] hover:border-ivory/30',
               )}
             >
               <input

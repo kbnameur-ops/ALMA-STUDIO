@@ -54,7 +54,7 @@ function PaymentFields({ amountCents, returnUrl }: Omit<StripePaymentFormProps, 
         {submitting ? 'Paiement en cours…' : `Payer ${formatPrice(amountCents)}`}
       </Button>
 
-      <p className="text-center font-body text-xs text-espresso-55">
+      <p className="text-center font-body text-xs text-ivory-55">
         Paiement sécurisé par Stripe. Vos coordonnées bancaires ne transitent jamais par nos
         serveurs.
       </p>

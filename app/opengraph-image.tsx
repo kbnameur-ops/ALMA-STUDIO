@@ -21,8 +21,8 @@ export default function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px',
-          background: `linear-gradient(150deg, ${brand.colors.sand} 0%, #dfd2c0 60%, ${brand.colors.champagne} 100%)`,
-          color: brand.colors.espresso,
+          background: `linear-gradient(155deg, #1c1813 0%, ${brand.colors.ink} 55%, ${brand.colors.inkDeep} 100%)`,
+          color: brand.colors.ivory,
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column' }}>

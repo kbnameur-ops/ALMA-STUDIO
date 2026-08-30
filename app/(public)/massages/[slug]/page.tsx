@@ -71,10 +71,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         ])}
       />
 
-      <section className="bg-sand pt-28 sm:pt-32">
+      <section className="bg-ink-raised pt-28 sm:pt-32">
         <Container width="wide" className="py-12 sm:py-16">
-          <nav aria-label="Fil d’Ariane" className="font-body text-xs text-espresso-55">
-            <Link href="/massages" className="transition-colors hover:text-espresso">
+          <nav aria-label="Fil d’Ariane" className="font-body text-xs text-ivory-55">
+            <Link href="/massages" className="transition-colors hover:text-ivory">
               Massages
             </Link>
             <span aria-hidden> · </span>
@@ -87,12 +87,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <Heading level={1} size="xl" className="mt-4">
                 {service.name}
               </Heading>
-              <Lead className="mt-6 text-espresso-70">{service.description}</Lead>
+              <Lead className="mt-6 text-ivory-70">{service.description}</Lead>
 
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <ServiceBadge intensity={service.intensity} />
                 {service.homeServiceAvailable && (
-                  <span className="font-body text-xs text-espresso-55">
+                  <span className="font-body text-xs text-ivory-55">
                     Également possible à domicile, selon adresse et disponibilités
                   </span>
                 )}
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         </Container>
       </section>
 
-      <Section tone="ivory" spacing="md" containerWidth="wide">
+      <Section tone="ink" spacing="md" containerWidth="wide">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:gap-20">
           <div>
             <Heading size="md">Durées &amp; tarifs</Heading>
@@ -138,24 +138,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </dl>
           </div>
 
-          <aside className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-7">
+          <aside className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-7">
             <h2 className="font-body text-[0.7rem] uppercase tracking-[0.2em] text-champagne">
               Pour qui
             </h2>
-            <p className="mt-3 font-body text-sm leading-relaxed text-espresso-70">
+            <p className="mt-3 font-body text-sm leading-relaxed text-ivory-70">
               {service.recommendedFor}
             </p>
 
             <h2 className="mt-8 font-body text-[0.7rem] uppercase tracking-[0.2em] text-champagne">
               Le déroulé
             </h2>
-            <ol className="mt-3 space-y-2 font-body text-sm leading-relaxed text-espresso-70">
+            <ol className="mt-3 space-y-2 font-body text-sm leading-relaxed text-ivory-70">
               <li>Accueil et court échange sur vos attentes.</li>
               <li>Séance ajustée en rythme et en pression.</li>
               <li>Retour progressif, puis un moment pour repartir sans se presser.</li>
             </ol>
 
-            <p className="mt-8 font-body text-xs leading-relaxed text-espresso-55">
+            <p className="mt-8 font-body text-xs leading-relaxed text-ivory-55">
               Prestation de bien-être et de relaxation. Elle ne constitue ni un acte médical ni un
               soin thérapeutique.
             </p>
@@ -164,7 +164,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       </Section>
 
       {others.length > 0 && (
-        <Section tone="sand" spacing="lg" containerWidth="wide">
+        <Section tone="raised" spacing="lg" containerWidth="wide">
           <Heading size="md">Autres expériences</Heading>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((other, index) => (

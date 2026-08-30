@@ -28,23 +28,31 @@ export const brand = {
     favicon: '/logo/favicon.svg',
   },
   /**
-   * Palette. `sand` / `ivory` en fonds, `espresso` en texte principal,
-   * `terracotta` en accent, `champagne` avec parcimonie extrême.
+   * Palette nocturne.
+   *
+   * `ink` en fond sur tout le site, `ivory` en texte, `champagne` en accent
+   * unique, `terracotta` pour les appels à l'action. `bone` est la seule
+   * plaque claire, employée avec parcimonie extrême.
+   *
+   * Dupliquée en CSS dans `styles/globals.css` (@theme) ; ce fichier reste
+   * la source pour tout usage hors-CSS — emails, images OG, SVG générés.
    */
   colors: {
-    sand: '#E8DED0',
-    ivory: '#F7F3EC',
-    terracotta: '#B96F55',
-    olive: '#59604A',
-    espresso: '#302A25',
-    champagne: '#B9A383',
+    ink: '#100E0C',
+    inkRaised: '#17140F',
+    inkDeep: '#090807',
+    ivory: '#F2EEE7',
+    bone: '#EFE9E1',
+    champagne: '#C8A882',
+    terracotta: '#C87A5C',
+    sage: '#9AAB88',
   },
   fonts: {
-    heading: 'Cormorant Garamond',
-    body: 'Manrope',
+    heading: 'Instrument Serif',
+    body: 'Instrument Sans',
   },
 } as const;
 
 export type Brand = typeof brand;
 export const primaryColor = brand.colors.terracotta;
-export const secondaryColor = brand.colors.olive;
+export const secondaryColor = brand.colors.champagne;

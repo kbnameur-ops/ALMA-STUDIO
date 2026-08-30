@@ -86,7 +86,7 @@ export function PlaceholderImage({
         <span
           className={cn(
             'm-4 rounded-full px-3 py-1 font-body text-[0.65rem] uppercase tracking-[0.18em]',
-            tone === 'espresso' ? 'bg-ivory/12 text-sand/80' : 'bg-espresso/8 text-espresso-55',
+            tone === 'espresso' ? 'bg-ink/12 text-ivory/80' : 'bg-ink-deep/8 text-ivory-55',
           )}
         >
           {token}

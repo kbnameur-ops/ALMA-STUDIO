@@ -5,9 +5,9 @@ import type { ReactNode, InputHTMLAttributes, TextareaHTMLAttributes, SelectHTML
 import { cn } from '@/lib/utils/cn';
 
 const controlClass =
-  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 ' +
-  'font-body text-sm text-espresso placeholder:text-espresso-55/70 ' +
-  'transition-colors duration-200 hover:border-espresso/40 ' +
+  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 ' +
+  'font-body text-sm text-ivory placeholder:text-ivory-55/70 ' +
+  'transition-colors duration-200 hover:border-ivory/40 ' +
   'focus:border-terracotta focus:outline-none focus-visible:outline-none ' +
   'aria-[invalid=true]:border-terracotta';
 
@@ -25,7 +25,7 @@ function FieldWrapper({ label, htmlFor, error, hint, required, children }: Wrapp
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={htmlFor}
-        className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70"
+        className="font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70"
       >
         {label}
         {required && (
@@ -35,7 +35,7 @@ function FieldWrapper({ label, htmlFor, error, hint, required, children }: Wrapp
         )}
       </label>
       {children}
-      {hint && !error && <p className="font-body text-xs text-espresso-55">{hint}</p>}
+      {hint && !error && <p className="font-body text-xs text-ivory-55">{hint}</p>}
       {error && (
         <p role="alert" className="font-body text-xs text-terracotta">
           {error}
@@ -150,11 +150,11 @@ export function Checkbox({ label, hint, error, className, id, ...props }: Checkb
       <div className="flex flex-col gap-1">
         <label
           htmlFor={fieldId}
-          className="cursor-pointer font-body text-sm leading-relaxed text-espresso-70"
+          className="cursor-pointer font-body text-sm leading-relaxed text-ivory-70"
         >
           {label}
         </label>
-        {hint && <div className="font-body text-xs text-espresso-55">{hint}</div>}
+        {hint && <div className="font-body text-xs text-ivory-55">{hint}</div>}
         {error && (
           <p id={`${fieldId}-error`} role="alert" className="font-body text-xs text-terracotta">
             {error}

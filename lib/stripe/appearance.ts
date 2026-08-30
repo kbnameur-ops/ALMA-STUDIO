@@ -6,20 +6,20 @@ import { brand } from '@/config/brand';
  * paiement ne casse pas la continuité visuelle du tunnel.
  */
 export const stripeAppearance: Appearance = {
-  theme: 'flat',
+  theme: 'night',
   variables: {
     colorPrimary: brand.colors.terracotta,
-    colorBackground: brand.colors.ivory,
-    colorText: brand.colors.espresso,
+    colorBackground: brand.colors.inkRaised,
+    colorText: brand.colors.ivory,
     colorDanger: brand.colors.terracotta,
-    fontFamily: '"Manrope", ui-sans-serif, system-ui, sans-serif',
+    fontFamily: '"Instrument Sans", ui-sans-serif, system-ui, sans-serif',
     fontSizeBase: '15px',
     borderRadius: '8px',
     spacingUnit: '4px',
   },
   rules: {
     '.Input': {
-      border: '1px solid rgba(48, 42, 37, 0.22)',
+      border: '1px solid rgba(242, 238, 231, 0.2)',
       boxShadow: 'none',
       padding: '12px 14px',
     },
@@ -32,7 +32,7 @@ export const stripeAppearance: Appearance = {
       fontSize: '11px',
       letterSpacing: '0.16em',
       textTransform: 'uppercase',
-      color: 'rgba(48, 42, 37, 0.7)',
+      color: 'rgba(242, 238, 231, 0.66)',
     },
   },
 };

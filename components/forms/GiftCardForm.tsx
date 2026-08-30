@@ -137,7 +137,7 @@ export function GiftCardForm({
                         'flex cursor-pointer items-center justify-between gap-4 rounded-lg border p-4 transition-all duration-300',
                         selected
                           ? 'border-terracotta bg-terracotta/6'
-                          : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                          : 'border-[color:var(--color-line)] hover:border-ivory/30',
                       )}
                     >
                       <input
@@ -149,7 +149,7 @@ export function GiftCardForm({
                       />
                       <span>
                         <span className="block font-body text-sm">{service.name}</span>
-                        <span className="block font-body text-xs text-espresso-55">
+                        <span className="block font-body text-xs text-ivory-55">
                           {formatDuration(duration.minutes)}
                         </span>
                       </span>
@@ -180,7 +180,7 @@ export function GiftCardForm({
                         'rounded-full border px-5 py-2 font-body text-sm tabular-nums transition-all duration-300',
                         selected
                           ? 'border-terracotta bg-terracotta text-ivory'
-                          : 'border-[color:var(--color-line-strong)] hover:border-espresso',
+                          : 'border-[color:var(--color-line-strong)] hover:border-ivory',
                       )}
                     >
                       {formatPrice(cents)}
@@ -319,7 +319,7 @@ export function GiftCardForm({
             purchaserName={purchaserName}
             message={message}
           />
-          <p className="mt-4 px-1 font-body text-xs leading-relaxed text-espresso-55">
+          <p className="mt-4 px-1 font-body text-xs leading-relaxed text-ivory-55">
             Le bénéficiaire reçoit sa carte par email dès la validation du paiement, avec un code à
             saisir au moment de réserver.
           </p>

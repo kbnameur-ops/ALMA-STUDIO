@@ -21,7 +21,7 @@ export function AdminSidebar({ email }: { email: string }) {
   const pathname = usePathname();
 
   return (
-    <aside className="border-b border-sand/12 bg-espresso text-sand lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
+    <aside className="border-b border-ivory/12 bg-ink-deep text-ivory lg:h-screen lg:w-64 lg:shrink-0 lg:border-b-0 lg:border-r">
       <div className="flex items-center justify-between gap-4 px-5 py-5 lg:block lg:px-6">
         <Link href="/admin" className="block">
           <span className="font-heading text-lg font-light tracking-[0.22em] text-ivory">
@@ -31,7 +31,7 @@ export function AdminSidebar({ email }: { email: string }) {
             ADMIN
           </span>
         </Link>
-        <p className="hidden font-body text-xs text-sand/45 lg:mt-4 lg:block">{email}</p>
+        <p className="hidden font-body text-xs text-ivory/45 lg:mt-4 lg:block">{email}</p>
       </div>
 
       <nav aria-label="Navigation de l’administration" className="px-3 pb-4 lg:px-4">
@@ -46,7 +46,7 @@ export function AdminSidebar({ email }: { email: string }) {
                   aria-current={active ? 'page' : undefined}
                   className={cn(
                     'block whitespace-nowrap rounded-md px-3 py-2 font-body text-sm transition-colors',
-                    active ? 'bg-sand/12 text-ivory' : 'text-sand/65 hover:bg-sand/8 hover:text-sand',
+                    active ? 'bg-ink-raised/12 text-ivory' : 'text-ivory/65 hover:bg-ink-raised/8 hover:text-ivory',
                   )}
                 >
                   {link.label}
@@ -61,14 +61,14 @@ export function AdminSidebar({ email }: { email: string }) {
         <form action="/api/admin/logout" method="post">
           <button
             type="submit"
-            className="w-full rounded-md border border-sand/20 px-3 py-2 font-body text-xs text-sand/70 transition-colors hover:border-sand/40 hover:text-sand"
+            className="w-full rounded-md border border-ivory/20 px-3 py-2 font-body text-xs text-ivory/70 transition-colors hover:border-ivory/40 hover:text-ivory"
           >
             Se déconnecter
           </button>
         </form>
         <Link
           href="/"
-          className="mt-3 block text-center font-body text-xs text-sand/45 transition-colors hover:text-sand/70"
+          className="mt-3 block text-center font-body text-xs text-ivory/45 transition-colors hover:text-ivory/70"
         >
           Voir le site
         </Link>

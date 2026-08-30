@@ -43,9 +43,9 @@ export function CookieBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-x-3 bottom-20 z-[90] rounded-lg border border-[color:var(--color-line)] bg-ivory p-5 shadow-lifted sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
+          className="fixed inset-x-3 bottom-20 z-[90] rounded-lg border border-[color:var(--color-line)] bg-ink p-5 shadow-lifted sm:inset-x-auto sm:bottom-6 sm:left-6 sm:max-w-sm"
         >
-          <p className="font-body text-sm leading-relaxed text-espresso-70">
+          <p className="font-body text-sm leading-relaxed text-ivory-70">
             Nous utilisons uniquement des cookies de mesure d’audience, afin de comprendre
             comment le site est consulté. Aucun cookie publicitaire.
           </p>
@@ -53,20 +53,20 @@ export function CookieBanner() {
             <button
               type="button"
               onClick={() => decide(true)}
-              className="rounded-full bg-terracotta px-5 py-2 font-body text-xs font-medium text-ivory transition-colors hover:bg-terracotta-dark"
+              className="rounded-full bg-terracotta px-5 py-2 font-body text-xs font-medium text-ink transition-colors hover:bg-terracotta-dark"
             >
               Accepter
             </button>
             <button
               type="button"
               onClick={() => decide(false)}
-              className="rounded-full border border-[color:var(--color-line-strong)] px-5 py-2 font-body text-xs text-espresso transition-colors hover:border-espresso"
+              className="rounded-full border border-[color:var(--color-line-strong)] px-5 py-2 font-body text-xs text-ivory transition-colors hover:border-ivory"
             >
               Refuser
             </button>
             <Link
               href="/politique-confidentialite"
-              className="font-body text-xs text-espresso-55 underline underline-offset-4 hover:text-espresso"
+              className="font-body text-xs text-ivory-55 underline underline-offset-4 hover:text-ivory"
             >
               En savoir plus
             </Link>

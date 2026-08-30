@@ -66,7 +66,7 @@ export function CustomerStep({ customer, errors, onChange }: CustomerStepProps) 
         rows={3}
       />
 
-      <div className="space-y-3 rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-5">
+      <div className="space-y-3 rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-5">
         <Checkbox
           checked={customer.acceptsTerms}
           onChange={(event) => onChange({ acceptsTerms: event.target.checked })}
@@ -78,7 +78,7 @@ export function CustomerStep({ customer, errors, onChange }: CustomerStepProps) 
               href="/cgv"
               target="_blank"
               rel="noreferrer"
-              className="underline underline-offset-2 hover:text-espresso"
+              className="underline underline-offset-2 hover:text-ivory"
             >
               Lire les conditions générales de vente
             </Link>
@@ -91,7 +91,7 @@ export function CustomerStep({ customer, errors, onChange }: CustomerStepProps) 
         />
       </div>
 
-      <p className="font-body text-xs leading-relaxed text-espresso-55">
+      <p className="font-body text-xs leading-relaxed text-ivory-55">
         Vos données servent uniquement à gérer votre réservation. Elles ne sont ni revendues ni
         cédées. Voir la{' '}
         <Link href="/politique-confidentialite" target="_blank" className="underline underline-offset-2">

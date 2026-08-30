@@ -32,7 +32,7 @@ export function ServiceStep({ services, selectedId, onSelect }: ServiceStepProps
                 'group relative flex cursor-pointer gap-4 rounded-lg border p-4 transition-all duration-300',
                 selected
                   ? 'border-terracotta bg-terracotta/6'
-                  : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                  : 'border-[color:var(--color-line)] hover:border-ivory/30',
               )}
             >
               <input
@@ -61,17 +61,17 @@ export function ServiceStep({ services, selectedId, onSelect }: ServiceStepProps
                       selected ? 'border-terracotta bg-terracotta' : 'border-[color:var(--color-line-strong)]',
                     )}
                   >
-                    {selected && <span className="h-1.5 w-1.5 rounded-full bg-ivory" />}
+                    {selected && <span className="h-1.5 w-1.5 rounded-full bg-ink" />}
                   </span>
                 </div>
 
-                <p className="mt-1.5 font-body text-xs leading-relaxed text-espresso-70">
+                <p className="mt-1.5 font-body text-xs leading-relaxed text-ivory-70">
                   {service.shortDescription}
                 </p>
 
-                <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-body text-xs text-espresso-55">
+                <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 font-body text-xs text-ivory-55">
                   <span>{service.durations.map((d) => formatDuration(d.minutes)).join(' · ')}</span>
-                  <Price cents={lowest} from={service.durations.length > 1} className="text-espresso" />
+                  <Price cents={lowest} from={service.durations.length > 1} className="text-ivory" />
                 </p>
               </div>
             </label>

@@ -31,20 +31,20 @@ export default function FaqPage() {
     <>
       <JsonLd data={faqJsonLd(faqItems)} />
 
-      <Section tone="sand" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
+      <Section tone="raised" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
         <div className="max-w-3xl">
           <Eyebrow>Informations</Eyebrow>
           <Heading level={1} size="xl" className="mt-4">
             Questions fréquentes
           </Heading>
-          <Lead className="mt-6 text-espresso-70">
+          <Lead className="mt-6 text-ivory-70">
             Tout ce qu’il est utile de savoir avant votre venue. Une question qui ne figure pas
             ici ? Écrivez-nous, nous répondons rapidement.
           </Lead>
         </div>
       </Section>
 
-      <Section tone="ivory" spacing="lg" containerWidth="default">
+      <Section tone="ink" spacing="lg" containerWidth="default">
         <div className="space-y-16">
           {groups.map(([category, items]) => (
             <div key={category}>
@@ -67,7 +67,7 @@ export default function FaqPage() {
                         <path d="M10 4v12M4 10h12" strokeLinecap="round" />
                       </svg>
                     </summary>
-                    <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-espresso-70">
+                    <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-ivory-70">
                       {item.answer}
                     </p>
                   </details>
@@ -77,7 +77,7 @@ export default function FaqPage() {
           ))}
         </div>
 
-        <div className="mt-16 rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-8 sm:p-12">
+        <div className="mt-16 rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-8 sm:p-12">
           <Heading size="md">Prêt à réserver ?</Heading>
           <LinkButton href="/reservation" className="mt-6">
             Réserver une séance

@@ -81,19 +81,33 @@ export function RevealLines({
   return (
     <Tag className={className}>
       {lines.map((line, index) => (
-        <span key={index} className="block overflow-hidden pb-[0.08em]">
+        /**
+         * C'est le masque qui observe l'entrée dans le champ, pas la ligne.
+         *
+         * La ligne part à 110 % vers le bas : son cadre se trouve donc
+         * sous le masque qui la rogne, et l'observateur d'intersection ne
+         * la voyait jamais entrer. Résultat, la révélation ne se
+         * déclenchait pas et le titre restait invisible.
+         *
+         * Le masque, lui, ne bouge pas. Il porte l'état, la ligne en
+         * hérite : c'est la propagation de variantes de Framer Motion.
+         */
+        <motion.span
+          key={index}
+          className="block overflow-hidden pb-[0.08em]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+        >
           <motion.span
             className={cn('block', lineClassName)}
             variants={maskedLine}
             custom={index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={inView}
             transition={{ delay }}
           >
             {line}
           </motion.span>
-        </span>
+        </motion.span>
       ))}
     </Tag>
   );

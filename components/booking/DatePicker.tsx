@@ -46,7 +46,7 @@ export function DatePicker({ days, selected, onSelect, loading }: DatePickerProp
               'flex min-w-[4.5rem] shrink-0 flex-col items-center gap-0.5 rounded-lg border px-3 py-3 font-body transition-all duration-300',
               isSelected
                 ? 'border-terracotta bg-terracotta text-ivory'
-                : 'border-[color:var(--color-line)] hover:border-espresso/30',
+                : 'border-[color:var(--color-line)] hover:border-ivory/30',
               disabled && 'cursor-not-allowed opacity-40 hover:border-[color:var(--color-line)]',
             )}
           >

@@ -29,13 +29,13 @@ export default async function MassagesPage() {
         ])}
       />
 
-      <Section tone="sand" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
+      <Section tone="raised" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
         <div className="max-w-3xl">
           <Eyebrow>Le catalogue</Eyebrow>
           <Heading level={1} size="xl" className="mt-4">
             Nos massages
           </Heading>
-          <Lead className="mt-6 text-espresso-70">
+          <Lead className="mt-6 text-ivory-70">
             Chaque séance est adaptée à la personne : rythme, pression et zones travaillées sont
             ajustés après un court échange. Les durées et tarifs ci-dessous sont ceux pratiqués au
             studio.
@@ -43,7 +43,7 @@ export default async function MassagesPage() {
         </div>
       </Section>
 
-      <Section tone="ivory" spacing="lg" containerWidth="wide">
+      <Section tone="ink" spacing="lg" containerWidth="wide">
         {/* Titre de niveau 2 masqué : la grille de cartes utilise des `h3`,
             la hiérarchie du document resterait sinon discontinue. */}
         <h2 className="sr-only">Toutes les prestations</h2>
@@ -56,9 +56,9 @@ export default async function MassagesPage() {
           ))}
         </div>
 
-        <div className="mt-16 rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-8 sm:p-12">
+        <div className="mt-16 rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-8 sm:p-12">
           <Heading size="md">Une hésitation sur la séance à choisir ?</Heading>
-          <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-espresso-70">
+          <p className="mt-4 max-w-2xl font-body text-sm leading-relaxed text-ivory-70">
             Choisissez la durée qui vous convient : le soin est ajusté sur place, après un court
             échange sur vos attentes du moment.
           </p>

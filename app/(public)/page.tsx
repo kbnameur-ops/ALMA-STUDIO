@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/marketing/Hero';
+import { ManifestoSection } from '@/components/marketing/ManifestoSection';
 import { ExperienceSection } from '@/components/marketing/ExperienceSection';
 import { SignaturesSection } from '@/components/marketing/SignaturesSection';
 import { NeedsSection } from '@/components/marketing/NeedsSection';
@@ -30,8 +31,11 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      <ExperienceSection />
+      {/* Ordre voulu : après le hero, une plaque de texte seul. Le
+          catalogue arrive ensuite, quand l'œil est retombé. */}
+      <ManifestoSection />
       <SignaturesSection services={signatures} />
+      <ExperienceSection />
       <NeedsSection />
       <StudioSection />
       <PractitionerSection />

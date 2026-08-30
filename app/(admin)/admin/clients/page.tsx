@@ -15,7 +15,7 @@ export default async function AdminCustomersPage() {
         <Heading level={1} size="md">
           Clients
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Données personnelles : usage strictement limité à la gestion des réservations. Toute
           demande de suppression doit être honorée sans délai.
         </p>
@@ -60,7 +60,7 @@ export default async function AdminCustomersPage() {
             header: 'Marketing',
             align: 'right',
             cell: (row: CustomerSummary) =>
-              row.marketingConsent ? <Badge tone="olive">Opt-in</Badge> : <span className="text-espresso-55">—</span>,
+              row.marketingConsent ? <Badge tone="sage">Opt-in</Badge> : <span className="text-ivory-55">—</span>,
           },
         ]}
         rows={customers}

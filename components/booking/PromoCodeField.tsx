@@ -64,14 +64,14 @@ export function PromoCodeField({
 
   if (applied) {
     return (
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-olive/30 bg-olive/6 px-4 py-3">
-        <p className="font-body text-sm text-olive">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-sage/30 bg-sage/6 px-4 py-3">
+        <p className="font-body text-sm text-sage">
           {applied.label} appliqué · − {formatPrice(applied.discountCents)}
         </p>
         <button
           type="button"
           onClick={() => onApply(null)}
-          className="font-body text-xs text-espresso-55 underline underline-offset-2 hover:text-espresso"
+          className="font-body text-xs text-ivory-55 underline underline-offset-2 hover:text-ivory"
         >
           Retirer
         </button>

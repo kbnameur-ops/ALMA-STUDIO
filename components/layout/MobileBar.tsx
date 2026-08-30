@@ -30,7 +30,7 @@ export function MobileBar() {
   return (
     <nav
       aria-label="Navigation rapide"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--color-line)] bg-ivory/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md sm:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-[color:var(--color-line)] bg-ink/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md sm:hidden"
     >
       <ul className="grid grid-cols-3">
         {mobileBarNav.map((item) => {
@@ -43,7 +43,7 @@ export function MobileBar() {
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'flex flex-col items-center gap-1 py-3 font-body text-[0.65rem] tracking-wide transition-colors',
-                  isBooking ? 'text-terracotta' : active ? 'text-espresso' : 'text-espresso-55',
+                  isBooking ? 'text-terracotta' : active ? 'text-ivory' : 'text-ivory-55',
                 )}
               >
                 <svg

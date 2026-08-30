@@ -29,9 +29,9 @@ export function BookingStepper({ current, maxReachable, onSelect }: BookingStepp
                 aria-current={active ? 'step' : undefined}
                 className={cn(
                   'flex items-center gap-2 rounded-full px-3 py-1.5 font-body text-xs transition-colors duration-300',
-                  active && 'bg-espresso text-ivory',
-                  !active && done && 'text-espresso hover:bg-[rgba(48,42,37,0.06)]',
-                  !active && !done && 'text-espresso-55',
+                  active && 'bg-ink-deep text-ivory',
+                  !active && done && 'text-ivory hover:bg-[rgba(48,42,37,0.06)]',
+                  !active && !done && 'text-ivory-55',
                   !reachable && 'cursor-not-allowed opacity-50',
                 )}
               >

@@ -11,8 +11,8 @@ import type { Review } from '@/types';
 export const dynamic = 'force-dynamic';
 
 const fieldClass =
-  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm';
-const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70';
+  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm';
+const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70';
 
 export default async function AdminReviewsPage() {
   const reviews = await listAllReviews();
@@ -23,7 +23,7 @@ export default async function AdminReviewsPage() {
         <Heading level={1} size="md">
           Avis clients
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Seuls les avis publiés apparaissent sur le site. Les entrées marquées « exemple » sont des
           données de démonstration : dépubliez-les dès que de vrais avis sont disponibles.
         </p>
@@ -60,7 +60,7 @@ export default async function AdminReviewsPage() {
             cell: (row: Review) => (
               <span className="flex flex-wrap gap-1.5">
                 {row.isPublished ? (
-                  <Badge tone="olive">Publié</Badge>
+                  <Badge tone="sage">Publié</Badge>
                 ) : (
                   <Badge tone="outline">Masqué</Badge>
                 )}
@@ -106,7 +106,7 @@ export default async function AdminReviewsPage() {
         <Heading size="sm" className="mb-2">
           Ajouter un avis
         </Heading>
-        <p className="mb-6 font-body text-xs text-espresso-55">
+        <p className="mb-6 font-body text-xs text-ivory-55">
           À n’utiliser que pour retranscrire un avis réellement reçu.
         </p>
 

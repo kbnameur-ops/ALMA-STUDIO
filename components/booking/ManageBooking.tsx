@@ -82,7 +82,7 @@ export function ManageBooking({
       </div>
 
       {!canCancel && (
-        <p className="mt-3 font-body text-xs text-espresso-55">
+        <p className="mt-3 font-body text-xs text-ivory-55">
           L’annulation en ligne n’est plus possible à moins de {cancellationHours} heures du
           rendez-vous. Appelez-nous au{' '}
           <a
@@ -96,7 +96,7 @@ export function ManageBooking({
       )}
 
       <Modal open={confirming} onClose={() => setConfirming(false)} title="Annuler la réservation ?">
-        <p className="font-body text-sm leading-relaxed text-espresso-70">
+        <p className="font-body text-sm leading-relaxed text-ivory-70">
           Le créneau sera immédiatement libéré. Si la séance a été payée, le remboursement est lancé
           automatiquement sur votre moyen de paiement d’origine.
         </p>

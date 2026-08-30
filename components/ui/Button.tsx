@@ -16,20 +16,22 @@ const base =
   'active:translate-y-px disabled:cursor-not-allowed disabled:opacity-45 select-none';
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-terracotta text-ivory shadow-[0_10px_30px_-18px_rgba(185,111,85,0.9)]',
-  secondary: 'border border-[color:var(--color-line-strong)] text-espresso hover:border-espresso',
-  ghost: 'text-espresso hover:text-terracotta underline-offset-4 hover:underline',
-  light: 'bg-ivory text-espresso',
+  // Texte encre et non ivoire : l'ivoire sur la terre cuite ne donnait
+  // que 2,84 de contraste, l'encre en donne 5,7.
+  primary: 'bg-terracotta text-ink shadow-[0_10px_30px_-18px_rgba(200,122,92,0.9)]',
+  secondary: 'border border-[color:var(--color-line-strong)] text-ivory hover:border-ivory',
+  ghost: 'text-ivory hover:text-terracotta underline-offset-4 hover:underline',
+  light: 'bg-ink text-ivory',
   outlineLight: 'border border-ivory/30 text-ivory hover:border-ivory/60',
-  danger: 'border border-terracotta text-terracotta hover:text-ivory',
+  danger: 'border border-terracotta text-terracotta hover:bg-terracotta hover:text-ink',
 };
 
 /** Voile de survol, monté depuis la base. Absent des variantes sans fond. */
 const sweeps: Partial<Record<Variant, string>> = {
   primary: 'bg-terracotta-dark',
   secondary: 'bg-[rgba(48,42,37,0.06)]',
-  light: 'bg-sand',
-  outlineLight: 'bg-ivory/12',
+  light: 'bg-ink-raised',
+  outlineLight: 'bg-ink/12',
   danger: 'bg-terracotta',
 };
 

@@ -2,13 +2,22 @@ import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils/cn';
 import { Container } from './Container';
 
-type Tone = 'ivory' | 'sand' | 'espresso' | 'transparent';
+/**
+ * Trois profondeurs d'encre, et rien d'autre.
+ *
+ * `ink` est le fond courant, `raised` une surface légèrement soulevée qui
+ * marque une rupture de section, `deep` le noir des fins de page. La
+ * variation est volontairement infime : sur fond sombre, un écart de
+ * clarté minuscule suffit à séparer deux plans, alors qu'un contraste
+ * franc ferait des bandes.
+ */
+type Tone = 'ink' | 'raised' | 'deep' | 'transparent';
 type Spacing = 'sm' | 'md' | 'lg';
 
 const tones: Record<Tone, string> = {
-  ivory: 'bg-ivory text-espresso',
-  sand: 'bg-sand text-espresso',
-  espresso: 'bg-espresso text-sand',
+  ink: 'bg-ink text-ivory',
+  raised: 'bg-ink-raised text-ivory',
+  deep: 'bg-ink-deep text-ivory',
   transparent: '',
 };
 
@@ -32,7 +41,7 @@ interface SectionProps {
 
 export function Section({
   children,
-  tone = 'ivory',
+  tone = 'ink',
   spacing = 'md',
   id,
   className,

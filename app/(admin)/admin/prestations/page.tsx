@@ -17,8 +17,8 @@ import type { Service } from '@/types';
 export const dynamic = 'force-dynamic';
 
 const fieldClass =
-  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm';
-const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70';
+  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm';
+const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70';
 
 /** Catalogue complet, prestations désactivées comprises. */
 async function listAllServices(): Promise<Service[]> {
@@ -194,7 +194,7 @@ export default async function AdminServicesPage() {
         <Heading level={1} size="md">
           Prestations
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Les tarifs affichés sur le site proviennent d’ici. Aucun prix n’est écrit dans le code.
         </p>
       </div>
@@ -209,7 +209,7 @@ export default async function AdminServicesPage() {
               <span className="font-heading text-xl font-light">{service.name}</span>
               {!service.isActive && <Badge tone="outline">Désactivée</Badge>}
               {service.isSignature && <Badge tone="accent">Signature</Badge>}
-              <span className="ml-auto font-body text-xs text-espresso-55">
+              <span className="ml-auto font-body text-xs text-ivory-55">
                 {service.durations.map((duration) => formatDuration(duration.minutes)).join(' · ')}
               </span>
             </summary>
@@ -231,7 +231,7 @@ export default async function AdminServicesPage() {
                       className="flex flex-wrap items-center gap-3 rounded-md border border-[color:var(--color-line)] p-3"
                     >
                       <span className="font-body text-sm">{formatDuration(duration.minutes)}</span>
-                      <span className="font-body text-sm text-espresso-55">
+                      <span className="font-body text-sm text-ivory-55">
                         {formatPrice(duration.priceCents)}
                       </span>
                       {!duration.isActive && <Badge tone="outline">Inactive</Badge>}
@@ -327,7 +327,7 @@ export default async function AdminServicesPage() {
         ))}
 
         {services.length === 0 && (
-          <p className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-6 font-body text-sm text-espresso-55">
+          <p className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-6 font-body text-sm text-ivory-55">
             Aucune prestation en base. Exécutez `supabase/seed.sql` ou créez-en une ci-dessous.
           </p>
         )}

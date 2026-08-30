@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ALMA STUDIO">
-  <title>ALMA STUDIO</title>
-  <rect width="64" height="64" rx="14" fill="#302A25"/>
-  <path d="M32 12c-8.8 0-16 7.2-16 16v24h32V28c0-8.8-7.2-16-16-16Z" fill="#F7F3EC"/>
-  <path d="M32 25c-4.4 0-8 3.6-8 8v19h16V33c0-4.4-3.6-8-8-8Z" fill="#302A25"/>
-  <path d="M25 42h14" stroke="#B96F55" stroke-width="4.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140">
+  <rect width="120" height="140" fill="#100E0C"/>
+  <path d="M18 132 L31 64 A29 29 0 0 1 89 64 L102 132 L84 132 L73 66 A15 15 0 0 0 47 66 L36 132 Z" fill="#F2EEE7"/>
+  <rect x="42" y="96" width="36" height="10" fill="#F2EEE7"/>
 </svg>

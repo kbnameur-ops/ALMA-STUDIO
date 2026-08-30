@@ -7,8 +7,8 @@ import type { GiftCard, GiftCardStatus } from '@/types';
 
 export const dynamic = 'force-dynamic';
 
-const statusTones: Record<GiftCardStatus, { label: string; tone: 'olive' | 'neutral' | 'outline' | 'accent' }> = {
-  active: { label: 'Active', tone: 'olive' },
+const statusTones: Record<GiftCardStatus, { label: string; tone: 'sage' | 'neutral' | 'outline' | 'accent' }> = {
+  active: { label: 'Active', tone: 'sage' },
   redeemed: { label: 'Utilisée', tone: 'neutral' },
   expired: { label: 'Expirée', tone: 'outline' },
   cancelled: { label: 'Annulée', tone: 'accent' },
@@ -26,7 +26,7 @@ export default async function AdminGiftCardsPage() {
         <Heading level={1} size="md">
           Cartes cadeaux
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           {formatPrice(activeBalance)} en circulation. Les cartes sont émises automatiquement après
           confirmation du paiement.
         </p>
@@ -58,7 +58,7 @@ export default async function AdminGiftCardsPage() {
               <span>
                 {row.recipientName}
                 {row.recipientEmail && (
-                  <span className="block text-xs text-espresso-55">{row.recipientEmail}</span>
+                  <span className="block text-xs text-ivory-55">{row.recipientEmail}</span>
                 )}
               </span>
             ),
@@ -70,7 +70,7 @@ export default async function AdminGiftCardsPage() {
             cell: (row: GiftCard) => (
               <span>
                 {row.purchaserName}
-                <span className="block text-xs text-espresso-55">{row.purchaserEmail}</span>
+                <span className="block text-xs text-ivory-55">{row.purchaserEmail}</span>
               </span>
             ),
           },

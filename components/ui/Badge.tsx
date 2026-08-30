@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils/cn';
 
-type Tone = 'neutral' | 'accent' | 'olive' | 'outline';
+type Tone = 'neutral' | 'accent' | 'sage' | 'outline';
 
 const tones: Record<Tone, string> = {
-  neutral: 'bg-[rgba(48,42,37,0.06)] text-espresso',
+  neutral: 'bg-[rgba(48,42,37,0.06)] text-ivory',
   accent: 'bg-terracotta/12 text-terracotta',
-  olive: 'bg-olive/12 text-olive',
-  outline: 'border border-[color:var(--color-line-strong)] text-espresso-70',
+  sage: 'bg-sage/12 text-sage',
+  outline: 'border border-[color:var(--color-line-strong)] text-ivory-70',
 };
 
 export function Badge({

@@ -21,12 +21,12 @@ export default async function ReviewPage({
   const params = await searchParams;
 
   return (
-    <Section tone="ivory" spacing="lg" className="pt-32 sm:pt-40" containerWidth="narrow">
+    <Section tone="ink" spacing="lg" className="pt-32 sm:pt-40" containerWidth="narrow">
       <Eyebrow>Votre retour</Eyebrow>
       <Heading level={1} size="lg" className="mt-4">
         Comment s’est passée votre séance ?
       </Heading>
-      <Lead className="mt-6 text-espresso-70">
+      <Lead className="mt-6 text-ivory-70">
         Quelques mots suffisent. Votre message nous aide à ajuster ce qui peut l’être — et, si vous
         l’acceptez, il pourra figurer sur le site après relecture.
       </Lead>

@@ -32,12 +32,12 @@ export default async function ConfirmationPage({
 
   if (!booking) {
     return (
-      <section className="bg-ivory pb-24 pt-32 sm:pt-40">
+      <section className="bg-ink pb-24 pt-32 sm:pt-40">
         <Container width="narrow">
           <Heading level={1} size="lg">
             Réservation introuvable
           </Heading>
-          <p className="mt-5 font-body text-sm leading-relaxed text-espresso-70">
+          <p className="mt-5 font-body text-sm leading-relaxed text-ivory-70">
             Le lien utilisé est incomplet ou a expiré. Le récapitulatif complet figure dans l’email
             de confirmation qui vous a été envoyé.
           </p>
@@ -72,7 +72,7 @@ export default async function ConfirmationPage({
   ];
 
   return (
-    <section className="bg-ivory pb-24 pt-32 sm:pt-40">
+    <section className="bg-ink pb-24 pt-32 sm:pt-40">
       <Container width="narrow">
         {cancelled ? (
           <Heading level={1} size="lg">
@@ -91,7 +91,7 @@ export default async function ConfirmationPage({
             <Heading level={1} size="lg">
               Votre réservation est confirmée.
             </Heading>
-            <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+            <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
               Un email récapitulatif vient de vous être envoyé à {booking.customer.email}.
             </p>
           </>
@@ -109,7 +109,7 @@ export default async function ConfirmationPage({
             <Heading level={1} size="lg">
               Votre demande est bien arrivée.
             </Heading>
-            <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+            <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
               Elle n’est pas encore confirmée : nous revenons vers vous très vite.
             </p>
             <div className="mt-8">
@@ -126,14 +126,14 @@ export default async function ConfirmationPage({
         <dl className="mt-10 divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
           {rows.map((row) => (
             <div key={row.label} className="flex flex-wrap items-baseline justify-between gap-4 py-4">
-              <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-espresso-55">
+              <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-ivory-55">
                 {row.label}
               </dt>
               <dd className="text-right font-body text-sm">{row.value}</dd>
             </div>
           ))}
           <div className="flex items-baseline justify-between gap-4 py-4">
-            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-espresso-55">
+            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-ivory-55">
               Prix
             </dt>
             <dd>
@@ -141,7 +141,7 @@ export default async function ConfirmationPage({
             </dd>
           </div>
           <div className="flex items-baseline justify-between gap-4 py-4">
-            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-espresso-55">
+            <dt className="font-body text-[0.7rem] uppercase tracking-[0.18em] text-ivory-55">
               Référence
             </dt>
             <dd className="font-body text-sm tracking-[0.12em]">{booking.reference}</dd>
@@ -173,7 +173,7 @@ export default async function ConfirmationPage({
         )}
 
         {confirmed && (
-          <p className="mt-10 font-body text-xs leading-relaxed text-espresso-55">
+          <p className="mt-10 font-body text-xs leading-relaxed text-ivory-55">
             Modification ou annulation sans frais jusqu’à {rules.cancellationHours} heures avant le
             rendez-vous. Présentez-vous quelques minutes avant l’heure : le temps de poser vos
             affaires et de commencer sans précipitation.

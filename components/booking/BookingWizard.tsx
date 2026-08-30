@@ -203,9 +203,9 @@ export function BookingWizard({
 
   if (!bookingEnabled) {
     return (
-      <div className="rounded-lg border border-[color:var(--color-line)] bg-sand-50 p-8">
+      <div className="rounded-lg border border-[color:var(--color-line)] bg-ink-raised p-8">
         <Heading size="sm">La réservation en ligne est momentanément fermée.</Heading>
-        <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+        <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
           Le planning rouvre très prochainement. Écrivez-nous pour être prévenu de la réouverture des
           créneaux.
         </p>
@@ -230,7 +230,7 @@ export function BookingWizard({
 
         <div className="mt-10">
           <Heading size="md">{heading.title}</Heading>
-          <p className="mt-2 font-body text-sm text-espresso-55">{heading.hint}</p>
+          <p className="mt-2 font-body text-sm text-ivory-55">{heading.hint}</p>
         </div>
 
         <AnimatePresence mode="wait">
@@ -335,7 +335,7 @@ export function BookingWizard({
                           ? 'Réserver et payer'
                           : 'Envoyer ma demande'}
                     </Button>
-                    <p className="text-center font-body text-xs leading-relaxed text-espresso-55">
+                    <p className="text-center font-body text-xs leading-relaxed text-ivory-55">
                       {site.onlinePaymentEnabled
                         ? 'Le créneau vous est retenu le temps de finaliser le paiement.'
                         : `Aucun paiement en ligne. Le créneau vous est retenu ${site.requestHoldHours} heures, le temps que nous confirmions par email ou WhatsApp. Le règlement se fait sur place.`}
@@ -373,14 +373,14 @@ export function BookingWizard({
             <BookingSummary state={state} />
           ) : (
             <div className="rounded-lg border border-dashed border-[color:var(--color-line-strong)] p-6">
-              <p className="font-body text-sm text-espresso-55">
+              <p className="font-body text-sm text-ivory-55">
                 Votre récapitulatif apparaîtra ici au fil de vos choix.
               </p>
             </div>
           )}
 
           {state.duration && (
-            <p className="mt-4 px-1 font-body text-xs leading-relaxed text-espresso-55">
+            <p className="mt-4 px-1 font-body text-xs leading-relaxed text-ivory-55">
               {site.onlinePaymentEnabled
                 ? 'Montant indicatif. Le total facturé est recalculé par nos serveurs au moment du paiement, à partir des tarifs en vigueur.'
                 : 'Montant calculé par nos serveurs à partir des tarifs en vigueur, et confirmé avec votre créneau. Règlement sur place.'}

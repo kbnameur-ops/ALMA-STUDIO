@@ -22,14 +22,14 @@ export default async function AdminLoginPage({
     params.suivant && params.suivant.startsWith('/admin') ? params.suivant : '/admin';
 
   return (
-    <main className="flex min-h-screen items-center bg-sand py-20">
+    <main className="flex min-h-screen items-center bg-ink-raised py-20">
       <Container width="narrow">
-        <div className="mx-auto max-w-sm rounded-lg border border-[color:var(--color-line)] bg-ivory p-8 shadow-soft sm:p-10">
+        <div className="mx-auto max-w-sm rounded-lg border border-[color:var(--color-line)] bg-ink p-8 shadow-soft sm:p-10">
           <Logo />
           <Heading level={1} size="sm" className="mt-8">
             Administration
           </Heading>
-          <p className="mt-2 font-body text-sm text-espresso-55">
+          <p className="mt-2 font-body text-sm text-ivory-55">
             Accès réservé à l’équipe du studio.
           </p>
           <div className="mt-8">

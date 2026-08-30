@@ -30,7 +30,7 @@ export function RequestSentNotice({
 
   return (
     <div className="rounded-lg border border-champagne/50 bg-champagne/10 p-6">
-      <ol className="space-y-4 font-body text-sm leading-relaxed text-espresso-70">
+      <ol className="space-y-4 font-body text-sm leading-relaxed text-ivory-70">
         <li className="flex gap-4">
           <span aria-hidden className="font-body text-xs tracking-[0.2em] text-champagne">
             01
@@ -57,13 +57,13 @@ export function RequestSentNotice({
       </ol>
 
       {site.whatsapp.enabled && (
-        <p className="mt-6 border-t border-champagne/40 pt-5 font-body text-sm text-espresso-70">
+        <p className="mt-6 border-t border-champagne/40 pt-5 font-body text-sm text-ivory-70">
           Pour aller plus vite,{' '}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className="underline decoration-champagne underline-offset-4 hover:text-espresso"
+            className="underline decoration-champagne underline-offset-4 hover:text-ivory"
           >
             écrivez-nous sur WhatsApp
           </a>{' '}

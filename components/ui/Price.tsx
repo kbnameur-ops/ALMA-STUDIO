@@ -16,7 +16,7 @@ interface PriceProps {
 export function Price({ cents, from = false, className }: PriceProps) {
   return (
     <span className={cn('font-body tabular-nums', className)}>
-      {from && <span className="mr-1 text-xs text-espresso-55">dès</span>}
+      {from && <span className="mr-1 text-xs text-ivory-55">dès</span>}
       {formatPrice(cents)}
     </span>
   );

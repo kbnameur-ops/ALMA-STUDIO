@@ -149,7 +149,7 @@ describe('demande de réservation', () => {
   const requested: BookingDetails = {
     ...booking,
     status: 'pending',
-    paymentStatus: 'unpaid',
+    paymentStatus: 'pending',
     customerNote: 'Plutôt une pression légère.',
   };
 

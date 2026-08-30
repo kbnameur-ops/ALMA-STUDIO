@@ -47,7 +47,7 @@ export default async function AdminDashboardPage() {
         <Heading level={1} size="md">
           Tableau de bord
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Vue d’ensemble du studio, mise à jour à chaque chargement.
         </p>
       </div>

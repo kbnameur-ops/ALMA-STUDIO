@@ -141,7 +141,7 @@ export function SlotStep({
         />
       )}
 
-      <p className="font-body text-xs text-espresso-55">
+      <p className="font-body text-xs text-ivory-55">
         Horaires affichés pour {site.timezone.replace('_', ' ')}.{' '}
         {site.onlinePaymentEnabled
           ? 'Le créneau retenu vous est réservé le temps de finaliser le paiement.'

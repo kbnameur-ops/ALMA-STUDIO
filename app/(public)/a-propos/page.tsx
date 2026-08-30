@@ -31,13 +31,13 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      <Section tone="sand" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
+      <Section tone="raised" spacing="lg" className="pt-32 sm:pt-40" containerWidth="wide">
         <div className="max-w-3xl">
           <Eyebrow>À propos</Eyebrow>
           <Heading level={1} size="xl" className="mt-4">
             {brand.tagline}
           </Heading>
-          <Lead className="mt-6 text-espresso-70">
+          <Lead className="mt-6 text-ivory-70">
             {brand.name} est un studio privé dédié au massage de bien-être et aux rituels de
             relaxation. L’inspiration vient de la Méditerranée contemporaine : des matières simples,
             une lumière chaude, et l’idée qu’un moment pour soi n’a pas besoin d’être compliqué pour
@@ -46,13 +46,13 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section tone="ivory" spacing="lg" containerWidth="wide">
+      <Section tone="ink" spacing="lg" containerWidth="wide">
         <dl className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           {values.map((value) => (
             <div key={value.title}>
               <span className="alma-rule" aria-hidden />
               <dt className="mt-5 font-heading text-2xl font-light">{value.title}</dt>
-              <dd className="mt-3 font-body text-sm leading-relaxed text-espresso-70">
+              <dd className="mt-3 font-body text-sm leading-relaxed text-ivory-70">
                 {value.text}
               </dd>
             </div>
@@ -62,9 +62,9 @@ export default function AboutPage() {
 
       <PractitionerSection />
 
-      <Section tone="sand" spacing="md" containerWidth="narrow" className="text-center">
+      <Section tone="raised" spacing="md" containerWidth="narrow" className="text-center">
         <Heading size="lg">Envie de ralentir ?</Heading>
-        <p className="mx-auto mt-4 max-w-xl font-body text-sm leading-relaxed text-espresso-70">
+        <p className="mx-auto mt-4 max-w-xl font-body text-sm leading-relaxed text-ivory-70">
           Choisissez une séance, un créneau, et laissez-vous le reste du temps.
         </p>
         <LinkButton href="/reservation" size="lg" className="mt-8">

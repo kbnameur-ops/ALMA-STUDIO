@@ -20,7 +20,7 @@ const columns: Array<Column<BookingDetails>> = [
     cell: (row) => (
       <span className="whitespace-nowrap">
         {formatDate(row.startsAt, { day: 'numeric', month: 'short', weekday: undefined })}
-        <span className="ml-2 text-espresso-55">{formatTime(row.startsAt)}</span>
+        <span className="ml-2 text-ivory-55">{formatTime(row.startsAt)}</span>
       </span>
     ),
   },
@@ -30,8 +30,8 @@ const columns: Array<Column<BookingDetails>> = [
     cell: (row) => (
       <span>
         {row.customer.firstName} {row.customer.lastName}
-        <span className="block text-xs text-espresso-55">{row.customer.email}</span>
-        <span className="block text-xs text-espresso-55">{row.customer.phone}</span>
+        <span className="block text-xs text-ivory-55">{row.customer.email}</span>
+        <span className="block text-xs text-ivory-55">{row.customer.phone}</span>
       </span>
     ),
   },
@@ -53,7 +53,7 @@ const columns: Array<Column<BookingDetails>> = [
         <span>
           Domicile
           {row.address && (
-            <span className="block text-xs text-espresso-55">
+            <span className="block text-xs text-ivory-55">
               {row.address.line1}, {row.address.postalCode} {row.address.city}
             </span>
           )}
@@ -66,7 +66,7 @@ const columns: Array<Column<BookingDetails>> = [
     header: 'Paiement',
     hideOnMobile: true,
     cell: (row) => (
-      <span className="text-xs text-espresso-55">{paymentStatusLabel(row.paymentStatus)}</span>
+      <span className="text-xs text-ivory-55">{paymentStatusLabel(row.paymentStatus)}</span>
     ),
   },
   { key: 'total', header: 'Prix', align: 'right', cell: (row) => formatPrice(row.totalCents) },
@@ -137,7 +137,7 @@ export default async function AdminBookingsPage() {
         <Heading level={1} size="md">
           Réservations
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           {PAST_DAYS} jours passés et {FUTURE_DAYS} jours à venir.
         </p>
       </div>

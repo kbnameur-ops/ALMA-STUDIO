@@ -15,17 +15,17 @@ const exploreLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-espresso pb-20 text-sand sm:pb-0">
+    <footer className="bg-ink-deep pb-20 text-ivory sm:pb-0">
       <Container width="wide" className="py-16 sm:py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Logo tone="light" />
-            <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-sand/70">
+            <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-ivory/70">
               {brand.signature}
               <br />
               {site.businessAddress.city}
             </p>
-            <p className="mt-4 font-heading text-xl font-light text-sand/90">{brand.tagline}</p>
+            <p className="mt-4 font-heading text-xl font-light text-ivory/90">{brand.tagline}</p>
           </div>
 
           <nav aria-label="Pages du site">
@@ -37,7 +37,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-body text-sm text-sand/75 transition-colors hover:text-sand"
+                    className="font-body text-sm text-ivory/75 transition-colors hover:text-ivory"
                   >
                     {link.label}
                   </Link>
@@ -50,11 +50,11 @@ export function Footer() {
             <h2 className="font-body text-[0.7rem] uppercase tracking-[0.22em] text-champagne">
               Contact
             </h2>
-            <ul className="mt-5 space-y-3 font-body text-sm text-sand/75">
+            <ul className="mt-5 space-y-3 font-body text-sm text-ivory/75">
               <li>
                 <a
                   href={`mailto:${site.contactEmail}`}
-                  className="break-all transition-colors hover:text-sand"
+                  className="break-all transition-colors hover:text-ivory"
                 >
                   {site.contactEmail}
                 </a>
@@ -62,7 +62,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${site.contactPhoneE164}`}
-                  className="transition-colors hover:text-sand"
+                  className="transition-colors hover:text-ivory"
                 >
                   {site.contactPhone}
                 </a>
@@ -73,27 +73,27 @@ export function Footer() {
                     href={site.whatsapp.url}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="transition-colors hover:text-sand"
+                    className="transition-colors hover:text-ivory"
                   >
                     WhatsApp
                   </a>
                 </li>
               )}
-              <li className="pt-2 text-sand/55">{site.openingHoursLabel}</li>
-              <li className="text-sand/55">
+              <li className="pt-2 text-ivory/55">{site.openingHoursLabel}</li>
+              <li className="text-ivory/55">
                 {site.businessAddress.venue}
                 <br />
                 {site.businessAddress.street}
                 <br />
                 {site.businessAddress.postalCode} {site.businessAddress.city}
               </li>
-              <li className="text-sand/55">{site.transit}</li>
+              <li className="text-ivory/55">{site.transit}</li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-sand/12 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-body text-xs text-sand/50">
+        <div className="mt-14 flex flex-col gap-4 border-t border-ivory/12 pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="font-body text-xs text-ivory/50">
             © {new Date().getFullYear()} {brand.name}. Tous droits réservés.
           </p>
           <nav aria-label="Informations légales">
@@ -102,7 +102,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-body text-xs text-sand/50 transition-colors hover:text-sand/80"
+                    className="font-body text-xs text-ivory/50 transition-colors hover:text-ivory/80"
                   >
                     {item.label}
                   </Link>

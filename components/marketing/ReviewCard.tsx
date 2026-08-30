@@ -9,7 +9,7 @@ function Stars({ rating }: { rating: number }) {
           key={index}
           viewBox="0 0 20 20"
           aria-hidden
-          className={cn('h-3.5 w-3.5', index < rating ? 'fill-champagne' : 'fill-espresso/15')}
+          className={cn('h-3.5 w-3.5', index < rating ? 'fill-champagne' : 'fill-ivory/15')}
         >
           <path d="M10 1.6l2.4 5.1 5.6.7-4.1 3.9 1 5.6-4.9-2.7-4.9 2.7 1-5.6L2 7.4l5.6-.7z" />
         </svg>
@@ -23,11 +23,11 @@ export function ReviewCard({ review }: { review: Review }) {
     <figure className="flex h-full flex-col justify-between border-t border-[color:var(--color-line)] pt-7">
       <div>
         <Stars rating={review.rating} />
-        <blockquote className="mt-6 font-heading text-[1.6rem] font-light italic leading-snug text-espresso text-pretty">
+        <blockquote className="mt-6 font-heading text-[1.6rem] font-light italic leading-snug text-ivory text-pretty">
           « {review.quote} »
         </blockquote>
       </div>
-      <figcaption className="mt-7 font-body text-xs uppercase tracking-[0.16em] text-espresso-55">
+      <figcaption className="mt-7 font-body text-xs uppercase tracking-[0.16em] text-ivory-55">
         {review.authorName}
         {review.serviceLabel && <span className="text-champagne"> · {review.serviceLabel}</span>}
       </figcaption>

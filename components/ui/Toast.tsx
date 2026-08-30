@@ -18,9 +18,9 @@ interface ToastApi {
 const ToastContext = createContext<ToastApi | null>(null);
 
 const tones: Record<ToastTone, string> = {
-  success: 'border-olive/40 text-olive',
+  success: 'border-sage/40 text-sage',
   error: 'border-terracotta/50 text-terracotta',
-  info: 'border-[color:var(--color-line-strong)] text-espresso',
+  info: 'border-[color:var(--color-line-strong)] text-ivory',
 };
 
 /** Notifications éphémères, annoncées aux lecteurs d'écran via `aria-live`. */
@@ -53,7 +53,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.25 }}
-              className={`pointer-events-auto rounded-full border bg-ivory px-5 py-2.5 font-body text-sm shadow-soft ${tones[message.tone]}`}
+              className={`pointer-events-auto rounded-full border bg-ink px-5 py-2.5 font-body text-sm shadow-soft ${tones[message.tone]}`}
             >
               {message.text}
             </motion.p>

@@ -51,7 +51,7 @@ export function Header() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[var(--ease-alma)]',
         scrolled || menuOpen
-          ? 'border-b border-[color:var(--color-line)] bg-ivory/92 backdrop-blur-md'
+          ? 'border-b border-[color:var(--color-line)] bg-ink/92 backdrop-blur-md'
           : 'border-b border-transparent bg-transparent',
       )}
     >
@@ -80,10 +80,10 @@ export function Header() {
                   overDarkHero
                     ? active
                       ? 'text-ivory'
-                      : 'text-sand/75 hover:text-ivory'
+                      : 'text-ivory/75 hover:text-ivory'
                     : active
                       ? 'text-terracotta'
-                      : 'text-espresso-70 hover:text-espresso',
+                      : 'text-ivory-70 hover:text-ivory',
                 )}
               >
                 {item.label}
@@ -92,7 +92,7 @@ export function Header() {
                     aria-hidden
                     className={cn(
                       'absolute -bottom-1.5 left-0 h-px w-full',
-                      overDarkHero ? 'bg-ivory/60' : 'bg-terracotta/60',
+                      overDarkHero ? 'bg-ink/60' : 'bg-terracotta/60',
                     )}
                   />
                 )}
@@ -104,7 +104,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href={bookingHref}
-            className="inline-flex items-center justify-center rounded-full bg-terracotta px-5 py-2.5 font-body text-xs font-medium tracking-wide text-ivory transition-colors duration-300 hover:bg-terracotta-dark sm:px-6 sm:text-sm"
+            className="inline-flex items-center justify-center rounded-full bg-terracotta px-5 py-2.5 font-body text-xs font-medium tracking-wide text-ink transition-colors duration-300 hover:bg-terracotta-dark sm:px-6 sm:text-sm"
           >
             Réserver
           </Link>
@@ -118,8 +118,8 @@ export function Header() {
             className={cn(
               '-mr-2 flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden',
               overDarkHero
-                ? 'text-ivory hover:bg-ivory/10'
-                : 'text-espresso hover:bg-[rgba(48,42,37,0.05)]',
+                ? 'text-ivory hover:bg-ink/10'
+                : 'text-ivory hover:bg-[rgba(48,42,37,0.05)]',
             )}
           >
             <span className="sr-only">Menu</span>
@@ -152,14 +152,14 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-[color:var(--color-line)] bg-ivory lg:hidden"
+            className="overflow-hidden border-t border-[color:var(--color-line)] bg-ink lg:hidden"
           >
             <ul className="flex flex-col px-5 py-3 sm:px-8">
               {mainNav.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="block border-b border-[color:var(--color-line)] py-4 font-heading text-2xl font-light text-espresso"
+                    className="block border-b border-[color:var(--color-line)] py-4 font-heading text-2xl font-light text-ivory"
                   >
                     {item.label}
                   </Link>

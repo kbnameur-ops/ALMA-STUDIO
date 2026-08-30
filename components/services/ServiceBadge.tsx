@@ -7,8 +7,8 @@ const labels: Record<IntensityLevel, string> = {
   dynamique: 'Intensité dynamique',
 };
 
-const tones: Record<IntensityLevel, 'olive' | 'neutral' | 'accent'> = {
-  douce: 'olive',
+const tones: Record<IntensityLevel, 'sage' | 'neutral' | 'accent'> = {
+  douce: 'sage',
   moderee: 'neutral',
   dynamique: 'accent',
 };

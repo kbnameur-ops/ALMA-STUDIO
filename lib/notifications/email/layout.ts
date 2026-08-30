@@ -44,7 +44,7 @@ export function escapeHtml(value: string): string {
 
 function button({ label, url }: EmailButton, variant: 'primary' | 'secondary'): string {
   const background = variant === 'primary' ? colors.terracotta : 'transparent';
-  const color = variant === 'primary' ? colors.ivory : colors.espresso;
+  const color = variant === 'primary' ? colors.ivory : colors.ink;
   const border = variant === 'primary' ? colors.terracotta : 'rgba(48,42,37,0.25)';
   return `<a href="${escapeHtml(url)}" style="display:inline-block;padding:13px 26px;margin:0 8px 8px 0;background:${background};color:${color};border:1px solid ${border};border-radius:999px;font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:0.04em;text-decoration:none;">${escapeHtml(label)}</a>`;
 }
@@ -56,7 +56,7 @@ export function renderEmail(input: EmailLayoutInput): string {
           .map(
             (row) => `<tr>
               <td style="padding:11px 0;border-bottom:1px solid rgba(48,42,37,0.12);font-family:Helvetica,Arial,sans-serif;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(48,42,37,0.55);">${escapeHtml(row.label)}</td>
-              <td align="right" style="padding:11px 0;border-bottom:1px solid rgba(48,42,37,0.12);font-family:Helvetica,Arial,sans-serif;font-size:14px;color:${colors.espresso};">${escapeHtml(row.value)}</td>
+              <td align="right" style="padding:11px 0;border-bottom:1px solid rgba(48,42,37,0.12);font-family:Helvetica,Arial,sans-serif;font-size:14px;color:${colors.ink};">${escapeHtml(row.value)}</td>
             </tr>`,
           )
           .join('')}
@@ -64,10 +64,10 @@ export function renderEmail(input: EmailLayoutInput): string {
     : '';
 
   const highlight = input.highlight
-    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0;background:${colors.sand};border-radius:10px;">
+    ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:28px 0;background:${colors.bone};border-radius:10px;">
         <tr><td style="padding:24px;text-align:center;">
           <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:${colors.champagne};">${escapeHtml(input.highlight.label)}</p>
-          <p style="margin:10px 0 0;font-family:Georgia,serif;font-size:28px;letter-spacing:0.08em;color:${colors.espresso};">${escapeHtml(input.highlight.value)}</p>
+          <p style="margin:10px 0 0;font-family:Georgia,serif;font-size:28px;letter-spacing:0.08em;color:${colors.ink};">${escapeHtml(input.highlight.value)}</p>
           ${input.highlight.note ? `<p style="margin:10px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:12px;color:rgba(48,42,37,0.6);">${escapeHtml(input.highlight.note)}</p>` : ''}
         </td></tr>
       </table>`
@@ -98,18 +98,18 @@ export function renderEmail(input: EmailLayoutInput): string {
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:14px;overflow:hidden;">
         <tr><td style="padding:36px 36px 0;text-align:center;">
-          <p style="margin:0;font-family:Georgia,serif;font-size:24px;letter-spacing:0.24em;color:${colors.espresso};">${brand.nameParts.primary}</p>
+          <p style="margin:0;font-family:Georgia,serif;font-size:24px;letter-spacing:0.24em;color:${colors.ink};">${brand.nameParts.primary}</p>
           <p style="margin:6px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:9px;letter-spacing:0.5em;color:${colors.terracotta};">${brand.nameParts.secondary}</p>
         </td></tr>
         <tr><td style="padding:32px 36px 40px;">
-          <h1 style="margin:0 0 20px;font-family:Georgia,serif;font-size:27px;font-weight:normal;line-height:1.2;color:${colors.espresso};">${escapeHtml(input.heading)}</h1>
+          <h1 style="margin:0 0 20px;font-family:Georgia,serif;font-size:27px;font-weight:normal;line-height:1.2;color:${colors.ink};">${escapeHtml(input.heading)}</h1>
           ${paragraphs(input.intro)}
           ${highlight}
           ${details}
           ${buttons}
           ${paragraphs(input.outro, true)}
         </td></tr>
-        <tr><td style="padding:24px 36px 32px;background:${colors.sand};text-align:center;">
+        <tr><td style="padding:24px 36px 32px;background:${colors.bone};text-align:center;">
           <p style="margin:0;font-family:Helvetica,Arial,sans-serif;font-size:12px;color:rgba(48,42,37,0.65);">${escapeHtml(brand.signature)} · ${escapeHtml(site.businessAddress.city)}</p>
           <p style="margin:8px 0 0;font-family:Helvetica,Arial,sans-serif;font-size:11px;color:rgba(48,42,37,0.45);">${escapeHtml(site.contactEmail)}</p>
         </td></tr>

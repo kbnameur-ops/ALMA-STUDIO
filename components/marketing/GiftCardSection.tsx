@@ -1,56 +1,83 @@
-import { Section } from '@/components/ui/Section';
-import { Eyebrow, Lead } from '@/components/ui/Heading';
+import { Eyebrow } from '@/components/ui/Heading';
 import { LinkButton } from '@/components/ui/Button';
+import { Container } from '@/components/ui/Container';
 import { Reveal, RevealLines } from '@/components/ui/Reveal';
-import { ArchMark } from '@/components/brand/ArchMark';
+import { GiftCardPreview } from './GiftCardPreview';
 
 const options = ['60 min', '90 min', 'Rituel Méditerranéen', 'Montant libre'];
 
+/**
+ * Carte cadeau — bandeau de fin de page.
+ *
+ * Quatre niches en arche présentaient les formules comme un menu, sans
+ * jamais montrer l'objet que l'on offre. C'est pourtant lui l'argument :
+ * la carte elle-même est ici au premier plan, et les formules redeviennent
+ * ce qu'elles sont, une ligne de mentions.
+ *
+ * Le bandeau est le plus sombre de la page — c'est sa dernière section
+ * avant le pied de page, et la nuit s'y referme.
+ */
 export function GiftCardSection() {
   return (
-    <Section tone="sand" spacing="lg" containerWidth="wide" aria-labelledby="cadeau-titre">
-      <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
-        <div>
-          <Eyebrow>Carte cadeau</Eyebrow>
-          <RevealLines
-            as="h2"
-            className="mt-5 font-heading text-[2.5rem] font-light leading-[1.04] sm:text-[3.25rem]"
-            lines={[
-              'Offrez',
-              <em key="l2" className="font-normal italic text-terracotta">
-                une parenthèse.
-              </em>,
-            ]}
-          />
-          <Lead className="mt-7 text-espresso-70">
-            Une carte cadeau ALMA, valable un an, envoyée par email au bénéficiaire avec votre
-            message personnel.
-          </Lead>
-          <Reveal delay={0.15}>
-            <LinkButton href="/carte-cadeau" className="mt-9">
-              Offrir une carte cadeau
-            </LinkButton>
+    <section
+      aria-labelledby="cadeau-titre"
+      className="relative overflow-hidden bg-ink-deep py-24 sm:py-32 lg:py-40"
+    >
+      {/* Lueur unique, derrière la carte : la seule couleur de la section. */}
+      <div
+        aria-hidden
+        className="alma-sun pointer-events-none absolute -right-1/4 top-0 h-full w-2/3 opacity-70"
+      />
+
+      <Container width="wide" className="relative">
+        <div className="grid items-center gap-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-24">
+          <div>
+            <Eyebrow className="text-champagne">Carte cadeau</Eyebrow>
+            <RevealLines
+              as="h2"
+              className="mt-5 font-heading text-[2.75rem] leading-[1] text-ivory sm:text-[4rem]"
+              lines={[
+                'Offrez',
+                <em key="l2" className="italic text-champagne">
+                  une parenthèse.
+                </em>,
+              ]}
+            />
+            <Reveal delay={0.15}>
+              <p className="mt-8 max-w-md font-body text-[0.95rem] leading-relaxed text-ivory-70">
+                Une carte cadeau ALMA, valable un an, envoyée par email au bénéficiaire avec votre
+                message personnel.
+              </p>
+
+              <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+                {options.map((option) => (
+                  <li
+                    key={option}
+                    className="font-body text-[0.65rem] uppercase tracking-[0.2em] text-ivory-55"
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+
+              <LinkButton href="/carte-cadeau" className="mt-10">
+                Offrir une carte cadeau
+              </LinkButton>
+            </Reveal>
+          </div>
+
+          {/* L'objet offert, en grand : c'est lui qu'on vient regarder. */}
+          <Reveal delay={0.1} className="lg:pl-8">
+            <GiftCardPreview
+              amountCents={null}
+              serviceLabel="Rituel Méditerranéen"
+              recipientName="Inès"
+              purchaserName="Thomas"
+              message="Prends une heure pour toi."
+            />
           </Reveal>
         </div>
-
-        {/* Chaque option est une niche : l'arche déclinée en petit format. */}
-        <ul className="grid grid-cols-2 gap-4">
-          {options.map((option, index) => (
-            <Reveal as="li" key={option} delay={index * 0.07}>
-              <div className="alma-arch-flat group/gift flex h-40 flex-col justify-end border border-espresso/12 bg-ivory/60 p-6 transition-colors duration-700 ease-[var(--ease-alma)] hover:border-terracotta/40 hover:bg-ivory">
-                <ArchMark
-                  size={22}
-                  tone="mono-dark"
-                  className="mb-auto text-champagne transition-colors duration-700 group-hover/gift:text-terracotta"
-                />
-                <span className="font-heading text-xl font-light leading-tight text-espresso">
-                  {option}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }

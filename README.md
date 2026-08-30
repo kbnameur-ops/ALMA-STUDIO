@@ -214,6 +214,41 @@ modifient depuis `/admin/prestations`.
 
 ---
 
+## Direction artistique
+
+**Nocturne.** Le site est sombre de bout en bout. Les photos du studio sont
+toutes en lumière basse : sur le fond sable de la première version elles
+formaient des taches brunes, ici elles émergent de l'ombre comme la pièce
+elle-même. L'encre n'est jamais un noir pur — un noir absolu à l'écran est
+un trou, pas une matière ; elle tire vers le brun chaud.
+
+Trois profondeurs seulement (`ink`, `ink-raised`, `ink-deep`), un accent
+unique (`champagne`), un accent d'action (`terracotta`). Les écarts entre
+les trois fonds sont volontairement infimes : sur fond sombre, deux points
+de clarté suffisent à séparer deux plans, un contraste franc ferait des
+bandes.
+
+**Instrument Serif** en titrage, **Instrument Sans** en labeur. Cormorant,
+qui tenait le titrage, s'effaçait sur fond sombre : ses déliés
+disparaissaient en ivoire sur l'encre.
+
+**Le rythme est la matière première.** La page d'accueil alternait quatre
+grilles de trois colonnes : on descendait sans jamais changer de tempo.
+Elle enchaîne désormais fond perdu → plaque de texte seul → index
+éditorial avec panneau d'aperçu → arches décalées → liste asymétrique →
+bandeau pleine largeur → portrait asymétrique → citation unique → bandeau
+de fin. Aucune section ne répète la précédente.
+
+**Contraste vérifié, pas estimé.** Les couleurs de texte sont mesurées en
+peignant chaque couleur calculée sur son fond réel, alpha comprise — lire
+la valeur CSS à la main donne des résultats faux dès qu'une couleur est
+exprimée en `oklab`. Le jeton de texte discret est à 0,55 d'opacité et non
+0,44 pour cette seule raison : à 0,44 il tombait à 3,9:1, sous le seuil AA
+du petit texte. Les boutons terre cuite portent un texte encre, pas
+ivoire : l'ivoire n'y donnait que 2,84:1.
+
+---
+
 ## Contenu à fournir
 
 Les informations non communiquées sont des placeholders explicites, jamais

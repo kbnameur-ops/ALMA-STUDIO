@@ -38,7 +38,7 @@ export function ServiceCard({ service, variant = 'compact', index = 0, className
         <Arch
           shape="full"
           delay={index * 0.08}
-          className="relative aspect-4/5 w-full bg-sand"
+          className="relative aspect-4/5 w-full bg-ink-raised"
         >
           {service.imageUrl ? (
             <Image
@@ -72,13 +72,13 @@ export function ServiceCard({ service, variant = 'compact', index = 0, className
 
         {/* Durée et tarif : une ligne de service, entre deux filets. */}
         <div className="mt-4 flex items-baseline justify-between gap-4 border-y border-[color:var(--color-line)] py-2.5">
-          <span className="font-body text-[0.65rem] uppercase tracking-[0.2em] text-espresso-55">
+          <span className="font-body text-[0.65rem] uppercase tracking-[0.2em] text-ivory-55">
             {durations}
           </span>
           <Price cents={lowest} from={service.durations.length > 1} className="text-sm" />
         </div>
 
-        <p className="mt-4 font-body text-sm leading-relaxed text-espresso-70">
+        <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
           {variant === 'detailed' ? service.description : service.shortDescription}
         </p>
 
@@ -87,7 +87,7 @@ export function ServiceCard({ service, variant = 'compact', index = 0, className
             <ServiceBadge intensity={service.intensity} />
 
             {service.recommendedFor && (
-              <p className="font-body text-xs leading-relaxed text-espresso-55">
+              <p className="font-body text-xs leading-relaxed text-ivory-55">
                 <span className="uppercase tracking-[0.16em] text-champagne">Recommandé</span>
                 <br />
                 {service.recommendedFor}
@@ -97,7 +97,7 @@ export function ServiceCard({ service, variant = 'compact', index = 0, className
             <dl className="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
               {service.durations.map((duration) => (
                 <div key={duration.id} className="flex items-center justify-between py-2.5">
-                  <dt className="font-body text-sm text-espresso-70">
+                  <dt className="font-body text-sm text-ivory-70">
                     {formatDuration(duration.minutes)}
                   </dt>
                   <dd>

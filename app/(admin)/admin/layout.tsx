@@ -25,7 +25,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   if (!session) redirect('/admin/connexion');
 
   return (
-    <div className="flex min-h-screen flex-col bg-ivory lg:flex-row">
+    <div className="flex min-h-screen flex-col bg-ink lg:flex-row">
       <AdminSidebar email={session.email} />
       <main id="contenu" className="min-w-0 flex-1 px-5 py-8 sm:px-8 lg:px-10 lg:py-10">
         {children}

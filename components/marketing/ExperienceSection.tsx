@@ -41,7 +41,7 @@ const steps = [
 
 export function ExperienceSection() {
   return (
-    <Section tone="ivory" spacing="lg" aria-labelledby="experience-titre">
+    <Section tone="ink" spacing="lg" aria-labelledby="experience-titre">
       <div className="max-w-3xl">
         <Eyebrow>L’expérience</Eyebrow>
         <RevealLines
@@ -54,7 +54,7 @@ export function ExperienceSection() {
             </em>,
           ]}
         />
-        <Lead className="mt-7 text-espresso-70">
+        <Lead className="mt-7 text-ivory-70">
           L’expérience ALMA commence dès l’arrivée. Lumière douce, matières naturelles, musique
           discrète et attention portée à chaque détail créent un espace où l’on peut enfin ralentir.
         </Lead>
@@ -77,7 +77,7 @@ export function ExperienceSection() {
             </span>
             <RevealRule className="mt-5" />
             <h3 className="mt-6 font-heading text-[1.75rem] font-light">{step.title}</h3>
-            <p className="mt-3 font-body text-sm leading-relaxed text-espresso-70">{step.text}</p>
+            <p className="mt-3 font-body text-sm leading-relaxed text-ivory-70">{step.text}</p>
           </Reveal>
         ))}
       </ol>

@@ -11,8 +11,8 @@ import type { Promotion } from '@/types';
 export const dynamic = 'force-dynamic';
 
 const fieldClass =
-  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ivory px-4 py-3 font-body text-sm';
-const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-espresso-70';
+  'w-full rounded-md border border-[color:var(--color-line-strong)] bg-ink px-4 py-3 font-body text-sm';
+const labelClass = 'font-body text-[0.7rem] uppercase tracking-[0.16em] text-ivory-70';
 
 function discountLabel(promotion: Promotion): string {
   return promotion.kind === 'percentage'
@@ -29,7 +29,7 @@ export default async function AdminPromotionsPage() {
         <Heading level={1} size="md">
           Codes promotionnels
         </Heading>
-        <p className="mt-2 font-body text-sm text-espresso-55">
+        <p className="mt-2 font-body text-sm text-ivory-55">
           Les remises s’appliquent au montant de la prestation, jamais aux frais de déplacement.
         </p>
       </div>
@@ -62,7 +62,7 @@ export default async function AdminPromotionsPage() {
             key: 'status',
             header: 'Statut',
             cell: (row: Promotion) =>
-              row.isActive ? <Badge tone="olive">Actif</Badge> : <Badge tone="outline">Inactif</Badge>,
+              row.isActive ? <Badge tone="sage">Actif</Badge> : <Badge tone="outline">Inactif</Badge>,
           },
           {
             key: 'actions',
