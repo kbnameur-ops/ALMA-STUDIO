@@ -4,16 +4,19 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { bookingHref, darkHeroRoutes, mainNav } from '@/config/navigation';
+import { bookingHref, mainNav } from '@/config/navigation';
 import { cn } from '@/lib/utils/cn';
 import { Logo } from './Logo';
 
 /**
  * En-tête collant.
  *
- * Au repos il se fond dans la page ; au scroll il gagne un fond ivoire et
- * un filet discret pour rester lisible au-dessus des visuels. Le bouton
- * « Réserver » reste visible en permanence, y compris sur mobile.
+ * Le site est sombre de bout en bout : un seul habillage suffit, là où il
+ * fallait auparavant deux variantes — l'une pour le hero photo sur fond
+ * clair, l'autre pour le reste d'une page ivoire. Au repos il se fond dans
+ * la page ; au scroll il gagne un fond encre et un filet discret pour
+ * rester lisible au-dessus des visuels. Le bouton « Réserver » reste
+ * visible en permanence, y compris sur mobile.
  */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -34,10 +37,9 @@ export function Header() {
   // Toute navigation referme le menu : évite un panneau ouvert sur la page suivante.
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  // Au-dessus d'un hero sombre et avant tout défilement, l'en-tête bascule
-  // en variante claire — sans quoi le logo et la navigation seraient
-  // illisibles (texte espresso sur image espresso).
-  const overDarkHero = darkHeroRoutes.includes(pathname) && !scrolled && !menuOpen;
+  // Voile de lisibilité tant qu'on n'a pas défilé : certaines pages ouvrent
+  // sur une photo (le studio) qui passe alors juste sous l'en-tête.
+  const overHero = !scrolled && !menuOpen;
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -55,17 +57,15 @@ export function Header() {
           : 'border-b border-transparent bg-transparent',
       )}
     >
-      {/* Voile de lisibilité : uniquement au-dessus d'un hero sombre, et
-          seulement tant qu'on n'a pas défilé. */}
-      {overDarkHero && (
+      {overHero && (
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-shade/70 to-transparent"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-32 bg-gradient-to-b from-ink/70 to-transparent"
         />
       )}
 
       <div className="mx-auto flex w-full max-w-[88rem] items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
-        <Logo tone={overDarkHero ? 'light' : 'dark'} />
+        <Logo tone="light" />
 
         <nav aria-label="Navigation principale" className="hidden items-center gap-8 lg:flex">
           {mainNav.map((item) => {
@@ -77,24 +77,12 @@ export function Header() {
                 aria-current={active ? 'page' : undefined}
                 className={cn(
                   'relative font-body text-sm tracking-wide transition-colors duration-300',
-                  overDarkHero
-                    ? active
-                      ? 'text-ivory'
-                      : 'text-ivory/75 hover:text-ivory'
-                    : active
-                      ? 'text-terracotta'
-                      : 'text-ivory-70 hover:text-ivory',
+                  active ? 'text-champagne' : 'text-ivory-70 hover:text-ivory',
                 )}
               >
                 {item.label}
                 {active && (
-                  <span
-                    aria-hidden
-                    className={cn(
-                      'absolute -bottom-1.5 left-0 h-px w-full',
-                      overDarkHero ? 'bg-ink/60' : 'bg-terracotta/60',
-                    )}
-                  />
+                  <span aria-hidden className="absolute -bottom-1.5 left-0 h-px w-full bg-champagne/70" />
                 )}
               </Link>
             );
@@ -115,12 +103,7 @@ export function Header() {
             aria-expanded={menuOpen}
             aria-controls="menu-principal"
             aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            className={cn(
-              '-mr-2 flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden',
-              overDarkHero
-                ? 'text-ivory hover:bg-ink/10'
-                : 'text-ivory hover:bg-[rgba(48,42,37,0.05)]',
-            )}
+            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-full text-ivory transition-colors hover:bg-ivory/10 lg:hidden"
           >
             <span className="sr-only">Menu</span>
             <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.4">

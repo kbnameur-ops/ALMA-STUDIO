@@ -27,10 +27,3 @@ export const legalNav: NavItem[] = [
 ];
 
 export const bookingHref = '/reservation';
-
-/**
- * Pages dont le haut de page est une image sombre plein écran.
- * L'en-tête y passe en variante claire tant qu'on n'a pas scrollé, pour
- * rester lisible par-dessus le visuel.
- */
-export const darkHeroRoutes = ['/', '/studio'];
