@@ -1,5 +1,5 @@
 import { brand } from '@/config/brand';
-import { site, studioAddressLine } from '@/config/site';
+import { site } from '@/config/site';
 import { formatDateTime, formatDuration, formatPrice } from '@/lib/utils/format';
 import type { BookingDetails, GiftCard } from '@/types';
 import { renderEmail, renderPlainText, type EmailLayoutInput } from './layout';
@@ -37,12 +37,21 @@ function manageUrl(booking: BookingDetails): string {
 
 function locationLabel(booking: BookingDetails): string {
   if (booking.locationKind === 'studio') {
-    return `Au studio — ${studioAddressLine()}`;
+    // Jamais une adresse en dur ici : elle dépend du créneau et du
+    // praticien. La ligne « Lieu » reste courte, et le rappel complet
+    // (`site.studioLocationNote`) vit dans l'outro plutôt que dans une
+    // valeur de tableau, où une phrase entière serait déplacée.
+    return `Au studio, ${site.businessAddress.city}`;
   }
   const address = booking.address;
   return address
     ? `À domicile — ${address.line1}, ${address.postalCode} ${address.city}`
     : 'À domicile';
+}
+
+/** Rappel de l'adresse à ajouter en outro, uniquement pour une séance au studio. */
+function studioAddressOutro(booking: BookingDetails): string[] {
+  return booking.locationKind === 'studio' ? [site.studioLocationNote] : [];
 }
 
 function bookingDetails(booking: BookingDetails): Array<{ label: string; value: string }> {
@@ -80,6 +89,7 @@ export function bookingRequestEmail(booking: BookingDetails, holdHours: number):
     details: bookingDetails(booking),
     primaryButton: { label: 'Suivre ma demande', url: manageUrl(booking) },
     outro: [
+      ...studioAddressOutro(booking),
       'Aucun paiement n’est demandé en ligne : le règlement se fait sur place, le jour de la séance.',
       `Une question d’ici là : ${site.contactPhone} — également joignable sur WhatsApp.`,
       'Prestation de bien-être et de relaxation, sans visée thérapeutique.',
@@ -127,6 +137,7 @@ export function bookingConfirmationEmail(
     details: bookingDetails(booking),
     primaryButton: { label: 'Gérer ma réservation', url: manageUrl(booking) },
     outro: [
+      ...studioAddressOutro(booking),
       `Modification ou annulation sans frais jusqu’à ${cancellationHours} heures avant le rendez-vous.`,
       'Présentez-vous quelques minutes avant l’heure : le temps de poser vos affaires et de commencer sans précipitation.',
       'Prestation de bien-être et de relaxation, sans visée thérapeutique.',

@@ -102,18 +102,12 @@ export default function StudioPage() {
               Adresse &amp; accès
             </Heading>
             <address className="mt-6 not-italic font-body text-sm leading-relaxed text-ivory-70">
-              {site.businessAddress.venue}
-              <br />
-              {site.businessAddress.street}
-              <br />
-              {site.businessAddress.postalCode} {site.businessAddress.city}
-              <br />
-              <span className="text-ivory-55">{site.transit}</span>
+              {site.businessAddress.city}
             </address>
-            <p className="mt-6 font-body text-sm text-ivory-70">{site.openingHoursLabel}</p>
-            <p className="mt-2 font-body text-xs text-ivory-55">
-              Le code d’accès est communiqué dans l’email de confirmation.
+            <p className="mt-4 font-body text-sm leading-relaxed text-ivory-55">
+              {site.studioLocationNote} Le code d’accès suit la même voie.
             </p>
+            <p className="mt-6 font-body text-sm text-ivory-70">{site.openingHoursLabel}</p>
 
             <div className="mt-8 border-t border-ivory/10 pt-6">
               <h2 className="font-body text-[0.68rem] uppercase tracking-[0.2em] text-champagne">

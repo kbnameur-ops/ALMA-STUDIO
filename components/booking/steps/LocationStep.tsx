@@ -118,8 +118,8 @@ export function LocationStep({
             <span className="font-heading text-xl font-light">Au studio</span>
             <span className="mt-1 block font-body text-xs text-ivory-55">Option principale</span>
             <span className="mt-3 block font-body text-sm leading-relaxed text-ivory-70">
-              Un espace privé à {site.businessAddress.city}, préparé avant chaque arrivée. L’adresse
-              exacte est communiquée dans l’email de confirmation.
+              Un espace privé à {site.businessAddress.city}, préparé avant chaque arrivée.{' '}
+              {site.studioLocationNote}
             </span>
           </label>
 

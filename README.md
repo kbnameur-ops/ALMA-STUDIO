@@ -283,14 +283,23 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   d'exercice communiquée.
 - **Contact** — email, téléphone et WhatsApp renseignés (téléphone et
   WhatsApp sur la même ligne : `contactPhone` / `contactPhoneE164` /
-  `whatsapp.url`). Adresse complète, nom du lieu et accès en transports
-  compris ; `studioAddressLine()` la met en forme sur une ligne pour les
-  emails et les récapitulatifs.
+  `whatsapp.url`).
+- **Adresse du studio — volontairement absente.** Le lieu exact dépend du
+  créneau et de la disponibilité du praticien : il n'existe donc pas
+  d'adresse fixe à afficher, et `businessAddress` ne porte plus que la
+  ville (`city: 'Paris'`). Partout où une adresse serait attendue —
+  page Studio, tunnel de réservation, emails — `site.studioLocationNote`
+  rappelle qu'elle est communiquée directement par le studio. Le JSON-LD
+  `HealthAndBeautyBusiness` suit la même règle : `areaServed` porte la
+  zone couverte, sans `PostalAddress` complète ni coordonnées GPS. Le
+  siège social légal (mentions légales) est une notion distincte, gérée à
+  part sous `site.legal.address` — à ne jamais déduire du lieu des
+  séances.
 - **Réseaux sociaux** — aucun compte pour le moment : le bloc a été retiré
   du pied de page plutôt que laissé en placeholder. Le rétablir demandera
   de rouvrir un `social` dans `config/site.ts`.
-- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[HEBERGEUR]`,
-  `[MEDIATEUR_CONSOMMATION]`, etc.
+- **Légal** — `[RAISON_SOCIALE]`, `[SIRET]`, `[ADRESSE_SIEGE_SOCIAL]`,
+  `[HEBERGEUR]`, `[MEDIATEUR_CONSOMMATION]`, etc.
 - **Avis** — les trois avis livrés sont marqués `is_sample` et la page le dit
   explicitement. À dépublier depuis `/admin/avis` dès les premiers vrais avis.
 

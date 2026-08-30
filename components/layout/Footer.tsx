@@ -81,13 +81,10 @@ export function Footer() {
               )}
               <li className="pt-2 text-ivory/55">{site.openingHoursLabel}</li>
               <li className="text-ivory/55">
-                {site.businessAddress.venue}
+                {site.businessAddress.city}
                 <br />
-                {site.businessAddress.street}
-                <br />
-                {site.businessAddress.postalCode} {site.businessAddress.city}
+                Adresse communiquée à la confirmation
               </li>
-              <li className="text-ivory/55">{site.transit}</li>
             </ul>
           </div>
         </div>

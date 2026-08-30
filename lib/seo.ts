@@ -53,7 +53,15 @@ export function pageMetadata({
   };
 }
 
-/** Fiche établissement, pour la recherche locale. */
+/**
+ * Fiche établissement, pour la recherche locale.
+ *
+ * Pas d'adresse postale ni de coordonnées GPS : le lieu exact varie selon
+ * le créneau et le praticien, il n'existe donc pas de point fixe à donner
+ * à Google. `areaServed` porte seule la zone couverte — c'est le champ
+ * que Google recommande pour un professionnel qui reçoit sans pignon sur
+ * rue fixe, plutôt qu'une `PostalAddress` incomplète ou inventée.
+ */
 export function localBusinessJsonLd(): Record<string, unknown> {
   const { businessAddress } = site;
   return {
@@ -69,21 +77,10 @@ export function localBusinessJsonLd(): Record<string, unknown> {
     currenciesAccepted: site.currency,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: businessAddress.street,
-      postalCode: businessAddress.postalCode,
       addressLocality: businessAddress.city,
       addressCountry: businessAddress.country,
     },
-    areaServed: { '@type': 'City', name: 'Paris' },
-    ...(businessAddress.latitude !== null && businessAddress.longitude !== null
-      ? {
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: businessAddress.latitude,
-            longitude: businessAddress.longitude,
-          },
-        }
-      : {}),
+    areaServed: { '@type': 'City', name: businessAddress.city },
   };
 }
 

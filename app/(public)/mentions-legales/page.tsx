@@ -28,8 +28,7 @@ export default function LegalNoticePage() {
           TVA intracommunautaire : {site.legal.vatNumber}
         </p>
         <p>
-          Siège social : {site.businessAddress.street}, {site.businessAddress.postalCode}{' '}
-          {site.businessAddress.city}
+          Siège social : {site.legal.address}
           <br />
           Email : {site.contactEmail}
           <br />

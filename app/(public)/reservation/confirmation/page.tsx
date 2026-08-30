@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { site, studioAddressLine } from '@/config/site';
+import { site } from '@/config/site';
 import { Container } from '@/components/ui/Container';
 import { Heading } from '@/components/ui/Heading';
 import { LinkButton } from '@/components/ui/Button';
@@ -58,7 +58,7 @@ export default async function ConfirmationPage({
 
   const locationLabel =
     booking.locationKind === 'studio'
-      ? `Au studio — ${studioAddressLine()}`
+      ? `Au studio, ${site.businessAddress.city}`
       : booking.address
         ? `À domicile — ${booking.address.line1}, ${booking.address.postalCode} ${booking.address.city}`
         : 'À domicile';
@@ -147,6 +147,12 @@ export default async function ConfirmationPage({
             <dd className="font-body text-sm tracking-[0.12em]">{booking.reference}</dd>
           </div>
         </dl>
+
+        {!cancelled && booking.locationKind === 'studio' && (
+          <p className="mt-6 font-body text-xs leading-relaxed text-ivory-55">
+            {site.studioLocationNote}
+          </p>
+        )}
 
         {!cancelled && (
           <div className="mt-10 flex flex-wrap gap-3">

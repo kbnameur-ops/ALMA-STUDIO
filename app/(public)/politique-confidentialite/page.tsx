@@ -17,8 +17,7 @@ export default function PrivacyPage() {
       <section>
         <h2>Responsable de traitement</h2>
         <p>
-          {site.legal.companyName}, {site.businessAddress.street}, {site.businessAddress.postalCode}{' '}
-          {site.businessAddress.city}. Contact : {site.contactEmail}.
+          {site.legal.companyName}, {site.legal.address}. Contact : {site.contactEmail}.
         </p>
       </section>
 

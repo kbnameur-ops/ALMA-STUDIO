@@ -79,23 +79,36 @@ export const site = {
     enabled: true,
     url: 'https://wa.me/33660402864',
   },
+  /**
+   * Le studio n'a pas d'adresse postale fixe affichée publiquement : le
+   * lieu exact dépend du créneau et de la disponibilité du praticien, et
+   * n'est donc jamais généré automatiquement. Il est communiqué
+   * directement par le studio au client, une fois la réservation traitée.
+   *
+   * Seule la ville reste publique — c'est un repère de marque (« à
+   * Paris »), pas une adresse.
+   */
   businessAddress: {
-    street: '27 rue du Buisson Saint-Louis',
-    /** Nom du lieu, affiché au-dessus de la voie. */
-    venue: 'China Town',
-    postalCode: '75010',
     city: 'Paris',
     country: 'FR',
-    /** Coordonnées du studio — à renseigner pour le JSON-LD LocalBusiness. */
-    latitude: null as number | null,
-    longitude: null as number | null,
   },
 
-  /** Accès en transports, affiché sous l'adresse. */
-  transit: 'Métro 2 et 11 · station Belleville',
+  /**
+   * Rappel affiché partout où l'on évoquerait autrement une adresse :
+   * fiche Studio, tunnel de réservation, emails. Un seul texte, pour ne
+   * pas laisser deux formulations diverger.
+   */
+  studioLocationNote:
+    'L’adresse exacte est communiquée directement par le studio, selon votre créneau et la disponibilité du praticien.',
 
   legal: {
     companyName: '[RAISON_SOCIALE]',
+    /**
+     * Adresse du siège social — une notion légale distincte du lieu où se
+     * déroulent les séances, qui n'est lui-même plus fixe. Ne jamais la
+     * confondre avec `businessAddress` ni la déduire d'elle.
+     */
+    address: '[ADRESSE_SIEGE_SOCIAL]',
     legalForm: '[FORME_JURIDIQUE]',
     siret: '[SIRET]',
     vatNumber: '[TVA_INTRACOMMUNAUTAIRE]',
@@ -160,13 +173,3 @@ export const site = {
 } as const;
 
 export type Site = typeof site;
-
-/**
- * L'adresse du studio sur une ligne, nom du lieu compris — c'est ainsi
- * qu'elle doit apparaître dans un email de confirmation ou sur un écran
- * de récapitulatif, là où le client la lit pour se rendre au rendez-vous.
- */
-export function studioAddressLine(): string {
-  const { venue, street, postalCode, city } = site.businessAddress;
-  return `${venue}, ${street}, ${postalCode} ${city}`;
-}
