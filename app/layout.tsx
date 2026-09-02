@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: `%s — ${brand.name}`,
   },
   description:
-    'Studio privé de massage et de rituels de bien-être à Paris. Séances sur rendez-vous, dans un espace intimiste et méditerranéen.',
+    'Studio privé de massage et de rituels de bien-être à Paris, entre Andalousie et Atlantique. Séances sur rendez-vous, dans un espace intimiste.',
   applicationName: brand.name,
   authors: [{ name: brand.name }],
   icons: {

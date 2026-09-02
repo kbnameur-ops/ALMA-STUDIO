@@ -13,9 +13,9 @@ import { getPublishedReviews } from '@/lib/repositories/reviews';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'ALMA STUDIO — Massage & rituels méditerranéens à Paris',
+  title: 'ALMA STUDIO — Massage entre Andalousie et Atlantique à Paris',
   description:
-    'Studio privé de massage à Paris : séances sur rendez-vous, dans un espace intimiste et méditerranéen. Réservation en ligne, du massage relaxant au rituel de 120 minutes.',
+    'Studio privé de massage à Paris, entre chaleur andalouse et fraîcheur atlantique : séances sur rendez-vous dans un espace intimiste. Réservation en ligne, du Sevilla Calor au rituel de 120 minutes.',
   path: '/',
 });
 

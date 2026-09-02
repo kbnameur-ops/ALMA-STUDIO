@@ -9,7 +9,7 @@ import {
 import { seedServices } from '@/config/seed';
 
 const signature = seedServices[0]!;
-const rituel = seedServices.find((service) => service.slug === 'rituel-mediterraneen')!;
+const rituel = seedServices.find((service) => service.slug === 'rituel-andalou-atlantique')!;
 
 function withService(): BookingState {
   return bookingReducer(initialBookingState, { type: 'selectService', service: signature });

@@ -51,7 +51,11 @@ export default function OpengraphImage() {
               fontSize: 22,
               marginTop: 28,
               letterSpacing: 4,
-              color: 'rgba(48,42,37,0.65)',
+              // Ivoire atténué : l'ancienne valeur (rgba(48,42,37,…), l'encre
+              // pré-refonte) rendait ce libellé quasi invisible sur le fond
+              // sombre actuel — un reliquat du passage au thème nocturne
+              // repéré en resynchronisant ce fichier aujourd'hui.
+              color: 'rgba(242,238,231,0.55)',
               display: 'flex',
             }}
           >

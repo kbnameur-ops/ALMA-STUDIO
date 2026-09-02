@@ -16,9 +16,9 @@ export const brand = {
   name: 'ALMA STUDIO',
   nameParts: { primary: 'ALMA', secondary: 'STUDIO' },
   /** Signature de marque, sous le logo et dans les emails. */
-  signature: 'Massage & Rituels Méditerranéens',
+  signature: 'Massage & Rituels d’Andalousie et d’Atlantique',
   /** Baseline principale, utilisée en hero et en metadata. */
-  tagline: 'Une parenthèse méditerranéenne à Paris.',
+  tagline: 'Une parenthèse andalouse et atlantique à Paris.',
   /** Chemins des variantes de logo — remplaçables par un SVG définitif. */
   logo: {
     primary: '/logo/alma-logo.svg',

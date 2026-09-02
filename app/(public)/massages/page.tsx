@@ -11,7 +11,7 @@ import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 export const metadata: Metadata = pageMetadata({
   title: 'Nos massages',
   description:
-    'Six expériences de bien-être au studio : massage signature, deep relax, dos & nuque, récupération sportive et rituel de 120 minutes. Durées, tarifs et réservation en ligne.',
+    'Sept expériences de bien-être au studio, entre Andalousie et Atlantique : Sevilla Calor, Côte Atlantique, Shirochampi Ibérique, deep relax, récupération sportive et rituel de 120 minutes. Durées, tarifs et réservation en ligne.',
   path: '/massages',
 });
 

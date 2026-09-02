@@ -254,12 +254,16 @@ ivoire : l'ivoire n'y donnait que 2,84:1.
 Les informations non communiquées sont des placeholders explicites, jamais
 inventées. Rechercher `[` dans `config/site.ts` et les composants :
 
-- **Photos** — livrées : les six visuels de prestation
+- **Photos** — livrées pour 5 des 7 prestations
   (`public/images/services/<slug>.jpg`, référencés par `image_url`), le hero et
   la salle (`public/images/studio/`), le portrait du praticien
   (`public/images/equipe/`), les quatre gestes (`public/images/gestes/` :
-  section Expérience de l'accueil et détail de la page Studio). Il ne reste plus
-  d'emplacement photo vide. En l'absence d'un visuel, un placeholder sable
+  section Expérience de l'accueil et détail de la page Studio). **Deux
+  emplacements restent vides** — `imageUrl: null` dans `config/seed.ts` et
+  `image_url` à `null` dans `supabase/seed.sql` — faute de visuel : Côte
+  Atlantique (`[PHOTO_COTE_ATLANTIQUE]`) et Shirochampi Ibérique
+  (`[PHOTO_SHIROCHAMPI]`), les deux prestations créées lors du repositionnement
+  Andalousie/Atlantique. En l'absence d'un visuel, un placeholder sable
   s'affiche : soigné, jamais une image cassée. Quand le cadre et la photo n'ont pas le même format, piloter le
   recadrage avec `objectPosition` plutôt que de laisser le centre géométrique
   couper un visage.

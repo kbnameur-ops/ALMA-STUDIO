@@ -4,7 +4,7 @@ import { Container } from '@/components/ui/Container';
 import { Reveal, RevealLines } from '@/components/ui/Reveal';
 import { GiftCardPreview } from './GiftCardPreview';
 
-const options = ['60 min', '90 min', 'Rituel Méditerranéen', 'Montant libre'];
+const options = ['60 min', '90 min', 'Rituel Andalou-Atlantique', 'Montant libre'];
 
 /**
  * Carte cadeau — bandeau de fin de page.
@@ -70,7 +70,7 @@ export function GiftCardSection() {
           <Reveal delay={0.1} className="lg:pl-8">
             <GiftCardPreview
               amountCents={null}
-              serviceLabel="Rituel Méditerranéen"
+              serviceLabel="Rituel Andalou-Atlantique"
               recipientName="Inès"
               purchaserName="Thomas"
               message="Prends une heure pour toi."

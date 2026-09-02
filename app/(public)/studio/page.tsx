@@ -56,7 +56,7 @@ export default function StudioPage() {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1fr)] lg:gap-20">
           <div>
             <Lead className="text-ivory-70">
-              Lumière douce, matières naturelles, ambiance méditerranéenne et atmosphère
+              Lumière douce, matières naturelles, entre chaleur andalouse et fraîcheur atlantique, atmosphère
               confidentielle. Le studio a été conçu comme une parenthèse : on y entre pour ralentir,
               on en ressort sans se presser.
             </Lead>
