@@ -41,6 +41,7 @@ export function StudioSection() {
           <Eyebrow className="text-champagne">Le lieu</Eyebrow>
           <RevealLines
             as="h2"
+        id="studio-titre"
             className="mt-5 font-heading text-[2.75rem] leading-[1] text-ivory sm:text-[4rem]"
             lines={[
               'Un studio privé',

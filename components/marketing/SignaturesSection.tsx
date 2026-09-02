@@ -45,6 +45,7 @@ export function SignaturesSection({ services }: { services: Service[] }) {
           <Eyebrow>Le studio</Eyebrow>
           <RevealLines
             as="h2"
+        id="signatures-titre"
             className="mt-5 font-heading text-[2.75rem] leading-[1] sm:text-[4rem]"
             lines={['Nos signatures']}
           />

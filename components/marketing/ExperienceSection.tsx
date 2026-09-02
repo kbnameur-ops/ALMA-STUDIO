@@ -46,6 +46,7 @@ export function ExperienceSection() {
         <Eyebrow>L’expérience</Eyebrow>
         <RevealLines
           as="h2"
+        id="experience-titre"
           className="mt-5 font-heading text-[2.5rem] font-light leading-[1.04] sm:text-[3.5rem]"
           lines={[
             'Plus qu’un massage.',

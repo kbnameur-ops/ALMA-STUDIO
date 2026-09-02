@@ -47,6 +47,14 @@ interface RevealLinesProps {
   lineClassName?: string;
   delay?: number;
   as?: 'h1' | 'h2' | 'p';
+  /**
+   * À poser quand une section se labellise via `aria-labelledby` sur un
+   * ancêtre plutôt que directement `aria-label` : plusieurs sections du
+   * site pointaient vers un id que ce composant ne posait nulle part
+   * (`aria-labelledby="signatures-titre"` sans aucun `id="signatures-titre"`
+   * dans le DOM), rendant la référence muette pour les lecteurs d'écran.
+   */
+  id?: string;
 }
 
 /**
@@ -62,13 +70,14 @@ export function RevealLines({
   lineClassName,
   delay = 0,
   as = 'h2',
+  id,
 }: RevealLinesProps) {
   const reduceMotion = useReducedMotion();
   const Tag = as;
 
   if (reduceMotion) {
     return (
-      <Tag className={className}>
+      <Tag id={id} className={className}>
         {lines.map((line, index) => (
           <span key={index} className={cn('block', lineClassName)}>
             {line}
@@ -79,7 +88,7 @@ export function RevealLines({
   }
 
   return (
-    <Tag className={className}>
+    <Tag id={id} className={className}>
       {lines.map((line, index) => (
         /**
          * C'est le masque qui observe l'entrée dans le champ, pas la ligne.

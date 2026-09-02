@@ -30,6 +30,7 @@ export function PractitionerSection() {
           <Eyebrow>Le praticien</Eyebrow>
           <RevealLines
             as="h2"
+        id="praticien-titre"
             className="mt-5 font-heading text-[2.5rem] font-light leading-[1.04] sm:text-[3.25rem]"
             lines={[
               'Entre',

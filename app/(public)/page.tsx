@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Hero } from '@/components/marketing/Hero';
 import { ManifestoSection } from '@/components/marketing/ManifestoSection';
+import { OriginsSection } from '@/components/marketing/OriginsSection';
 import { ExperienceSection } from '@/components/marketing/ExperienceSection';
 import { SignaturesSection } from '@/components/marketing/SignaturesSection';
 import { NeedsSection } from '@/components/marketing/NeedsSection';
@@ -31,9 +32,12 @@ export default async function HomePage() {
   return (
     <>
       <Hero />
-      {/* Ordre voulu : après le hero, une plaque de texte seul. Le
-          catalogue arrive ensuite, quand l'œil est retombé. */}
+      {/* Ordre voulu : après le hero, une plaque de texte seul, puis le
+          double ancrage qui donne son sens au catalogue — sans lui,
+          « Sevilla Calor » et « Côte Atlantique » n'ont aucun fil commun
+          pour le visiteur qui les découvre dans l'index qui suit. */}
       <ManifestoSection />
+      <OriginsSection />
       <SignaturesSection services={signatures} />
       <ExperienceSection />
       <NeedsSection />

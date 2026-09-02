@@ -55,6 +55,16 @@
   /* Lumière chaude des halos et dégradés — décoratif uniquement. */
   --color-sun: #d9a066;
 
+  /**
+   * Double ancrage géographique : Andalousie (chaleur) / Atlantique
+   * (fraîcheur). Deux accents secondaires, réservés à la section qui les
+   * pose explicitement — jamais au chrome du site (en-tête, boutons,
+   * pied de page restent champagne/terracotta). Luminance calée sur
+   * `--color-champagne` pour rester lisibles en texte sur l'encre.
+   */
+  --color-ocre: #c9974a;
+  --color-brume: #93aab8;
+
   /* Les variables `--font-*` sont fournies par next/font (app/layout.tsx) ;
      les polices système suivantes prennent le relais en cas d'échec. */
   --font-heading: var(--font-display), 'Iowan Old Style', Georgia, serif;

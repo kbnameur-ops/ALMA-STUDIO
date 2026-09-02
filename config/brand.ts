@@ -46,6 +46,9 @@ export const brand = {
     champagne: '#C8A882',
     terracotta: '#C87A5C',
     sage: '#9AAB88',
+    /** Double ancrage géographique — voir `styles/globals.css` pour l'usage. */
+    ocre: '#C9974A',
+    brume: '#93AAB8',
   },
   fonts: {
     heading: 'Instrument Serif',

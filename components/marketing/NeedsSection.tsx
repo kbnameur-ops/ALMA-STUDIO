@@ -25,6 +25,7 @@ export function NeedsSection() {
           <Eyebrow className="text-champagne">Pour qui</Eyebrow>
           <RevealLines
             as="h2"
+        id="besoins-titre"
             className="mt-5 font-heading text-[2.75rem] leading-[1] text-ivory sm:text-[4rem]"
             lines={[
               'Pour ralentir.',
