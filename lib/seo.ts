@@ -26,7 +26,7 @@ export function pageMetadata({
 }: PageMetaInput): Metadata {
   const url = new URL(path, site.url).toString();
   // L'accueil porte déjà le nom de la marque : `absolute` court-circuite le
-  // gabarit `%s — ALMA STUDIO` du layout, qui le répéterait sinon.
+  // gabarit `%s — ${brand.name}` du layout, qui le répéterait sinon.
   const isHome = path === '/';
   const fullTitle = isHome ? title : `${title} — ${brand.name}`;
 

@@ -1,4 +1,4 @@
--- Données de lancement ALMA STUDIO.
+-- Données de lancement ALHAMBRA STUDIO.
 -- Les tarifs sont des valeurs de départ, modifiables depuis l'administration.
 -- Les avis sont des exemples de mise en page (is_sample = true).
 

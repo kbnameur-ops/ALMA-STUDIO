@@ -9,7 +9,7 @@ import { brand } from '@/config/brand';
 export const metadata: Metadata = pageMetadata({
   title: 'À propos',
   description:
-    'ALMA STUDIO, studio privé de massage à Paris : une approche du bien-être fondée sur l’écoute, la personnalisation et le temps long.',
+    `${brand.name}, studio privé de massage à Paris : une approche du bien-être fondée sur l’écoute, la personnalisation et le temps long.`,
   path: '/a-propos',
 });
 

@@ -12,7 +12,7 @@ import type { BookingDetails, GiftCard } from '@/types';
 
 const booking: BookingDetails = {
   id: 'booking-1',
-  reference: 'ALMA-7F3K2Q',
+  reference: 'ALHAMBRA-7F3K2Q',
   customerId: 'cust-1',
   serviceId: 'svc-1',
   serviceDurationId: 'dur-1',
@@ -45,7 +45,7 @@ const booking: BookingDetails = {
 
 const giftCard: GiftCard = {
   id: 'gc-1',
-  code: 'ALMA-4KQ7-J92X',
+  code: 'ALHAMBRA-4KQ7-J92X',
   initialAmountCents: 12500,
   balanceCents: 12500,
   status: 'active',
@@ -96,7 +96,7 @@ describe('modèles de réservation', () => {
   it('confirme la réservation avec la référence et le délai d’annulation', () => {
     const email = bookingConfirmationEmail(booking, 24);
     expect(email.subject).toContain('confirmée');
-    expect(email.html).toContain('ALMA-7F3K2Q');
+    expect(email.html).toContain('ALHAMBRA-7F3K2Q');
     expect(email.text).toContain('24 heures');
     // Heure locale du studio (14:00 CEST pour 12:00 UTC en avril).
     expect(email.text).toContain('14:00');
@@ -104,7 +104,7 @@ describe('modèles de réservation', () => {
 
   it('inclut le lien de gestion porteur du jeton', () => {
     const email = bookingConfirmationEmail(booking, 24);
-    expect(email.text).toContain('ref=ALMA-7F3K2Q');
+    expect(email.text).toContain('ref=ALHAMBRA-7F3K2Q');
     expect(email.text).toContain('token=token-secret');
   });
 
@@ -125,21 +125,21 @@ describe('modèles de réservation', () => {
   it('annonce l’annulation sans promettre de remboursement automatique erroné', () => {
     const email = bookingCancelledEmail(booking);
     expect(email.subject).toContain('annulée');
-    expect(email.text).toContain('ALMA-7F3K2Q');
+    expect(email.text).toContain('ALHAMBRA-7F3K2Q');
   });
 });
 
 describe('modèle carte cadeau', () => {
   it('adresse le code et le message au bénéficiaire', () => {
     const email = giftCardEmail(giftCard, 'recipient');
-    expect(email.text).toContain('ALMA-4KQ7-J92X');
+    expect(email.text).toContain('ALHAMBRA-4KQ7-J92X');
     expect(email.text).toContain('Pour ton anniversaire');
     expect(email.subject).toContain('Thomas');
   });
 
   it('envoie une copie à l’acheteur', () => {
     const email = giftCardEmail(giftCard, 'purchaser');
-    expect(email.text).toContain('ALMA-4KQ7-J92X');
+    expect(email.text).toContain('ALHAMBRA-4KQ7-J92X');
     expect(email.subject).toContain('carte cadeau');
   });
 });

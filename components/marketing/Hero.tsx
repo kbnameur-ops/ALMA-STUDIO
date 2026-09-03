@@ -137,7 +137,7 @@ export function Hero() {
               >
                 <Image
                   src="/images/studio/hero.jpg"
-                  alt="Séance de massage au studio ALMA : la table installée devant la baie, lampe allumée, bougie et huiles à portée de main."
+                  alt="Séance de massage au studio Alhambra : la table installée devant la baie, lampe allumée, bougie et huiles à portée de main."
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 44vw"

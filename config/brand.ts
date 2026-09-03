@@ -1,10 +1,9 @@
 /**
- * ALMA STUDIO — identité de marque.
+ * ALHAMBRA STUDIO — identité de marque.
  *
  * Point d'entrée UNIQUE pour le nom, la baseline, le logo et la palette.
- * Le nom « ALMA STUDIO » est provisoire : changer les valeurs ci-dessous
- * suffit à renommer la marque sur l'ensemble du site (header, footer,
- * emails, metadata SEO, JSON-LD, cartes cadeaux).
+ * Changer les valeurs ci-dessous suffit à renommer la marque sur l'ensemble
+ * du site (header, footer, emails, metadata SEO, JSON-LD, cartes cadeaux).
  *
  * Les couleurs sont dupliquées en CSS dans `styles/globals.css` (@theme).
  * Ce fichier reste la source de vérité pour tout usage hors-CSS :
@@ -13,19 +12,22 @@
 
 export const brand = {
   /** Nom affiché. `nameParts` permet le rendu bi-ligne du logo typographique. */
-  name: 'ALMA STUDIO',
-  nameParts: { primary: 'ALMA', secondary: 'STUDIO' },
+  name: 'Alhambra Studio',
+  nameParts: { primary: 'ALHAMBRA', secondary: 'STUDIO' },
   /** Signature de marque, sous le logo et dans les emails. */
   signature: 'Massage & Rituels d’Andalousie',
   /** Baseline principale, utilisée en hero et en metadata. */
   tagline: 'Une parenthèse andalouse à Paris.',
-  /** Chemins des variantes de logo — remplaçables par un SVG définitif. */
+  /**
+   * Le monogramme fourni par le studio : une arche gravée (mandala, mains,
+   * silhouette) sur fond encre — pas un tracé vectoriel simple, un visuel
+   * détaillé au format PNG, fond découpé. Illisible en dessous d'une
+   * quarantaine de pixels ; le logotype (`nameParts`) reste du texte vivant
+   * à côté, jamais intégré à l'image.
+   */
   logo: {
-    primary: '/logo/alma-logo.svg',
-    dark: '/logo/alma-logo-dark.svg',
-    light: '/logo/alma-logo-light.svg',
-    symbol: '/logo/alma-symbol.svg',
-    favicon: '/logo/favicon.svg',
+    mark: '/logo/alhambra-mark.png',
+    favicon: '/logo/alhambra-favicon.png',
   },
   /**
    * Palette nocturne, andalouse.

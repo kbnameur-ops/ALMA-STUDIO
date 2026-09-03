@@ -19,8 +19,8 @@ describe('randomCode', () => {
 });
 
 describe('giftCardCode', () => {
-  it('suit le format ALMA-XXXX-XXXX', () => {
-    expect(giftCardCode()).toMatch(/^ALMA-[A-Z2-9]{4}-[A-Z2-9]{4}$/);
+  it('suit le format ALHAMBRA-XXXX-XXXX', () => {
+    expect(giftCardCode()).toMatch(/^ALHAMBRA-[A-Z2-9]{4}-[A-Z2-9]{4}$/);
   });
 });
 

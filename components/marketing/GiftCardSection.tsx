@@ -46,7 +46,7 @@ export function GiftCardSection() {
             />
             <Reveal delay={0.15}>
               <p className="mt-8 max-w-md font-body text-[0.95rem] leading-relaxed text-ivory-70">
-                Une carte cadeau ALMA, valable un an, envoyée par email au bénéficiaire avec votre
+                Une carte cadeau Alhambra, valable un an, envoyée par email au bénéficiaire avec votre
                 message personnel.
               </p>
 

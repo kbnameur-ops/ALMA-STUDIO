@@ -19,7 +19,7 @@ export function PractitionerSection() {
         <Arch className="relative aspect-3/4 w-full">
           <PlaceholderImage
             src="/images/equipe/praticien-3.jpg"
-            alt={`Portrait de ${site.practitioner.name}, praticien du studio ALMA, en tenue traditionnelle sur un flanc de montagne.`}
+            alt={`Portrait de ${site.practitioner.name}, praticien du studio Alhambra, en tenue traditionnelle sur un flanc de montagne.`}
             sizes="(max-width: 1024px) 100vw, 38vw"
             objectPosition="center 14%"
             className="h-full w-full"

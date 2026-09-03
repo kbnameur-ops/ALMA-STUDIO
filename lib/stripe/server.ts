@@ -1,6 +1,7 @@
 import 'server-only';
 
 import Stripe from 'stripe';
+import { brand } from '@/config/brand';
 
 /**
  * Client Stripe côté serveur.
@@ -23,7 +24,7 @@ export function getStripe(): Stripe | null {
     // Version d'API épinglée : une mise à jour Stripe ne peut pas modifier
     // le comportement du paiement sans changement de code explicite.
     apiVersion: '2026-07-29.dahlia',
-    appInfo: { name: 'ALMA STUDIO', version: '1.0.0' },
+    appInfo: { name: brand.name, version: '1.0.0' },
     typescript: true,
   });
   return cached;

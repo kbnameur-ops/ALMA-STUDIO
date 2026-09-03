@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   applicationName: brand.name,
   authors: [{ name: brand.name }],
   icons: {
-    icon: [{ url: '/logo/favicon.svg', type: 'image/svg+xml' }],
-    apple: [{ url: '/logo/favicon.svg' }],
+    icon: [{ url: brand.logo.favicon, type: 'image/png' }],
+    apple: [{ url: brand.logo.favicon }],
   },
   formatDetection: { telephone: false },
   openGraph: {

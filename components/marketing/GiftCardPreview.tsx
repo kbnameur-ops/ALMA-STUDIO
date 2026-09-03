@@ -1,5 +1,5 @@
+import Image from 'next/image';
 import { brand } from '@/config/brand';
-import { ArchMark } from '@/components/brand/ArchMark';
 import { formatPrice } from '@/lib/utils/format';
 
 interface GiftCardPreviewProps {
@@ -24,16 +24,16 @@ export function GiftCardPreview({
 }: GiftCardPreviewProps) {
   return (
     <figure className="alma-arch-flat overflow-hidden bg-ink-deep p-8 pt-12 text-ivory shadow-lifted sm:p-10 sm:pt-14">
-      <div className="flex items-start justify-between gap-6">
-        <div>
-          <p className="font-heading text-xl font-light tracking-[0.24em] text-ivory">
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0">
+          <p className="font-heading text-lg font-light tracking-[0.12em] text-ivory sm:text-xl">
             {brand.nameParts.primary}
           </p>
           <p className="mt-1 font-body text-[0.55rem] tracking-[0.5em] text-champagne">
             {brand.nameParts.secondary}
           </p>
         </div>
-        <ArchMark size={34} tone="light" />
+        <Image src={brand.logo.mark} alt="" width={44} height={37} className="h-9 w-auto shrink-0" />
       </div>
 
       <p className="mt-10 font-body text-[0.65rem] uppercase tracking-[0.24em] text-champagne">

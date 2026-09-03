@@ -33,7 +33,7 @@ export default async function GiftCardPage() {
             Offrez une parenthèse.
           </Heading>
           <Lead className="mt-6 text-ivory-70">
-            Une carte cadeau ALMA, valable douze mois, utilisable sur toutes les prestations du
+            Une carte cadeau Alhambra, valable douze mois, utilisable sur toutes les prestations du
             studio. Envoyée par email au bénéficiaire, avec votre message.
           </Lead>
 

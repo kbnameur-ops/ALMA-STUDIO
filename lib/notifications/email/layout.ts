@@ -5,7 +5,7 @@ import { site } from '@/config/site';
  * Gabarit HTML commun aux emails.
  *
  * Écrit en tableaux et styles en ligne : c'est la seule mise en forme que
- * les clients email traitent de façon fiable. La charte ALMA est reprise
+ * les clients email traitent de façon fiable. La charte Alhambra est reprise
  * depuis `config/brand.ts`, donc un changement de palette se propage aux
  * emails sans retouche manuelle.
  */

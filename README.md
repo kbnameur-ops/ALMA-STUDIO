@@ -1,11 +1,12 @@
-# ALMA STUDIO
+# ALHAMBRA STUDIO
 
 Site de réservation d'un studio privé de massage à Paris.
 
-> **Le nom « ALMA STUDIO » est provisoire.** Nom, baseline, logo, palette et
-> typographies vivent dans `config/brand.ts` ; les réglages fonctionnels dans
-> `config/site.ts`. Les modifier suffit à renommer et rehabiller le site,
-> emails et images de partage compris.
+> **Nom, baseline, logo, palette et typographies** vivent dans
+> `config/brand.ts` ; les réglages fonctionnels dans `config/site.ts`. Les
+> modifier suffit à renommer et rehabiller le site, emails et images de
+> partage compris — le nom a déjà changé une fois (ALMA STUDIO → Alhambra
+> Studio), c'est le chemin que ça emprunte.
 
 ---
 
@@ -296,6 +297,16 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   l'optimiseur d'images met en cache sur la clé de l'URL, et l'ancienne version
   continue d'être servie (localement comme sur le CDN). Publier sous un nom
   versionné (`espagnol-evasion-3.jpg`) et mettre à jour `image_url`.
+- **Logo** — le monogramme fourni par le studio (`public/logo/alhambra-mark.png`,
+  référencé par `brand.logo.mark`) est une image détaillée (mandala, mains,
+  silhouette gravés), pas un tracé vectoriel recolorable comme l'ancien
+  monogramme abstrait (`components/brand/ArchMark.tsx`, conservé pour les
+  usages purement décoratifs — hero, section « Un même héritage » — où une
+  forme simple et recolorable reste préférable). Fond découpé par seuillage
+  de luminosité depuis l'export fourni (fond blanc), pas de version
+  vectorielle source. Le logotype (« ALHAMBRA » / « STUDIO ») reste du texte
+  vivant à côté de l'image, jamais intégré dedans — le texte gravé dans
+  l'image fournie est en encre foncée, illisible sur le fond sombre du site.
 - **Praticien** — nom et formation renseignés dans `config/site.ts`
   (`site.practitioner`). La formation est transcrite telle que communiquée
   par le studio : deux écoles, leurs disciplines, rien d'autre. La

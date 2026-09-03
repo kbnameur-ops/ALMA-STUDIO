@@ -1,7 +1,7 @@
 import type { Transition, Variants } from 'framer-motion';
 
 /**
- * Vocabulaire de mouvement ALMA.
+ * Vocabulaire de mouvement Alhambra.
  *
  * Une seule courbe pour tout le site — un départ franc puis une longue
  * décélération, la sensation d'un geste qui se pose plutôt que d'un
