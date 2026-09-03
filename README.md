@@ -226,18 +226,25 @@ de cobalt du zellige.
 
 Trois profondeurs seulement (`ink`, `ink-raised`, `ink-deep`), un accent
 unique (`champagne`, la dorure), un accent d'action (`terracotta` — en
-réalité une aubergine, le nom du jeton CSS n'a pas suivi le repositionnement
-pour ne pas casser les ~40 fichiers qui l'utilisent). Les écarts entre les
-trois fonds sont volontairement infimes : sur fond sombre, deux points de
-clarté suffisent à séparer deux plans, un contraste franc ferait des bandes.
+réalité un or plus dense que le champagne, pour que les boutons se
+distinguent des libellés ; le nom du jeton CSS a gardé son historique — une
+première itération l'avait fait passer par une aubergine avant que ce
+rose ne soit écarté au profit de l'or — pour ne pas casser les ~40 fichiers
+qui l'utilisent). Les écarts entre les trois fonds sont volontairement
+infimes : sur fond sombre, deux points de clarté suffisent à séparer deux
+plans, un contraste franc ferait des bandes.
 
-**Le motif.** Une étoile à huit branches (khatam), tissée en toile de fond
-sur tout le site via `.alma-zellige` (`styles/globals.css`, appliquée sur
-`<body>` à côté de `.alma-grain`) — le même geste que le grain, un seul
-calque de composition fixe plutôt qu'un motif répété section par section.
+**Le motif.** Une mosaïque géométrique inspirée du zellige et des tomettes
+de l'Alhambra, tissée en toile de fond sur tout le site via `.alma-zellige`
+(`styles/globals.css`, appliquée sur `<body>` à côté de `.alma-grain`) —
+le même geste que le grain, un seul calque de composition fixe plutôt qu'un
+motif répété section par section. Un pavage continu d'octogones (des
+carrés aux coins chanfreinés) dont les diagonales internes dessinent
+l'étoile à huit branches classique du motif : contrairement à une étoile
+isolée, essayée d'abord, le pavage ne laisse aucun vide entre les formes.
 Le `mix-blend-mode: overlay` du grain s'est révélé inadapté ici : sa formule
 assombrit tout blend sur un fond aussi sombre que l'encre, le motif restait
-invisible même à forte opacité. Une opacité directe (`0.07`), sans mode de
+invisible même à forte opacité. Une opacité directe (`0.09`), sans mode de
 fusion, donne un résultat prévisible et lisible quel que soit le fond.
 
 **Instrument Serif** en titrage, **Instrument Sans** en labeur. Cormorant,
@@ -256,8 +263,8 @@ peignant chaque couleur calculée sur son fond réel, alpha comprise — lire
 la valeur CSS à la main donne des résultats faux dès qu'une couleur est
 exprimée en `oklab`. Le jeton de texte discret est à 0,55 d'opacité et non
 0,44 pour cette seule raison : à 0,44 il tombait à 3,9:1, sous le seuil AA
-du petit texte. Les boutons aubergine portent un texte encre, pas
-ivoire : l'ivoire n'y donnait que 3,4:1.
+du petit texte. Les boutons dorés portent un texte encre, pas
+ivoire : l'ivoire n'y donnait que 2,1:1.
 
 ---
 

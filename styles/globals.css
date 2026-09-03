@@ -37,12 +37,13 @@
   --color-champagne-dim: rgba(200, 168, 130, 0.5);
 
   /**
-   * Accent des appels à l'action : une aubergine, éclaircie pour tenir sur
-   * l'encre, comme la terre cuite avant elle. Contraste mesuré, pas
-   * estimé : le texte encre sur ce fond donne 5,5:1.
+   * Accent des appels à l'action : un or plus dense que le champagne, pour
+   * que les boutons se distinguent des libellés sans changer de famille de
+   * couleur. Contraste mesuré, pas estimé : le texte encre sur ce fond
+   * donne 7,9:1.
    */
-  --color-terracotta: #be7398;
-  --color-terracotta-dark: #9c5679;
+  --color-terracotta: #c9a227;
+  --color-terracotta-dark: #a6821c;
 
   /** La rare plaque claire, pour rompre la nuit sur une page entière. */
   --color-bone: #efe9e1;
@@ -237,19 +238,25 @@
   }
 
   /**
-   * Motif géométrique arabo-andalou : une étoile à huit branches (khatam),
-   * répétée en toile de fond sur tout le site — comme le zellige d'un
-   * riad. Superposée en `fixed` sur la même grammaire que `.alma-grain`
-   * (un seul calque de composition, jamais recalculé par section) : un
-   * pseudo-élément différent (`::before` contre `::after`) permet aux deux
-   * de coexister sur le même élément.
+   * Mosaïque géométrique arabo-andalouse, inspirée du zellige et des
+   * tomettes de l'Alhambra : un pavage par octogones (chaque octogone est
+   * un carré aux coins chanfreinés), avec ses diagonales internes qui
+   * dessinent l'étoile à huit branches classique de ce motif. Contrairement
+   * à une étoile isolée, le pavage est continu — aucun carré ni octogone ne
+   * laisse de vide — et se répète sans coupure grâce à un carreau de 100 px
+   * dont les bords tombent exactement sur la grille de l'octogone voisin.
    *
-   * Contrairement au grain, ce motif doit rester identifiable comme une
-   * étoile — `mix-blend-mode: overlay` s'est révélé inadapté : sa formule
-   * assombrit tout blend sur un fond aussi sombre que l'encre (2×Cb×Cs
-   * avec Cb proche de 0 ne laisse presque rien passer), le motif restait
-   * invisible même en poussant l'opacité. Une opacité directe, sans
-   * mode de fusion, donne un résultat prévisible quel que soit le fond.
+   * Superposée en `fixed` sur la même grammaire que `.alma-grain` (un seul
+   * calque de composition, jamais recalculé par section) : un pseudo-
+   * élément différent (`::before` contre `::after`) permet aux deux de
+   * coexister sur le même élément.
+   *
+   * Ce motif doit rester identifiable comme une mosaïque — `mix-blend-mode:
+   * overlay` s'est révélé inadapté : sa formule assombrit tout blend sur un
+   * fond aussi sombre que l'encre (2×Cb×Cs avec Cb proche de 0 ne laisse
+   * presque rien passer), le motif restait invisible même en poussant
+   * l'opacité. Une opacité directe, sans mode de fusion, donne un résultat
+   * prévisible quel que soit le fond.
    */
   .alma-zellige::before {
     content: '';
@@ -257,9 +264,9 @@
     inset: 0;
     z-index: 59;
     pointer-events: none;
-    opacity: 0.07;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='168'%3E%3Cpath d='M84,40 L90.89,67.37 L115.11,52.89 L100.63,77.11 L128,84 L100.63,90.89 L115.11,115.11 L90.89,100.63 L84,128 L77.11,100.63 L52.89,115.11 L67.37,90.89 L40,84 L67.37,77.11 L52.89,52.89 L77.11,67.37 Z' fill='none' stroke='%23C8A882' stroke-width='1' stroke-opacity='0.9'/%3E%3C/svg%3E");
-    background-size: 168px 168px;
+    opacity: 0.09;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M30,0 L70,0 L100,30 L100,70 L70,100 L30,100 L0,70 L0,30 Z' fill='none' stroke='%23C8A882' stroke-width='1'/%3E%3Cpath d='M30,0 L70,100 M70,0 L30,100 M100,30 L0,70 M100,70 L0,30' stroke='%23C8A882' stroke-width='0.6' stroke-opacity='0.7'/%3E%3C/svg%3E");
+    background-size: 130px 130px;
   }
 }
 
