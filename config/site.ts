@@ -128,14 +128,13 @@ export const site = {
   practitioner: {
     name: 'Adan AIT',
     /**
-     * Rédigé à partir des éléments de carrière communiqués par le studio :
-     * comédien, mannequin, masseur, coach en communication et expression
-     * corporelle, entre la France, l'Espagne et le Brésil. Ni durée
-     * d'exercice, ni titre, ni référence client ne sont avancés.
+     * Texte fourni tel quel par le studio, avec une correction d'accord :
+     * reçu au féminin (« Nourrie »), repassé au masculin pour s'accorder
+     * au praticien qu'il présente — à confirmer auprès du studio plutôt
+     * qu'à trancher seul si le texte vient d'ailleurs.
      */
     bio: [
-      'Comédien et mannequin, Adan a fait du corps son outil de travail bien avant d’en faire sa pratique. Sa carrière se partage entre la France, l’Espagne et le Brésil.',
-      'Il est aussi coach en communication, expression corporelle et gestuelle : un travail sur la posture, le souffle et la façon dont on occupe l’espace. Le massage prolonge la même attention — reconnaître où un corps se tient, où il retient, et travailler à partir de là.',
+      'Entre héritage méditerranéen et art du mouvement, je conçois le massage comme un art du toucher. Nourri par mes racines franco-maghrébines, ma pratique puise dans les gestes ancestraux du hammam et l’héritage arabo-andalou. Chaque soin devient un rituel singulier, pensé pour écouter le corps, libérer les tensions et révéler une sensation profonde d’harmonie.',
     ],
     /**
      * Transcrit tel que communiqué par le studio. Ne rien ajouter ici qui
