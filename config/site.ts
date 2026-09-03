@@ -18,8 +18,15 @@ export const site = {
   brandTagline: brand.tagline,
   brandSignature: brand.signature,
 
-  /** URL canonique publique, requise pour les metadata, OG et sitemap. */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://alma-studio.fr',
+  /**
+   * URL canonique publique, requise pour les metadata, OG et sitemap.
+   *
+   * `|| ` et non `??` : une variable d'environnement définie mais vide
+   * (plutôt qu'absente) passe le test de nullité de `??` et donne
+   * `new URL('')` dans `app/layout.tsx`, qui casse le build entier —
+   * repéré sur un nouveau projet Vercel où la variable existait, vide.
+   */
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://alma-studio.fr',
   locale: 'fr_FR',
   lang: 'fr',
 
