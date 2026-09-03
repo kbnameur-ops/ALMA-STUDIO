@@ -16,9 +16,9 @@ const base =
   'active:translate-y-px disabled:cursor-not-allowed disabled:opacity-45 select-none';
 
 const variants: Record<Variant, string> = {
-  // Texte encre et non ivoire : l'ivoire sur la terre cuite ne donnait
-  // que 2,84 de contraste, l'encre en donne 5,7.
-  primary: 'bg-terracotta text-ink shadow-[0_10px_30px_-18px_rgba(200,122,92,0.9)]',
+  // Texte encre et non ivoire : l'ivoire sur l'aubergine ne donnait
+  // que 3,4 de contraste, l'encre en donne 5,5.
+  primary: 'bg-terracotta text-ink shadow-[0_10px_30px_-18px_rgba(190,115,152,0.9)]',
   secondary: 'border border-[color:var(--color-line-strong)] text-ivory hover:border-ivory',
   ghost: 'text-ivory hover:text-terracotta underline-offset-4 hover:underline',
   light: 'bg-ink text-ivory',

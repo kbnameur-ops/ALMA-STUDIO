@@ -28,27 +28,28 @@ export const brand = {
     favicon: '/logo/favicon.svg',
   },
   /**
-   * Palette nocturne.
+   * Palette nocturne, andalouse.
    *
-   * `ink` en fond sur tout le site, `ivory` en texte, `champagne` en accent
-   * unique, `terracotta` pour les appels à l'action. `bone` est la seule
-   * plaque claire, employée avec parcimonie extrême.
+   * `ink` — un bleu nuit profond, plus une encre chaude — en fond sur tout
+   * le site, `ivory` en texte, `champagne` en accent unique (la dorure du
+   * zellige), `terracotta` (une aubergine) pour les appels à l'action.
+   * `bone` est la seule plaque claire, employée avec parcimonie extrême.
    *
    * Dupliquée en CSS dans `styles/globals.css` (@theme) ; ce fichier reste
    * la source pour tout usage hors-CSS — emails, images OG, SVG générés.
    */
   colors: {
-    ink: '#100E0C',
-    inkRaised: '#17140F',
-    inkDeep: '#090807',
+    ink: '#0E0F1C',
+    inkRaised: '#171A2E',
+    inkDeep: '#07080F',
     ivory: '#F2EEE7',
     bone: '#EFE9E1',
     champagne: '#C8A882',
-    terracotta: '#C87A5C',
+    terracotta: '#BE7398',
     sage: '#9AAB88',
     /** Le rituel et le geste — voir `styles/globals.css` pour l'usage. */
     ocre: '#C9974A',
-    brume: '#93AAB8',
+    brume: '#A78BB5',
   },
   fonts: {
     heading: 'Instrument Serif',

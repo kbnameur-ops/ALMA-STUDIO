@@ -6,21 +6,19 @@
  */
 @theme {
   /**
-   * Palette nocturne.
+   * Palette nocturne, andalouse.
    *
-   * Le site est sombre de bout en bout. Les photos du studio sont toutes
-   * en lumière basse : sur un fond clair elles formaient des taches
-   * brunes, ici elles émergent de l'ombre comme la pièce elle-même.
-   *
-   * L'encre n'est jamais un noir pur — un noir absolu à l'écran est un
-   * trou, pas une matière. Elle tire vers le brun chaud, du même côté du
-   * spectre que la lumière des séances.
+   * Le site est sombre de bout en bout. L'encre n'est plus un noir chaud
+   * mais un bleu nuit profond — la couleur d'un ciel andalou après le
+   * coucher du soleil, celle des céramiques bleu de cobalt du zellige.
+   * Les photos du studio, toutes en lumière basse, s'y détachent par leur
+   * chaleur plutôt que de s'y fondre.
    */
-  --color-ink: #100e0c;
+  --color-ink: #0e0f1c;
   /** Surface légèrement soulevée : cartes, encarts, alternance de sections. */
-  --color-ink-raised: #17140f;
+  --color-ink-raised: #171a2e;
   /** Le fond le plus profond : pied de page, fins de page. */
-  --color-ink-deep: #090807;
+  --color-ink-deep: #07080f;
 
   /** Texte principal, jamais du blanc pur : il vibrerait sur l'encre. */
   --color-ivory: #f2eee7;
@@ -34,13 +32,17 @@
   --color-ivory-55: rgba(242, 238, 231, 0.55);
   --color-ivory-25: rgba(242, 238, 231, 0.24);
 
-  /** Accent unique. Un or éteint, jamais saturé. */
+  /** Accent unique. Un or éteint, jamais saturé — la dorure du zellige. */
   --color-champagne: #c8a882;
   --color-champagne-dim: rgba(200, 168, 130, 0.5);
 
-  /** Accent chaud des appels à l'action, éclairci pour tenir sur l'encre. */
-  --color-terracotta: #c87a5c;
-  --color-terracotta-dark: #b06747;
+  /**
+   * Accent des appels à l'action : une aubergine, éclaircie pour tenir sur
+   * l'encre, comme la terre cuite avant elle. Contraste mesuré, pas
+   * estimé : le texte encre sur ce fond donne 5,5:1.
+   */
+  --color-terracotta: #be7398;
+  --color-terracotta-dark: #9c5679;
 
   /** La rare plaque claire, pour rompre la nuit sur une page entière. */
   --color-bone: #efe9e1;
@@ -56,14 +58,14 @@
   --color-sun: #d9a066;
 
   /**
-   * Le rituel (chaleur du hammam) / le geste (brume, vapeur). Deux accents
+   * Le rituel (chaleur du hammam) / le geste (brume, mauve). Deux accents
    * secondaires, réservés à la section qui les pose explicitement — jamais
    * au chrome du site (en-tête, boutons, pied de page restent
-   * champagne/terracotta). Luminance calée sur `--color-champagne` pour
+   * champagne/aubergine). Luminance calée sur `--color-champagne` pour
    * rester lisibles en texte sur l'encre.
    */
   --color-ocre: #c9974a;
-  --color-brume: #93aab8;
+  --color-brume: #a78bb5;
 
   /* Les variables `--font-*` sont fournies par next/font (app/layout.tsx) ;
      les polices système suivantes prennent le relais en cas d'échec. */
@@ -222,7 +224,7 @@
     background-image:
       radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.03) 1px, transparent 0),
       radial-gradient(110% 90% at 25% 18%, rgba(200, 168, 130, 0.16) 0%, transparent 58%),
-      linear-gradient(158deg, #241f1a 0%, #191511 55%, #100e0c 100%);
+      linear-gradient(158deg, #1e2136 0%, #14172a 55%, #0e0f1c 100%);
     background-size: 6px 6px, cover, cover;
   }
 
@@ -230,8 +232,34 @@
     background-image:
       radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.025) 1px, transparent 0),
       radial-gradient(110% 90% at 25% 20%, rgba(200, 168, 130, 0.12) 0%, transparent 55%),
-      linear-gradient(155deg, #1b1713 0%, var(--color-ink) 60%, #090807 100%);
+      linear-gradient(155deg, #171a2c 0%, var(--color-ink) 60%, #07080f 100%);
     background-size: 6px 6px, cover, cover;
+  }
+
+  /**
+   * Motif géométrique arabo-andalou : une étoile à huit branches (khatam),
+   * répétée en toile de fond sur tout le site — comme le zellige d'un
+   * riad. Superposée en `fixed` sur la même grammaire que `.alma-grain`
+   * (un seul calque de composition, jamais recalculé par section) : un
+   * pseudo-élément différent (`::before` contre `::after`) permet aux deux
+   * de coexister sur le même élément.
+   *
+   * Contrairement au grain, ce motif doit rester identifiable comme une
+   * étoile — `mix-blend-mode: overlay` s'est révélé inadapté : sa formule
+   * assombrit tout blend sur un fond aussi sombre que l'encre (2×Cb×Cs
+   * avec Cb proche de 0 ne laisse presque rien passer), le motif restait
+   * invisible même en poussant l'opacité. Une opacité directe, sans
+   * mode de fusion, donne un résultat prévisible quel que soit le fond.
+   */
+  .alma-zellige::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 59;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='168' height='168'%3E%3Cpath d='M84,40 L90.89,67.37 L115.11,52.89 L100.63,77.11 L128,84 L100.63,90.89 L115.11,115.11 L90.89,100.63 L84,128 L77.11,100.63 L52.89,115.11 L67.37,90.89 L40,84 L67.37,77.11 L52.89,52.89 L77.11,67.37 Z' fill='none' stroke='%23C8A882' stroke-width='1' stroke-opacity='0.9'/%3E%3C/svg%3E");
+    background-size: 168px 168px;
   }
 }
 

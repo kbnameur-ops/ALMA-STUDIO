@@ -216,17 +216,29 @@ modifient depuis `/admin/prestations`.
 
 ## Direction artistique
 
-**Nocturne.** Le site est sombre de bout en bout. Les photos du studio sont
-toutes en lumière basse : sur le fond sable de la première version elles
-formaient des taches brunes, ici elles émergent de l'ombre comme la pièce
-elle-même. L'encre n'est jamais un noir pur — un noir absolu à l'écran est
-un trou, pas une matière ; elle tire vers le brun chaud.
+**Nocturne, andalouse.** Le site est sombre de bout en bout. Les photos du
+studio sont toutes en lumière basse : sur le fond sable de la première
+version elles formaient des taches brunes, ici elles émergent de l'ombre
+comme la pièce elle-même. L'encre n'est jamais un noir pur — un noir absolu
+à l'écran est un trou, pas une matière ; elle tire vers le bleu nuit, la
+couleur d'un ciel andalou après le coucher du soleil et des céramiques bleu
+de cobalt du zellige.
 
 Trois profondeurs seulement (`ink`, `ink-raised`, `ink-deep`), un accent
-unique (`champagne`), un accent d'action (`terracotta`). Les écarts entre
-les trois fonds sont volontairement infimes : sur fond sombre, deux points
-de clarté suffisent à séparer deux plans, un contraste franc ferait des
-bandes.
+unique (`champagne`, la dorure), un accent d'action (`terracotta` — en
+réalité une aubergine, le nom du jeton CSS n'a pas suivi le repositionnement
+pour ne pas casser les ~40 fichiers qui l'utilisent). Les écarts entre les
+trois fonds sont volontairement infimes : sur fond sombre, deux points de
+clarté suffisent à séparer deux plans, un contraste franc ferait des bandes.
+
+**Le motif.** Une étoile à huit branches (khatam), tissée en toile de fond
+sur tout le site via `.alma-zellige` (`styles/globals.css`, appliquée sur
+`<body>` à côté de `.alma-grain`) — le même geste que le grain, un seul
+calque de composition fixe plutôt qu'un motif répété section par section.
+Le `mix-blend-mode: overlay` du grain s'est révélé inadapté ici : sa formule
+assombrit tout blend sur un fond aussi sombre que l'encre, le motif restait
+invisible même à forte opacité. Une opacité directe (`0.07`), sans mode de
+fusion, donne un résultat prévisible et lisible quel que soit le fond.
 
 **Instrument Serif** en titrage, **Instrument Sans** en labeur. Cormorant,
 qui tenait le titrage, s'effaçait sur fond sombre : ses déliés
@@ -244,8 +256,8 @@ peignant chaque couleur calculée sur son fond réel, alpha comprise — lire
 la valeur CSS à la main donne des résultats faux dès qu'une couleur est
 exprimée en `oklab`. Le jeton de texte discret est à 0,55 d'opacité et non
 0,44 pour cette seule raison : à 0,44 il tombait à 3,9:1, sous le seuil AA
-du petit texte. Les boutons terre cuite portent un texte encre, pas
-ivoire : l'ivoire n'y donnait que 2,84:1.
+du petit texte. Les boutons aubergine portent un texte encre, pas
+ivoire : l'ivoire n'y donnait que 3,4:1.
 
 ---
 
