@@ -5,7 +5,7 @@ import type { BookingDetails, GiftCard } from '@/types';
 import { renderEmail, renderPlainText, type EmailLayoutInput } from './layout';
 
 /**
- * Modèles d'emails ALMA.
+ * Modèles d'emails Alhambra.
  *
  * Chaque modèle produit un sujet, un HTML et une version texte, à partir
  * des mêmes données : impossible d'oublier de mettre l'un des deux à jour.

@@ -56,7 +56,7 @@ export function ExperienceSection() {
           ]}
         />
         <Lead className="mt-7 text-ivory-70">
-          L’expérience ALMA commence dès l’arrivée. Lumière douce, matières naturelles, musique
+          L’expérience Alhambra commence dès l’arrivée. Lumière douce, matières naturelles, musique
           discrète et attention portée à chaque détail créent un espace où l’on peut enfin ralentir.
         </Lead>
       </div>

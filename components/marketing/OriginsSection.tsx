@@ -78,7 +78,7 @@ export function OriginsSection() {
             className="pointer-events-none absolute inset-0"
             style={{
               background:
-                'radial-gradient(75% 65% at 50% 100%, rgba(147, 170, 184, 0.18) 0%, rgba(147, 170, 184, 0.04) 45%, transparent 72%)',
+                'radial-gradient(75% 65% at 50% 100%, rgba(167, 139, 181, 0.18) 0%, rgba(167, 139, 181, 0.04) 45%, transparent 72%)',
             }}
           />
           <div className="relative mx-auto max-w-sm">

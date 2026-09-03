@@ -12,9 +12,10 @@ import { GiftCardSection } from '@/components/marketing/GiftCardSection';
 import { getSignatureServices } from '@/lib/repositories/services';
 import { getPublishedReviews } from '@/lib/repositories/reviews';
 import { pageMetadata } from '@/lib/seo';
+import { brand } from '@/config/brand';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'ALMA STUDIO — Massage & Rituels d’Andalousie à Paris',
+  title: `${brand.name} — Massage & Rituels d’Andalousie à Paris`,
   description:
     'Studio privé de massage à Paris, dans l’esprit du hammam et de l’héritage arabo-andalou : séances sur rendez-vous dans un espace intimiste. Réservation en ligne.',
   path: '/',

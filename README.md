@@ -1,11 +1,12 @@
-# ALMA STUDIO
+# ALHAMBRA STUDIO
 
 Site de réservation d'un studio privé de massage à Paris.
 
-> **Le nom « ALMA STUDIO » est provisoire.** Nom, baseline, logo, palette et
-> typographies vivent dans `config/brand.ts` ; les réglages fonctionnels dans
-> `config/site.ts`. Les modifier suffit à renommer et rehabiller le site,
-> emails et images de partage compris.
+> **Nom, baseline, logo, palette et typographies** vivent dans
+> `config/brand.ts` ; les réglages fonctionnels dans `config/site.ts`. Les
+> modifier suffit à renommer et rehabiller le site, emails et images de
+> partage compris — le nom a déjà changé une fois (ALMA STUDIO → Alhambra
+> Studio), c'est le chemin que ça emprunte.
 
 ---
 
@@ -216,17 +217,36 @@ modifient depuis `/admin/prestations`.
 
 ## Direction artistique
 
-**Nocturne.** Le site est sombre de bout en bout. Les photos du studio sont
-toutes en lumière basse : sur le fond sable de la première version elles
-formaient des taches brunes, ici elles émergent de l'ombre comme la pièce
-elle-même. L'encre n'est jamais un noir pur — un noir absolu à l'écran est
-un trou, pas une matière ; elle tire vers le brun chaud.
+**Nocturne, andalouse.** Le site est sombre de bout en bout. Les photos du
+studio sont toutes en lumière basse : sur le fond sable de la première
+version elles formaient des taches brunes, ici elles émergent de l'ombre
+comme la pièce elle-même. L'encre n'est jamais un noir pur — un noir absolu
+à l'écran est un trou, pas une matière ; elle tire vers le bleu nuit, la
+couleur d'un ciel andalou après le coucher du soleil et des céramiques bleu
+de cobalt du zellige.
 
 Trois profondeurs seulement (`ink`, `ink-raised`, `ink-deep`), un accent
-unique (`champagne`), un accent d'action (`terracotta`). Les écarts entre
-les trois fonds sont volontairement infimes : sur fond sombre, deux points
-de clarté suffisent à séparer deux plans, un contraste franc ferait des
-bandes.
+unique (`champagne`, la dorure), un accent d'action (`terracotta` — en
+réalité un or plus dense que le champagne, pour que les boutons se
+distinguent des libellés ; le nom du jeton CSS a gardé son historique — une
+première itération l'avait fait passer par une aubergine avant que ce
+rose ne soit écarté au profit de l'or — pour ne pas casser les ~40 fichiers
+qui l'utilisent). Les écarts entre les trois fonds sont volontairement
+infimes : sur fond sombre, deux points de clarté suffisent à séparer deux
+plans, un contraste franc ferait des bandes.
+
+**Le motif.** Une mosaïque géométrique inspirée du zellige et des tomettes
+de l'Alhambra, tissée en toile de fond sur tout le site via `.alma-zellige`
+(`styles/globals.css`, appliquée sur `<body>` à côté de `.alma-grain`) —
+le même geste que le grain, un seul calque de composition fixe plutôt qu'un
+motif répété section par section. Un pavage continu d'octogones (des
+carrés aux coins chanfreinés) dont les diagonales internes dessinent
+l'étoile à huit branches classique du motif : contrairement à une étoile
+isolée, essayée d'abord, le pavage ne laisse aucun vide entre les formes.
+Le `mix-blend-mode: overlay` du grain s'est révélé inadapté ici : sa formule
+assombrit tout blend sur un fond aussi sombre que l'encre, le motif restait
+invisible même à forte opacité. Une opacité directe (`0.09`), sans mode de
+fusion, donne un résultat prévisible et lisible quel que soit le fond.
 
 **Instrument Serif** en titrage, **Instrument Sans** en labeur. Cormorant,
 qui tenait le titrage, s'effaçait sur fond sombre : ses déliés
@@ -244,8 +264,8 @@ peignant chaque couleur calculée sur son fond réel, alpha comprise — lire
 la valeur CSS à la main donne des résultats faux dès qu'une couleur est
 exprimée en `oklab`. Le jeton de texte discret est à 0,55 d'opacité et non
 0,44 pour cette seule raison : à 0,44 il tombait à 3,9:1, sous le seuil AA
-du petit texte. Les boutons terre cuite portent un texte encre, pas
-ivoire : l'ivoire n'y donnait que 2,84:1.
+du petit texte. Les boutons dorés portent un texte encre, pas
+ivoire : l'ivoire n'y donnait que 2,1:1.
 
 ---
 
@@ -277,6 +297,16 @@ inventées. Rechercher `[` dans `config/site.ts` et les composants :
   l'optimiseur d'images met en cache sur la clé de l'URL, et l'ancienne version
   continue d'être servie (localement comme sur le CDN). Publier sous un nom
   versionné (`espagnol-evasion-3.jpg`) et mettre à jour `image_url`.
+- **Logo** — le monogramme fourni par le studio (`public/logo/alhambra-mark.png`,
+  référencé par `brand.logo.mark`) est une image détaillée (mandala, mains,
+  silhouette gravés), pas un tracé vectoriel recolorable comme l'ancien
+  monogramme abstrait (`components/brand/ArchMark.tsx`, conservé pour les
+  usages purement décoratifs — hero, section « Un même héritage » — où une
+  forme simple et recolorable reste préférable). Fond découpé par seuillage
+  de luminosité depuis l'export fourni (fond blanc), pas de version
+  vectorielle source. Le logotype (« ALHAMBRA » / « STUDIO ») reste du texte
+  vivant à côté de l'image, jamais intégré dedans — le texte gravé dans
+  l'image fournie est en encre foncée, illisible sur le fond sombre du site.
 - **Praticien** — nom et formation renseignés dans `config/site.ts`
   (`site.practitioner`). La formation est transcrite telle que communiquée
   par le studio : deux écoles, leurs disciplines, rien d'autre. La

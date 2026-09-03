@@ -1,6 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { brand } from '@/config/brand';
-import { ArchMark } from '@/components/brand/ArchMark';
 import { cn } from '@/lib/utils/cn';
 
 interface LogoProps {
@@ -17,13 +17,15 @@ interface LogoProps {
  * Verrouillage du logo : monogramme en arche + logotype.
  *
  * Le monogramme porte l'identité, le logotype porte le nom. Les deux
- * restent solidaires ; leur alignement optique se fait sur la barre de
- * l'arche et la ligne de base d'ALMA.
+ * restent solidaires ; leur alignement optique se fait sur la base de
+ * l'arche et la ligne de base d'ALHAMBRA.
  *
- * Le monogramme est désormais un plein, donc lourd : le logotype se pose
- * plus léger et plus espacé pour tenir la balance. Instrument Serif étant
- * plus large que le Cormorant qui le précédait, l'interlettrage d'ALMA a
- * été resserré — le même chiffre aurait disloqué le mot.
+ * Le monogramme fourni par le studio est une image détaillée (mandala,
+ * mains, silhouette gravés), pas un tracé vectoriel recolorable comme
+ * l'ancien monogramme abstrait — il ne prend donc plus de prop `tone` et
+ * s'affiche identique partout, le site étant de toute façon sombre de
+ * bout en bout. En dessous d'une quarantaine de pixels il perd sa finesse
+ * de trait, mais reste lisible comme un médaillon doré.
  */
 export function Logo({ tone = 'dark', withSignature = false, markOnly = false, className }: LogoProps) {
   const secondary = tone === 'light' ? 'text-champagne' : 'text-champagne';
@@ -34,17 +36,19 @@ export function Logo({ tone = 'dark', withSignature = false, markOnly = false, c
       aria-label={`${brand.name} — accueil`}
       className={cn('group inline-flex items-center gap-3 sm:gap-3.5', className)}
     >
-      <ArchMark
-        size={32}
-        tone={tone}
-        className="transition-transform duration-500 ease-[var(--ease-alma)] group-hover:-translate-y-0.5"
+      <Image
+        src={brand.logo.mark}
+        alt=""
+        width={44}
+        height={37}
+        className="h-9 w-auto shrink-0 transition-transform duration-500 ease-[var(--ease-alma)] group-hover:-translate-y-0.5 sm:h-11"
       />
 
       {!markOnly && (
         <span className="flex flex-col leading-none">
           <span
             className={cn(
-              'font-heading text-[1.32rem] tracking-[0.15em] text-ivory transition-opacity duration-300 group-hover:opacity-75 sm:text-[1.45rem]',
+              'font-heading text-[1.15rem] tracking-[0.1em] text-ivory transition-opacity duration-300 group-hover:opacity-75 sm:text-[1.28rem]',
             )}
           >
             {brand.nameParts.primary}

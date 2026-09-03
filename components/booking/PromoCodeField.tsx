@@ -87,7 +87,7 @@ export function PromoCodeField({
             label="Code promo ou carte cadeau"
             value={code}
             onChange={(event) => setCode(event.target.value.toUpperCase())}
-            placeholder="ALMA-XXXX-XXXX"
+            placeholder="ALHAMBRA-XXXX-XXXX"
             autoComplete="off"
             maxLength={40}
           />

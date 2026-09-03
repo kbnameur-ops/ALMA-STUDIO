@@ -1,7 +1,11 @@
 import { cn } from '@/lib/utils/cn';
 
 /**
- * Monogramme ALMA — l'arche.
+ * Monogramme décoratif — l'arche, réutilisé en filigrane et séparateur
+ * ailleurs sur le site (hero, section « Un même héritage »). Ce n'est plus
+ * le logo depuis l'arrivée du monogramme détaillé fourni par le studio
+ * (voir `components/layout/Logo.tsx`) — seule sa forme, abstraite et
+ * recolorable, reste utile pour ces usages décoratifs légers.
  *
  * Le tracé se lit à la fois comme un « A » et comme une arche
  * méditerranéenne : le portail du studio, et la parenthèse de la baseline.

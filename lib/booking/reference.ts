@@ -18,9 +18,9 @@ export function randomCode(length = 8): string {
   return code;
 }
 
-/** Code carte cadeau, ex. `ALMA-4KQ7-J92X`. */
+/** Code carte cadeau, ex. `ALHAMBRA-4KQ7-J92X`. */
 export function giftCardCode(): string {
-  return `ALMA-${randomCode(4)}-${randomCode(4)}`;
+  return `ALHAMBRA-${randomCode(4)}-${randomCode(4)}`;
 }
 
 /** Jeton d'accès à la page « gérer ma réservation ». */

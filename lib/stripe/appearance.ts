@@ -2,7 +2,7 @@ import type { Appearance } from '@stripe/stripe-js';
 import { brand } from '@/config/brand';
 
 /**
- * Habillage des champs Stripe aux couleurs ALMA, pour que l'étape de
+ * Habillage des champs Stripe aux couleurs Alhambra, pour que l'étape de
  * paiement ne casse pas la continuité visuelle du tunnel.
  */
 export const stripeAppearance: Appearance = {

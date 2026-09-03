@@ -1,10 +1,9 @@
 /**
- * ALMA STUDIO — identité de marque.
+ * ALHAMBRA STUDIO — identité de marque.
  *
  * Point d'entrée UNIQUE pour le nom, la baseline, le logo et la palette.
- * Le nom « ALMA STUDIO » est provisoire : changer les valeurs ci-dessous
- * suffit à renommer la marque sur l'ensemble du site (header, footer,
- * emails, metadata SEO, JSON-LD, cartes cadeaux).
+ * Changer les valeurs ci-dessous suffit à renommer la marque sur l'ensemble
+ * du site (header, footer, emails, metadata SEO, JSON-LD, cartes cadeaux).
  *
  * Les couleurs sont dupliquées en CSS dans `styles/globals.css` (@theme).
  * Ce fichier reste la source de vérité pour tout usage hors-CSS :
@@ -13,42 +12,47 @@
 
 export const brand = {
   /** Nom affiché. `nameParts` permet le rendu bi-ligne du logo typographique. */
-  name: 'ALMA STUDIO',
-  nameParts: { primary: 'ALMA', secondary: 'STUDIO' },
+  name: 'Alhambra Studio',
+  nameParts: { primary: 'ALHAMBRA', secondary: 'STUDIO' },
   /** Signature de marque, sous le logo et dans les emails. */
   signature: 'Massage & Rituels d’Andalousie',
   /** Baseline principale, utilisée en hero et en metadata. */
   tagline: 'Une parenthèse andalouse à Paris.',
-  /** Chemins des variantes de logo — remplaçables par un SVG définitif. */
+  /**
+   * Le monogramme fourni par le studio : une arche gravée (mandala, mains,
+   * silhouette) sur fond encre — pas un tracé vectoriel simple, un visuel
+   * détaillé au format PNG, fond découpé. Illisible en dessous d'une
+   * quarantaine de pixels ; le logotype (`nameParts`) reste du texte vivant
+   * à côté, jamais intégré à l'image.
+   */
   logo: {
-    primary: '/logo/alma-logo.svg',
-    dark: '/logo/alma-logo-dark.svg',
-    light: '/logo/alma-logo-light.svg',
-    symbol: '/logo/alma-symbol.svg',
-    favicon: '/logo/favicon.svg',
+    mark: '/logo/alhambra-mark.png',
+    favicon: '/logo/alhambra-favicon.png',
   },
   /**
-   * Palette nocturne.
+   * Palette nocturne, andalouse.
    *
-   * `ink` en fond sur tout le site, `ivory` en texte, `champagne` en accent
-   * unique, `terracotta` pour les appels à l'action. `bone` est la seule
-   * plaque claire, employée avec parcimonie extrême.
+   * `ink` — un bleu nuit profond, plus une encre chaude — en fond sur tout
+   * le site, `ivory` en texte, `champagne` en accent unique (la dorure du
+   * zellige), `terracotta` (un or plus dense que le champagne) pour les
+   * appels à l'action. `bone` est la seule plaque claire, employée avec
+   * parcimonie extrême.
    *
    * Dupliquée en CSS dans `styles/globals.css` (@theme) ; ce fichier reste
    * la source pour tout usage hors-CSS — emails, images OG, SVG générés.
    */
   colors: {
-    ink: '#100E0C',
-    inkRaised: '#17140F',
-    inkDeep: '#090807',
+    ink: '#0E0F1C',
+    inkRaised: '#171A2E',
+    inkDeep: '#07080F',
     ivory: '#F2EEE7',
     bone: '#EFE9E1',
     champagne: '#C8A882',
-    terracotta: '#C87A5C',
+    terracotta: '#C9A227',
     sage: '#9AAB88',
     /** Le rituel et le geste — voir `styles/globals.css` pour l'usage. */
     ocre: '#C9974A',
-    brume: '#93AAB8',
+    brume: '#A78BB5',
   },
   fonts: {
     heading: 'Instrument Serif',

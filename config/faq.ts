@@ -64,13 +64,13 @@ export const faqItems: FaqItem[] = [
     category: 'Paiement',
     question: 'Quels moyens de paiement acceptez-vous ?',
     answer: site.onlinePaymentEnabled
-      ? 'Le paiement s’effectue en ligne par carte bancaire, de façon sécurisée, au moment de la réservation. Les cartes cadeaux ALMA sont acceptées lors de la réservation.'
-      : 'Le règlement se fait sur place, le jour de la séance. Aucun paiement n’est demandé en ligne au moment de la demande. Les cartes cadeaux ALMA sont acceptées.',
+      ? 'Le paiement s’effectue en ligne par carte bancaire, de façon sécurisée, au moment de la réservation. Les cartes cadeaux Alhambra sont acceptées lors de la réservation.'
+      : 'Le règlement se fait sur place, le jour de la séance. Aucun paiement n’est demandé en ligne au moment de la demande. Les cartes cadeaux Alhambra sont acceptées.',
   },
   {
     category: 'Paiement',
     question: 'Combien de temps une carte cadeau est-elle valable ?',
     answer:
-      'Une carte cadeau ALMA est valable douze mois à compter de sa date d’émission. Elle peut être utilisée sur n’importe quelle prestation du studio.',
+      'Une carte cadeau Alhambra est valable douze mois à compter de sa date d’émission. Elle peut être utilisée sur n’importe quelle prestation du studio.',
   },
 ];
