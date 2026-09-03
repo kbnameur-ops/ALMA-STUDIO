@@ -126,7 +126,7 @@ export const site = {
    * inventés.
    */
   practitioner: {
-    name: 'Adan AIT',
+    name: 'Karim Ait M’Hand',
     /**
      * Texte fourni tel quel par le studio, avec une correction d'accord :
      * reçu au féminin (« Nourrie »), repassé au masculin pour s'accorder
