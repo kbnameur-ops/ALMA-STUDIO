@@ -39,9 +39,9 @@ export default function AboutPage() {
           </Heading>
           <Lead className="mt-6 text-ivory-70">
             {brand.name} est un studio privé dédié au massage de bien-être et aux rituels de
-            relaxation. L’inspiration vient de la Méditerranée contemporaine : des matières simples,
-            une lumière chaude, et l’idée qu’un moment pour soi n’a pas besoin d’être compliqué pour
-            être précieux.
+            relaxation. L’inspiration vient de l’héritage arabo-andalou et du hammam : des matières
+            simples, une lumière chaude, et l’idée qu’un moment pour soi n’a pas besoin d’être
+            compliqué pour être précieux.
           </Lead>
         </div>
       </Section>

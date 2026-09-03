@@ -38,48 +38,24 @@ with inserted as (
     (slug, name, short_description, description, intensity, recommended_for,
      image_url, image_alt, home_service_available, is_signature, sort_order)
   values
-    ('signature-mediterranee', 'Signature Méditerranée',
-     'Le massage emblématique du studio, fluide et enveloppant.',
-     'Une expérience fluide et enveloppante inspirée de l’univers méditerranéen. Le rythme et la pression évoluent progressivement pour créer une sensation de relâchement général.',
-     'moderee', 'Première visite au studio, besoin de relâchement global.',
-     '/images/services/signature-mediterranee.jpg',
-     'Massage du dos à l’huile, mains à plat le long de la colonne, dans une lumière de bougies.', true, true, 1),
-    ('sevilla-calor', 'Sevilla Calor',
-     'Gestuelle andalouse et huile chaude, entre tension et relâchement.',
-     'Une gestuelle andalouse portée par une huile chaude : le rythme alterne tension et relâchement, inspiré de la cadence du flamenco.',
-     'dynamique', 'Envie de chaleur, de rythme et de dépaysement.',
-     '/images/services/espagnol-evasion-3.jpg',
-     'Séance au studio : pierres chaudes alignées le long de la colonne, le praticien en prend une nouvelle dans une coupe.', true, true, 2),
-    ('cote-atlantique', 'Côte Atlantique',
-     'Drainage lymphatique et gestuelle légère, jambes et circulation.',
-     'Un drainage lymphatique porté par une gestuelle légère, inspirée du mouvement des embruns : la circulation se relance, les jambes s’allègent.',
-     'douce', 'Jambes lourdes, station debout prolongée, besoin de légèreté.',
-     null,
-     'Drainage lymphatique le long de la jambe, gestuelle légère et régulière, ambiance claire.', true, false, 3),
-    ('shirochampi-iberique', 'Shirochampi Ibérique',
-     'Massage crânien, nuque et épaules : une séance courte contre le stress mental.',
-     'Un massage crânien associé à la nuque et aux épaules, pour relâcher les tensions mentales en une séance courte.',
-     'douce', 'Stress mental, fin de journée chargée, pause courte.',
-     null,
-     'Massage crânien, mains posées de part et d’autre de la tête, pression lente et enveloppante.', false, false, 4),
-    ('deep-relax', 'Deep Relax',
-     'Une séance lente, pensée pour ralentir profondément.',
-     'Une séance lente et apaisante pensée pour ralentir et favoriser une profonde sensation de détente.',
-     'douce', 'Fatigue mentale, sommeil difficile, besoin de calme.',
-     '/images/services/deep-relax.jpg',
-     'Massage lent des épaules et du haut du dos, la personne allongée, visage détendu sur l’appui-tête.', true, false, 5),
-    ('sport-recovery', 'Sport & Recovery',
-     'Une séance plus dynamique, orientée récupération.',
-     'Une séance plus dynamique destinée aux personnes qui souhaitent consacrer leur moment de bien-être à la récupération et au relâchement musculaire.',
-     'dynamique', 'Après l’entraînement, jambes lourdes, reprise du sport.',
-     '/images/services/sport-recovery-2.jpg',
-     'Massage de récupération de l’arrière de la jambe, la personne allongée sur le ventre, serviette drapée.', true, false, 6),
-    ('rituel-andalou-atlantique', 'Rituel Andalou-Atlantique',
-     'Un voyage en trois temps : chaleur andalouse, drainage atlantique, shirochampi final.',
-     'L’expérience premium ALMA, en trois temps : la chaleur andalouse pour commencer, le drainage atlantique pour relancer la circulation, un shirochampi pour clore la séance.',
-     'douce', 'Occasion particulière, cadeau, moment long pour soi.',
+    ('rihab', 'Rihab — Le Rituel de l’Apaisement',
+     'Un massage enveloppant inspiré des gestes ancestraux du hammam arabo-andalou.',
+     'Rihab évoque l’espace, l’ampleur et l’ouverture. Un massage enveloppant inspiré des gestes ancestraux du hammam arabo-andalou : manœuvres lentes, pressions profondes et mouvements fluides s’enchaînent pour dénouer les tensions et calmer le mental. Un rituel pensé comme une parenthèse de lâcher-prise profond.' || E'\n\n' || 'Promesse : délier le corps, apaiser l’esprit, retrouver son souffle.',
+     'douce', 'Besoin de lâcher-prise profond, fatigue mentale, envie de calme.',
      '/images/services/rituel-mediterraneen.jpg',
-     'Fin de séance du rituel : mains posées sur les tempes, bougies et lanterne en arrière-plan.', false, true, 7)
+     'Fin de séance : mains posées sur les tempes, bougies et lanterne en arrière-plan.', true, true, 1),
+    ('nour', 'Nour — Le Rituel du Réalignement',
+     'Un massage énergétique inspiré des rituels de soin arabo-andalous, entre équilibre et ancrage.',
+     'Nour signifie « lumière » en arabe. Un massage énergétique inspiré des rituels de soin arabo-andalous, associant gestes enveloppants, pressions ciblées et travail des lignes du corps. Le rituel accompagne la circulation et invite à retrouver une sensation d’équilibre, d’ancrage et d’harmonie intérieure.' || E'\n\n' || 'Promesse : rééquilibrer, réancrer, rayonner.',
+     'moderee', 'Recherche d’équilibre, d’ancrage et d’harmonie intérieure.',
+     '/images/services/signature-mediterranee.jpg',
+     'Massage du dos à l’huile, mains à plat le long de la colonne, dans une lumière de bougies.', true, true, 2),
+    ('andalus', 'Andalus — Le Rituel du Remodelage',
+     'Un massage sculptant, entre remodelage, pressions glissées et travail des tissus.',
+     'Un hommage direct à l’héritage andalou, à la rencontre des cultures et des savoir-faire. Un massage sculptant qui associe techniques de remodelage, pressions glissées et travail manuel des tissus et des fascias. L’objectif est de libérer les zones de tension, améliorer la mobilité tissulaire et redessiner progressivement les lignes du corps.' || E'\n\n' || 'Promesse : libérer les tissus, resculpter les lignes, révéler le mouvement.',
+     'dynamique', 'Tensions musculaires, besoin de mobilité, envie de retrouver du mouvement.',
+     '/images/services/sport-recovery-2.jpg',
+     'Massage profond de l’arrière de la jambe, travail manuel des tissus, la personne allongée sur le ventre, serviette drapée.', true, true, 3)
   on conflict (slug) do nothing
   returning id, slug
 )
@@ -87,23 +63,15 @@ insert into public.service_durations (service_id, minutes, price_cents, sort_ord
 select i.id, d.minutes, d.price_cents, d.sort_order
 from inserted i
 join (values
-  ('signature-mediterranee', 60, 9000, 1),
-  ('signature-mediterranee', 90, 12500, 2),
-  ('sevilla-calor', 60, 9500, 1),
-  ('sevilla-calor', 90, 13000, 2),
-  ('cote-atlantique', 60, 9000, 1),
-  ('cote-atlantique', 90, 12500, 2),
-  ('shirochampi-iberique', 30, 5500, 1),
-  ('shirochampi-iberique', 45, 7500, 2),
-  ('deep-relax', 60, 9000, 1),
-  ('deep-relax', 90, 12500, 2),
-  ('sport-recovery', 60, 10000, 1),
-  ('sport-recovery', 90, 14000, 2),
-  ('rituel-andalou-atlantique', 90, 15000, 1),
-  ('rituel-andalou-atlantique', 120, 19500, 2)
+  ('rihab', 60, 9500, 1),
+  ('rihab', 90, 13000, 2),
+  ('nour', 60, 9500, 1),
+  ('nour', 90, 13000, 2),
+  ('andalus', 60, 9500, 1),
+  ('andalus', 90, 13000, 2)
 ) as d(slug, minutes, price_cents, sort_order) on d.slug = i.slug;
 
 insert into public.reviews (author_name, rating, quote, service_label, is_published, is_sample) values
-  ('Claire M.', 5, 'Un lieu calme et une écoute vraiment attentive. On ressort apaisé, sans se presser.', 'Signature Méditerranée', true, true),
-  ('Thomas R.', 5, 'La pression a été ajustée exactement comme je le souhaitais. Rare et appréciable.', 'Sport & Recovery', true, true),
-  ('Inès B.', 5, 'L’ambiance du studio fait la moitié du travail. On ralentit dès la porte franchie.', 'Rituel Andalou-Atlantique', true, true);
+  ('Claire M.', 5, 'Un lieu calme et une écoute vraiment attentive. On ressort apaisé, sans se presser.', 'Rihab', true, true),
+  ('Thomas R.', 5, 'La pression a été ajustée exactement comme je le souhaitais. Rare et appréciable.', 'Andalus', true, true),
+  ('Inès B.', 5, 'L’ambiance du studio fait la moitié du travail. On ralentit dès la porte franchie.', 'Nour', true, true);

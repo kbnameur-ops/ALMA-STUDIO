@@ -18,7 +18,7 @@ export function PractitionerSection() {
       <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:gap-24">
         <Arch className="relative aspect-3/4 w-full">
           <PlaceholderImage
-            src="/images/equipe/praticien-2.jpg"
+            src="/images/equipe/praticien-3.jpg"
             alt={`Portrait de ${site.practitioner.name}, praticien du studio ALMA, en tenue traditionnelle sur un flanc de montagne.`}
             sizes="(max-width: 1024px) 100vw, 38vw"
             objectPosition="center 14%"

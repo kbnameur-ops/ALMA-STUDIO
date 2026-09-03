@@ -9,7 +9,9 @@ import {
 import { seedServices } from '@/config/seed';
 
 const signature = seedServices[0]!;
-const rituel = seedServices.find((service) => service.slug === 'rituel-andalou-atlantique')!;
+// Une prestation non proposée à domicile — aucun service du seed actuel
+// n'a cette contrainte, on la simule pour ce cas.
+const noHomeService = { ...signature, id: 'svc-test-no-home', slug: 'test-no-home', homeServiceAvailable: false };
 
 function withService(): BookingState {
   return bookingReducer(initialBookingState, { type: 'selectService', service: signature });
@@ -46,7 +48,7 @@ describe('bookingReducer', () => {
       zoneName: 'Paris centre',
     };
 
-    const state = bookingReducer(atHome, { type: 'selectService', service: rituel });
+    const state = bookingReducer(atHome, { type: 'selectService', service: noHomeService });
     expect(state.locationKind).toBe('studio');
     expect(state.address).toBeNull();
     expect(state.travelFeeCents).toBe(0);
@@ -129,8 +131,8 @@ describe('previewTotalCents', () => {
       travelFeeCents: 2000,
       discount: { kind: 'promotion', code: 'X', discountCents: 1000, label: 'X' },
     };
-    // 90 € + 20 € − 10 €
-    expect(previewTotalCents(state)).toBe(10000);
+    // 95 € + 20 € − 10 €
+    expect(previewTotalCents(state)).toBe(10500);
   });
 
   it('ne descend jamais sous zéro', () => {
