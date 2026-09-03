@@ -1,0 +1,278 @@
+@import 'tailwindcss';
+
+/**
+ * Design tokens ALMA STUDIO.
+ * Source de vérité côté CSS ; l'équivalent JS vit dans `config/brand.ts`.
+ */
+@theme {
+  /**
+   * Palette nocturne.
+   *
+   * Le site est sombre de bout en bout. Les photos du studio sont toutes
+   * en lumière basse : sur un fond clair elles formaient des taches
+   * brunes, ici elles émergent de l'ombre comme la pièce elle-même.
+   *
+   * L'encre n'est jamais un noir pur — un noir absolu à l'écran est un
+   * trou, pas une matière. Elle tire vers le brun chaud, du même côté du
+   * spectre que la lumière des séances.
+   */
+  --color-ink: #100e0c;
+  /** Surface légèrement soulevée : cartes, encarts, alternance de sections. */
+  --color-ink-raised: #17140f;
+  /** Le fond le plus profond : pied de page, fins de page. */
+  --color-ink-deep: #090807;
+
+  /** Texte principal, jamais du blanc pur : il vibrerait sur l'encre. */
+  --color-ivory: #f2eee7;
+  --color-ivory-70: rgba(242, 238, 231, 0.66);
+  /**
+   * Texte discret. 0,55 et non 0,44 : à 0,44 le rapport de contraste
+   * tombait à 3,9 sur l'encre, sous le seuil AA du petit texte, et c'est
+   * précisément ce jeton qui porte tous les libellés de 10 à 12 px —
+   * durées, mentions, légendes. Mesuré, pas estimé.
+   */
+  --color-ivory-55: rgba(242, 238, 231, 0.55);
+  --color-ivory-25: rgba(242, 238, 231, 0.24);
+
+  /** Accent unique. Un or éteint, jamais saturé. */
+  --color-champagne: #c8a882;
+  --color-champagne-dim: rgba(200, 168, 130, 0.5);
+
+  /** Accent chaud des appels à l'action, éclairci pour tenir sur l'encre. */
+  --color-terracotta: #c87a5c;
+  --color-terracotta-dark: #b06747;
+
+  /** La rare plaque claire, pour rompre la nuit sur une page entière. */
+  --color-bone: #efe9e1;
+
+  /** Vert de validation. Assez clair pour se lire sur l'encre. */
+  --color-sage: #9aab88;
+
+  /* Filets : de l'ivoire très transparent, jamais du gris. */
+  --color-line: rgba(242, 238, 231, 0.11);
+  --color-line-strong: rgba(242, 238, 231, 0.2);
+
+  /* Lumière chaude des halos et dégradés — décoratif uniquement. */
+  --color-sun: #d9a066;
+
+  /**
+   * Le rituel (chaleur du hammam) / le geste (brume, vapeur). Deux accents
+   * secondaires, réservés à la section qui les pose explicitement — jamais
+   * au chrome du site (en-tête, boutons, pied de page restent
+   * champagne/terracotta). Luminance calée sur `--color-champagne` pour
+   * rester lisibles en texte sur l'encre.
+   */
+  --color-ocre: #c9974a;
+  --color-brume: #93aab8;
+
+  /* Les variables `--font-*` sont fournies par next/font (app/layout.tsx) ;
+     les polices système suivantes prennent le relais en cas d'échec. */
+  --font-heading: var(--font-display), 'Iowan Old Style', Georgia, serif;
+  --font-body: var(--font-sans), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 28px;
+
+  /* Sur fond sombre une ombre portée ne se voit pas : la profondeur vient
+     d'un halo, pas d'une ombre. */
+  --shadow-soft: 0 24px 70px -40px rgba(0, 0, 0, 0.9);
+  --shadow-lifted: 0 36px 90px -50px rgba(0, 0, 0, 0.95);
+
+  --ease-alma: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --arch-radius: 50% 50% var(--radius-md) var(--radius-md) / 46% 46% 2% 2%;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-ivory);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.02;
+    /* Instrument Serif est dessiné large : un léger resserrement lui rend
+       la densité d'un titre composé, non d'un texte agrandi. */
+    letter-spacing: -0.018em;
+  }
+
+  /* Les prix et les horaires se lisent mieux en chiffres alignés. */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Focus visible et cohérent partout — exigence d'accessibilité. */
+  :focus-visible {
+    outline: 2px solid var(--color-terracotta);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+
+  ::selection {
+    background: var(--color-champagne);
+    color: var(--color-ink);
+  }
+
+  /* Respect strict de la préférence système de réduction du mouvement. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /**
+   * Grain de plâtre appliqué à toute la page.
+   * Une surface parfaitement lisse trahit l'écran ; ce bruit très faible
+   * donne la matière d'un mur chaulé. Posé en `fixed` et non répété par
+   * section, il ne coûte qu'un seul calque de composition.
+   */
+  .alma-grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+  }
+
+  /** Cadre en arche — le motif structurant du site. */
+  .alma-arch {
+    border-radius: var(--arch-radius);
+  }
+
+  /** Demi-arche, pour les blocs posés contre un bord. */
+  .alma-arch-flat {
+    border-radius: 50% 50% 0 0 / 46% 46% 0 0;
+  }
+
+  /**
+   * Halo de lumière chaude, comme le soleil entrant par une ouverture.
+   * Purement décoratif : toujours posé en `aria-hidden`.
+   */
+  .alma-sun {
+    background: radial-gradient(
+      60% 55% at 50% 8%,
+      rgba(217, 160, 102, 0.22) 0%,
+      rgba(217, 160, 102, 0.07) 42%,
+      transparent 72%
+    );
+  }
+
+  /** Filet vertical fin, pour rythmer une colonne éditoriale. */
+  .alma-stem {
+    background: linear-gradient(
+      to bottom,
+      var(--color-champagne) 0%,
+      rgba(200, 168, 130, 0) 100%
+    );
+  }
+  /** Filet décoratif court utilisé sous les sur-titres de section. */
+  .alma-rule {
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-champagne);
+  }
+
+  /**
+   * Placeholder photo premium : grain fin, dégradés sable et lumière chaude.
+   * Utilisé tant que les visuels définitifs ne sont pas livrés — l'objectif
+   * est que l'emplacement paraisse voulu, jamais cassé.
+   *
+   * Le grain est une couche de fond parmi d'autres, et non un élément
+   * enfant : le composant n'a ainsi besoin d'aucun positionnement propre.
+   */
+  .alma-placeholder {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.03) 1px, transparent 0),
+      radial-gradient(110% 90% at 25% 18%, rgba(200, 168, 130, 0.16) 0%, transparent 58%),
+      linear-gradient(158deg, #241f1a 0%, #191511 55%, #100e0c 100%);
+    background-size: 6px 6px, cover, cover;
+  }
+
+  .alma-placeholder-dark {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(242, 238, 231, 0.025) 1px, transparent 0),
+      radial-gradient(110% 90% at 25% 20%, rgba(200, 168, 130, 0.12) 0%, transparent 55%),
+      linear-gradient(155deg, #1b1713 0%, var(--color-ink) 60%, #090807 100%);
+    background-size: 6px 6px, cover, cover;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility text-pretty {
+  text-wrap: pretty;
+}
+
+/**
+ * Animations d'ambiance.
+ * Longues et de faible amplitude : elles doivent se sentir, pas se voir.
+ * Toutes sont déclenchées par `motion-safe:`, donc absentes dès que
+ * l'utilisateur demande moins de mouvement.
+ */
+@keyframes alma-breathe {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes alma-scroll-hint {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  45% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  55% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
