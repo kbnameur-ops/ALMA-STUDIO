@@ -14,9 +14,9 @@ import { getPublishedReviews } from '@/lib/repositories/reviews';
 import { pageMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'ALMA STUDIO — Massage entre Andalousie et Atlantique à Paris',
+  title: 'ALMA STUDIO — Massage & Rituels d’Andalousie à Paris',
   description:
-    'Studio privé de massage à Paris, entre chaleur andalouse et fraîcheur atlantique : séances sur rendez-vous dans un espace intimiste. Réservation en ligne, du Sevilla Calor au rituel de 120 minutes.',
+    'Studio privé de massage à Paris, dans l’esprit du hammam et de l’héritage arabo-andalou : séances sur rendez-vous dans un espace intimiste. Réservation en ligne.',
   path: '/',
 });
 
@@ -33,9 +33,9 @@ export default async function HomePage() {
     <>
       <Hero />
       {/* Ordre voulu : après le hero, une plaque de texte seul, puis le
-          double ancrage qui donne son sens au catalogue — sans lui,
-          « Sevilla Calor » et « Côte Atlantique » n'ont aucun fil commun
-          pour le visiteur qui les découvre dans l'index qui suit. */}
+          moment qui pose l'héritage du studio — le rituel ancestral et le
+          geste du praticien — avant que l'index des signatures n'en donne
+          les prestations concrètes. */}
       <ManifestoSection />
       <OriginsSection />
       <SignaturesSection services={signatures} />

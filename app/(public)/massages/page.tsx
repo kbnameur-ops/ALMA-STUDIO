@@ -11,7 +11,7 @@ import { breadcrumbJsonLd, pageMetadata } from '@/lib/seo';
 export const metadata: Metadata = pageMetadata({
   title: 'Nos massages',
   description:
-    'Sept expériences de bien-être au studio, entre Andalousie et Atlantique : Sevilla Calor, Côte Atlantique, Shirochampi Ibérique, deep relax, récupération sportive et rituel de 120 minutes. Durées, tarifs et réservation en ligne.',
+    'Un catalogue de rituels inspirés de l’Andalousie et de l’héritage arabo-andalou : durées, tarifs et réservation en ligne.',
   path: '/massages',
 });
 

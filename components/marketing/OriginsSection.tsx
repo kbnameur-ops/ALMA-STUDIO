@@ -3,38 +3,38 @@ import { Reveal, RevealLines } from '@/components/ui/Reveal';
 import { ArchMark } from '@/components/brand/ArchMark';
 
 /**
- * Le double ancrage : Andalousie / Atlantique.
+ * L'héritage, en deux gestes : le rituel et le mouvement.
  *
- * Le repositionnement du studio tient sur une idée qu'aucune autre
- * section ne pose explicitement : deux origines, une chaude et une
- * fraîche, qui structurent tout le catalogue (Sevilla Calor d'un côté,
- * Côte Atlantique de l'autre, le rituel qui les réunit). Sans ce moment,
- * un visiteur qui découvre « Sevilla Calor » et « Côte Atlantique » dans
- * l'index des signatures n'a aucun fil pour les relier.
+ * Le repositionnement du studio tient sur une idée qu'aucune autre section
+ * ne pose explicitement : un même héritage arabo-andalou, porté par deux
+ * gestes — celui, ancestral, du hammam, et celui du praticien lui-même,
+ * façonné par des années de scène et de mouvement. Sans ce moment, la
+ * biographie du praticien et le catalogue restent deux pages sans lien
+ * entre elles.
  *
- * Le panneau reprend la technique du halo chaud déjà utilisée ailleurs
- * sur le site (`.alma-sun`), dédoublée : un halo ocre à gauche, un halo
- * bleu-gris à droite, tous deux émergeant de la même encre. C'est
- * délibéré — les deux couleurs d'accent n'existent que dans cette
- * section, jamais dans le chrome du site (en-tête, boutons, pied de
- * page restent champagne/terracotta), pour que le geste reste un
- * moment et ne dilue pas l'identité déjà posée.
+ * Le panneau reprend la technique du halo chaud déjà utilisée ailleurs sur
+ * le site (`.alma-sun`), dédoublée : un halo ocre à gauche pour la chaleur
+ * du rituel, une brume bleu-gris à droite pour la vapeur du hammam et la
+ * précision du geste. Les deux couleurs d'accent n'existent que dans cette
+ * section, jamais dans le chrome du site (en-tête, boutons, pied de page
+ * restent champagne/terracotta), pour que le moment reste un moment et ne
+ * dilue pas l'identité déjà posée.
  */
 export function OriginsSection() {
   return (
     <section aria-labelledby="origines-titre" className="relative overflow-hidden bg-ink-deep">
       <div className="mx-auto max-w-6xl px-5 pt-24 text-center sm:px-8 sm:pt-32 lg:px-12">
-        <Eyebrow>L’inspiration</Eyebrow>
+        <Eyebrow>L’héritage</Eyebrow>
         <RevealLines
           as="h2"
           id="origines-titre"
           className="mx-auto mt-5 max-w-2xl font-heading text-[2.25rem] leading-[1.05] text-ivory sm:text-[3.25rem]"
-          lines={['Deux rives,', 'une même écoute.']}
+          lines={['Un même héritage,', 'deux gestes.']}
         />
       </div>
 
       <div className="relative mt-16 grid sm:grid-cols-2">
-        {/* Andalousie — chaleur, gestuelle rythmée. */}
+        {/* Le rituel — chaleur, transmission, gestes ancestraux. */}
         <Reveal className="relative overflow-hidden px-5 py-20 sm:px-10 sm:py-28 lg:px-16">
           <div
             aria-hidden
@@ -46,14 +46,14 @@ export function OriginsSection() {
           />
           <div className="relative mx-auto max-w-sm">
             <span className="font-body text-[0.62rem] uppercase tracking-[0.34em] text-ocre">
-              Andalousie
+              Le rituel
             </span>
             <p className="mt-5 font-heading text-2xl leading-snug text-ivory sm:text-[1.75rem]">
-              La chaleur d’une huile qui réchauffe.
+              La chaleur du hammam.
             </p>
             <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
-              Un rythme qui alterne tension et relâchement, inspiré de la cadence du flamenco —
-              la gestuelle avant le décor.
+              Des gestes transmis, ancestraux, pensés pour libérer les tensions en profondeur —
+              l’héritage arabo-andalou dans toute sa densité.
             </p>
           </div>
         </Reveal>
@@ -71,7 +71,7 @@ export function OriginsSection() {
         </div>
         <div aria-hidden className="mx-auto h-px w-16 bg-ivory/10 sm:hidden" />
 
-        {/* Atlantique — fraîcheur, légèreté, embruns. */}
+        {/* Le geste — précision, mouvement, écoute du corps. */}
         <Reveal delay={0.1} className="relative overflow-hidden px-5 py-20 sm:px-10 sm:py-28 lg:px-16">
           <div
             aria-hidden
@@ -83,14 +83,14 @@ export function OriginsSection() {
           />
           <div className="relative mx-auto max-w-sm">
             <span className="font-body text-[0.62rem] uppercase tracking-[0.34em] text-brume">
-              Atlantique
+              Le geste
             </span>
             <p className="mt-5 font-heading text-2xl leading-snug text-ivory sm:text-[1.75rem]">
-              La fraîcheur d’un geste léger.
+              La brume qui enveloppe.
             </p>
             <p className="mt-4 font-body text-sm leading-relaxed text-ivory-70">
-              Une circulation qui se relance, un mouvement inspiré des embruns — la légèreté
-              plutôt que la carte postale.
+              Une lecture du corps affinée par des années de scène et de mouvement — pour que
+              chaque soin s’adapte, jamais générique.
             </p>
           </div>
         </Reveal>

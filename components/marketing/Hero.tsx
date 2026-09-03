@@ -77,7 +77,7 @@ export function Hero() {
             </motion.p>
 
             <h1 className="mt-8 font-heading text-[3.4rem] leading-[0.92] text-ivory sm:text-[5rem] lg:text-[6rem] xl:text-[6.75rem]">
-              {['Une parenthèse', 'andalouse et atlantique'].map((text, index) => (
+              {['Une parenthèse', 'andalouse'].map((text, index) => (
                 <span key={text} className="block overflow-hidden pb-[0.06em]">
                   <motion.span className="block" {...line(index)}>
                     {text}

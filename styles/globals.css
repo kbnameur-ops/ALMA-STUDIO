@@ -56,11 +56,11 @@
   --color-sun: #d9a066;
 
   /**
-   * Double ancrage géographique : Andalousie (chaleur) / Atlantique
-   * (fraîcheur). Deux accents secondaires, réservés à la section qui les
-   * pose explicitement — jamais au chrome du site (en-tête, boutons,
-   * pied de page restent champagne/terracotta). Luminance calée sur
-   * `--color-champagne` pour rester lisibles en texte sur l'encre.
+   * Le rituel (chaleur du hammam) / le geste (brume, vapeur). Deux accents
+   * secondaires, réservés à la section qui les pose explicitement — jamais
+   * au chrome du site (en-tête, boutons, pied de page restent
+   * champagne/terracotta). Luminance calée sur `--color-champagne` pour
+   * rester lisibles en texte sur l'encre.
    */
   --color-ocre: #c9974a;
   --color-brume: #93aab8;

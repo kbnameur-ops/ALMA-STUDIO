@@ -52,8 +52,8 @@ export function StudioSection() {
           />
           <Reveal delay={0.15}>
             <p className="mt-8 max-w-md font-body text-[0.95rem] leading-relaxed text-ivory-70">
-              Lumière douce, matières naturelles, entre chaleur andalouse et fraîcheur atlantique, atmosphère
-              confidentielle. Un seul rendez-vous à la fois.
+              Lumière douce, matières naturelles, ambiance andalouse et atmosphère confidentielle.
+              Un seul rendez-vous à la fois.
             </p>
             <LinkButton href="/studio" variant="outlineLight" className="mt-10">
               Découvrir le studio
